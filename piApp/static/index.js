@@ -5,6 +5,13 @@ socket.on('connect', function() {
                 socket.emit('my event', {data: 'I\'m connected!'});
                 socket.send("test")
 });
+
+socket.on('message',function(msg){
+    console.log(msg)
+    socket.send('a')
+})
+
+
 const board = document.getElementById("board");
 
 for(let i =1; i<=8;i++){
