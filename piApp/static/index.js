@@ -26,6 +26,7 @@ for(let i= 1; i<=8;i++){
     for(let j =1;j<8;j++){
         let nouvelleCase = document.createElement("div");
         nouvelleCase.id= (notation[j]+i.toString());
+        console.log("row_"+i.toString());
         document.getElementById("row_"+i.toString());
     }
 
