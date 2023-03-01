@@ -3,6 +3,7 @@ var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.emit('my event', {data: 'I\'m connected!'});
+                socket.send("test")
 });
 const board = document.getElementById("board");
 
