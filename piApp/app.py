@@ -12,6 +12,7 @@ if __name__ == '__main__':
     socketio.run(app)
 
     
+    
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
