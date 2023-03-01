@@ -1,5 +1,8 @@
 
-
+var socket = io();
+socket.on('connect', function() {
+                socket.emit('my event', {data: 'I\'m connected!'});
+});
 const board = document.getElementById("board");
 
 for(let i =1; i<=8;i++){
