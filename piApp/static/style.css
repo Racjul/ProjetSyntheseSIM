@@ -1,3 +1,7 @@
-p{
-color:green;
+#board{
+    background-color: beige;
+
+}
+.case{
+    background-color: blue;
 }
