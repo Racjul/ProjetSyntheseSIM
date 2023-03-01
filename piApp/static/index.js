@@ -8,7 +8,6 @@ socket.on('connect', function() {
 
 socket.on('message',function(msg){
     console.log(msg)
-    socket.send('a')
 })
 
 
@@ -21,16 +20,13 @@ for(let i =1; i<=8;i++){
     board.appendChild(nouvelleColonne);  
 }
 
+const notation = ["a","b","c","d","e","f","g","h"]
 
-let cpt = 1;
-for(let i= 1; i<=64;i++){
-    let nouvellecase = document.createElement("div");
-    nouvellecase.id = i.toString();
-    nouvellecase.className= "case"
-    console.log("row"+cpt.toString)
-    document.getElementById("row"+cpt.toString).appendChild(nouvellecase);
-    if(i%8==0){
-        cpt ++
-    }  
+for(let i= 1; i<=8;i++){
+    for(let j =1;j<8;j++){
+        let nouvelleCase = document.createElement("div");
+        nouvelleCase.id= (notation[j]+i.toString());
+        document.getElementById("row_"+i.toString());
+    }
 
 }
