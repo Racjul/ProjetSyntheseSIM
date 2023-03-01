@@ -21,7 +21,3 @@ for(let i= 1; i<=64;i++){
     }  
 
 }
-var socket = io.connect('http://' + document.domain + ':' + location.port);
-    socket.on('connect', function() {
-        console.log(connecté);
-    });
