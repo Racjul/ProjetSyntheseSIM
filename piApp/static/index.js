@@ -27,7 +27,7 @@ for(let i= 1; i<=8;i++){
         let nouvelleCase = document.createElement("div");
         nouvelleCase.id= (notation[j]+i.toString());
         console.log("row_"+i.toString());
-        document.getElementById("row_"+i.toString());
+        document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
 
 }
