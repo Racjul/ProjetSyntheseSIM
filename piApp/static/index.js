@@ -27,6 +27,7 @@ for(let i= 1; i<=64;i++){
     let nouvellecase = document.createElement("div");
     nouvellecase.id = i.toString();
     nouvellecase.className= "case"
+    console.log("row"+cpt.toString)
     document.getElementById("row"+cpt.toString).appendChild(nouvellecase);
     if(i%8==0){
         cpt ++

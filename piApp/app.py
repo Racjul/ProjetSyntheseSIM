@@ -13,7 +13,7 @@ socketio= SocketIO(app, async_mode='eventlet')
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
-    socketio.send("test")
+    #socketio.send("test")
   
 
 @app.route('/')
