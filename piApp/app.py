@@ -7,8 +7,7 @@ from flask_socketio import SocketIO, send,emit
 app = Flask(__name__,static_url_path='/static')
 app.config['SECRET_KEY'] = 'secret!'
 socketio= SocketIO(app, async_mode='eventlet')
-thread = None
-thread_lock = Lock()
+
 
 @socketio.on('message')
 def handle_message(data):
