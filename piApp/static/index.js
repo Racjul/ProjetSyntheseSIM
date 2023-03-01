@@ -23,9 +23,9 @@ for(let i =1; i<=8;i++){
 const notation = ["a","b","c","d","e","f","g","h"]
 
 for(let i= 1; i<=8;i++){
-    for(let j =1;j<8;j++){
+    for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[j]+i.toString());
+        nouvelleCase.id= (notation[j-1]+i.toString());
         console.log("row_"+i.toString());
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
