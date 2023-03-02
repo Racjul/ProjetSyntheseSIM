@@ -36,3 +36,8 @@ background-color: #769656;
 .texteAccueil{
 color: white;
 }
+#g4{
+    background-image:url(https://www.chess.com/chess-themes/pieces/neo/150/wp.png) ;
+    background-position: center;
+    background-size: 100px 100px;
+}
