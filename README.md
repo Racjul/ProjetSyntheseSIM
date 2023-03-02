@@ -9,7 +9,7 @@
 
 #### 1. Activer les librairies python:
 
-pip -r requirements.txt
+pip install -r requirements.txt
 
 ou
 
