@@ -1,5 +1,6 @@
 #board{
-
+margin-left: 50 px;
+margin-top: 50 px;
     display: flex;
     flex-wrap: wrap;
     width: 1280px;
