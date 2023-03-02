@@ -1,7 +1,6 @@
 body{
-    background-color: #312E2B;
-    }
-
+background-color: #312E2B;
+}
 #board{
     margin-left: 10%;
     margin-top: 5%;
@@ -9,31 +8,30 @@ body{
     width: 800px;
     height: 800px;
     flex-direction: column;
-    }
-
+}
 .navbar{
-        background-color: #272522;
-    }
-
+    background-color: #272522;
+}
 .row{
     background-color: aqua;
     flex-direction: row;
-    display: flex;
-    height:12.5% ;
-    }
+   display: flex;
+   height:12.5% ;
+}
 .case{
     margin:0px 0px 0px 0px;
     padding:0px 0px 0px 0px;
-    width: 12.5%;
-      
-    
+
+ width: 12.5%;
+  
+
 }
-    
+
 .blanche{
 background-color: #EEEED2;
 }
 .noire{
-    background-color: #769656;
+background-color: #769656;
 }
 .texteAccueil{
 color: white;
