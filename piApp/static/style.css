@@ -1,6 +1,6 @@
 #board{
-margin-left: 50 px;
-margin-top: 50 px;
+    margin-left: 10%;
+    margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     width: 1280px;
@@ -15,7 +15,7 @@ margin-top: 50 px;
     display: flex;
 }
 .case{
-    width: 100px;
+    width: 100px !important;
     height: 100px;
  
     border: 1px solid black;
