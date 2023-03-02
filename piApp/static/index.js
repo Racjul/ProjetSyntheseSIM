@@ -26,7 +26,15 @@ for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
         nouvelleCase.id= (notation[j-1]+i.toString());
-        console.log("row_"+i.toString());
+        if((i+j)%2==0){
+            nouvelleCase.className ="case blanche";
+            
+        }
+        else{
+nouvelleCase.className = "case noire"
+        }
+
+        
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
 
