@@ -9,13 +9,13 @@
     flex-direction: column;
 }
 .row{
-    justify-content: center;
-    flex-direction: row-reverse;
+    
+    flex-direction: row;
     display: flex;
 }
 .case{
     width: 100px;
-    height: 100px;
+    height: 20px;
  
     border: 1px solid black;
 
