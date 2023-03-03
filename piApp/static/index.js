@@ -25,7 +25,7 @@ const notation = ["a","b","c","d","e","f","g","h"]
 for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[j-1]+(9-i).toString());
+        nouvelleCase.id= (notation[i-1]+(9-j).toString());
         if((i+j)%2==0){
             nouvelleCase.className ="case blanche";
             
@@ -41,19 +41,28 @@ nouvelleCase.className = "case noire"
 }
 document.getElementById("start").addEventListener("click",start)
 
+
+
 function start(){
     
+    for(let i= 0;i<8;i++){
+        for(let j=1;j<=8;j++){
+            document.getElementById( notation[i]+ j.toString()).style.backgroundImage="";
+
+        }
+    }
+
     socket.send("Partie initialisé")
+
     notation.forEach((i)=>{
-        let x = document.getElementById(i+"2")
-        x.style.backgroundImage = "url('/static/images/wp.png')"
-        x.style.backgroundPosition= "center"
-        x.style.backgroundSize="100 px 100 px"
+        let x = document.getElementById(i+"2").style.backgroundImage = "url('/static/images/wp.png')"
 
-        let y = document.getElementById(i+"7")
-        y.style.backgroundImage = "url('/static/images/bp.png')"
-        y.style.backgroundPosition= "center"
-        y.style.backgroundSize="100 px 100 px"
+        let y = document.getElementById(i+"7").style.backgroundImage = "url('/static/images/bp.png')"
+    });
 
-    })
+    document.getElementById("a1").style.backgroundImage = "url('/static/images/br.png')";
+    document.getElementById("a2").style.backgroundImage = "url('/static/images/bk.png')";
+    document.getElementById("a3").style.backgroundImage = "url('/static/images/bb.png')";
+    document.getElementById("a4").style.backgroundImage = "url('/static/images/bq.png')";
+    
 }
