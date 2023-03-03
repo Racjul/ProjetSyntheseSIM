@@ -37,5 +37,11 @@ nouvelleCase.className = "case noire"
         
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
+}
 
+document.getElementById("start").addEventListener("click",start)
+
+function start(){
+    socket.send("Partie initialisé")
+    document.getElementById()
 }

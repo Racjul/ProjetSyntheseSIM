@@ -39,3 +39,9 @@ nouvelleCase.className = "case noire"
     }
 
 }
+document.getElementById("start").addEventListener("click",start)
+
+function start(){
+    socket.send("Partie initialisé")
+    document.getElementById()
+}

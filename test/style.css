@@ -41,3 +41,22 @@ color: white;
     background-position: center;
     background-size: 100px 100px;
 }
+#start{
+    position: absolute;
+    margin-left: 75%;
+    top: 30%;
+    display: inline-block;
+    width: 200px;
+    height: 75px;
+    background-color: #769656;
+    border-color: #769656;
+    color: white;
+
+    
+}
+#start:hover{
+    background-color: #769656;
+    border-color: aliceblue;
+    border-width: 5px;
+
+}
