@@ -54,15 +54,27 @@ function start(){
 
     socket.send("Partie initialisé")
 
-    notation.forEach((i)=>{
-        let x = document.getElementById(i+"2").style.backgroundImage = "url('/static/images/wp.png')"
+    for(let i =1;i<=8;i++){
+        document.getElementById("b"+i.toString()).style.backgroundImage = "url('/static/images/wp.png')"
 
-        let y = document.getElementById(i+"7").style.backgroundImage = "url('/static/images/bp.png')"
-    });
-
+        document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
+    }
+//création des pièces noires
     document.getElementById("a1").style.backgroundImage = "url('/static/images/br.png')";
-    document.getElementById("a2").style.backgroundImage = "url('/static/images/bk.png')";
+    document.getElementById("a2").style.backgroundImage = "url('/static/images/bn.png')";
     document.getElementById("a3").style.backgroundImage = "url('/static/images/bb.png')";
-    document.getElementById("a4").style.backgroundImage = "url('/static/images/bq.png')";
-    
+    document.getElementById("a4").style.backgroundImage = "url('/static/images/bk.png')";
+    document.getElementById("a5").style.backgroundImage = "url('/static/images/bq.png')";
+    document.getElementById("a6").style.backgroundImage = "url('/static/images/bb.png')";
+    document.getElementById("a7").style.backgroundImage = "url('/static/images/bn.png')";
+    document.getElementById("a8").style.backgroundImage = "url('/static/images/br.png')";
+//création des pièces blanches
+    document.getElementById("h1").style.backgroundImage = "url('/static/images/wr.png')";
+    document.getElementById("h2").style.backgroundImage = "url('/static/images/wn.png')";
+    document.getElementById("h3").style.backgroundImage = "url('/static/images/wb.png')";
+    document.getElementById("h4").style.backgroundImage = "url('/static/images/wk.png')";
+    document.getElementById("h5").style.backgroundImage = "url('/static/images/wq.png')";
+    document.getElementById("h6").style.backgroundImage = "url('/static/images/wb.png')";
+    document.getElementById("h7").style.backgroundImage = "url('/static/images/wn.png')";
+    document.getElementById("h8").style.backgroundImage = "url('/static/images/wr.png')";
 }
