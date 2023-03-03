@@ -46,12 +46,12 @@ function start(){
     socket.send("Partie initialisé")
     notation.forEach((i)=>{
         let x = document.getElementById(i+"2")
-        x.style.backgroundImage = "url('/static/images/bp.png')"
+        x.style.backgroundImage = "url('/static/images/wp.png')"
         x.style.backgroundPosition= "center"
         x.style.backgroundSize="100 px 100 px"
 
         let y = document.getElementById(i+"7")
-        y.style.backgroundImage = "url('/static/images/wp.png')"
+        y.style.backgroundImage = "url('/static/images/bp.png')"
         y.style.backgroundPosition= "center"
         y.style.backgroundSize="100 px 100 px"
 
