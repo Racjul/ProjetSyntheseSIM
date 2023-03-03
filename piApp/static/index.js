@@ -25,7 +25,7 @@ const notation = ["a","b","c","d","e","f","g","h"]
 for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[j-1]+i.toString());
+        nouvelleCase.id= (notation[8-j-1]+i.toString());
         if((i+j)%2==0){
             nouvelleCase.className ="case blanche";
             
@@ -45,10 +45,15 @@ function start(){
     
     socket.send("Partie initialisé")
     notation.forEach((i)=>{
-        let x= document.getElementById(i+"2")
+        let x = document.getElementById(i+"2")
         x.style.backgroundImage = "url('/static/images/bp.png')"
         x.style.backgroundPosition= "center"
-        x.style.backgroundSize="100 px 100px"
+        x.style.backgroundSize="100 px 100 px"
+
+        let x = document.getElementById(i+"7")
+        x.style.backgroundImage = "url('/static/images/wp.png')"
+        x.style.backgroundPosition= "center"
+        x.style.backgroundSize="100 px 100 px"
 
     })
 }
