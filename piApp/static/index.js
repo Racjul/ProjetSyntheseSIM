@@ -42,6 +42,13 @@ nouvelleCase.className = "case noire"
 document.getElementById("start").addEventListener("click",start)
 
 function start(){
+    
     socket.send("Partie initialisé")
-    document.getElementById()
+    notation.forEach((i)=>{
+        let x= document.getElementById(i+"2")
+        x.style.backgroundImage = "url('/static/images/bp.png')"
+        x.style.backgroundPosition= "center"
+        x.style.backgroundSize="100 px 100px"
+
+    })
 }
