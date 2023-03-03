@@ -60,14 +60,14 @@ function start(){
         document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
     }
 //création des pièces noires
-    document.getElementById("g1").style.backgroundImage = "url('/static/images/br.png')";
-    document.getElementById("g2").style.backgroundImage = "url('/static/images/bn.png')";
-    document.getElementById("g3").style.backgroundImage = "url('/static/images/bb.png')";
-    document.getElementById("g4").style.backgroundImage = "url('/static/images/bk.png')";
-    document.getElementById("g5").style.backgroundImage = "url('/static/images/bq.png')";
-    document.getElementById("g6").style.backgroundImage = "url('/static/images/bb.png')";
-    document.getElementById("g7").style.backgroundImage = "url('/static/images/bn.png')";
-    document.getElementById("g8").style.backgroundImage = "url('/static/images/br.png')";
+    document.getElementById("h1").style.backgroundImage = "url('/static/images/br.png')";
+    document.getElementById("h2").style.backgroundImage = "url('/static/images/bn.png')";
+    document.getElementById("h3").style.backgroundImage = "url('/static/images/bb.png')";
+    document.getElementById("h4").style.backgroundImage = "url('/static/images/bk.png')";
+    document.getElementById("h5").style.backgroundImage = "url('/static/images/bq.png')";
+    document.getElementById("h6").style.backgroundImage = "url('/static/images/bb.png')";
+    document.getElementById("h7").style.backgroundImage = "url('/static/images/bn.png')";
+    document.getElementById("h8").style.backgroundImage = "url('/static/images/br.png')";
 //création des pièces blanches
     document.getElementById("a1").style.backgroundImage = "url('/static/images/wr.png')";
     document.getElementById("a2").style.backgroundImage = "url('/static/images/wn.png')";
