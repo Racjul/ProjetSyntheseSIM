@@ -25,7 +25,7 @@ const notation = ["a","b","c","d","e","f","g","h"]
 for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[i-1]+(9-j).toString());
+        nouvelleCase.id= (notation[8-i]+(j).toString());
         if((i+j)%2==0){
             nouvelleCase.className ="case blanche";
             
