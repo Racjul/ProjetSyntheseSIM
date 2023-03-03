@@ -1,5 +1,5 @@
 # ProjetSyntheseSIM
-##Programme de jeu d'échec automatisé
+## Programme de jeu d'échec automatisé
 
 
 
