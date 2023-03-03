@@ -78,3 +78,11 @@ function start(){
     document.getElementById("a7").style.backgroundImage = "url('/static/images/wn.png')";
     document.getElementById("a8").style.backgroundImage = "url('/static/images/wr.png')";
 }
+function ajouterPiece(piece,location){
+    element = document.getElementById(location)
+    element.style.backgroundImage = "url('/static/images/"+piece+".png')"
+    element.addEventListener("click",deplacer)
+}
+function deplacer(){
+
+}
