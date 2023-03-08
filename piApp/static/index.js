@@ -114,7 +114,8 @@ function ajouterPiece(piece,location){
 
 function deplacer(Id){
     
-    document.getElementById("targetPiece").backgroundImage=document.getElementById(Id).backgroundImage;
+    let piece = document.getElementById(Id).style.backgroundImage; 
+    document.getElementById("targetPiece").style.backgroundImage=piece;
     
 
 
