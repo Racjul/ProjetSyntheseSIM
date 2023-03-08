@@ -116,6 +116,7 @@ function deplacer(Id){
     let TargetCase = document.createElement("div");
     TargetCase.id="target";
     TargetCase.backgroundImage=document.getElementById(Id).backgroundImage;
+    document.appendChild(TargetCase);
 
 
     document.addEventListener('mousemove', function(e) {
