@@ -60,10 +60,9 @@ body{
     
     #targetPiece{
         position: absolute;
-        background-color: aqua;
-        margin:0px 0px 0px 0px;
-        padding:0px 0px 0px 0px;
-        width: 12.5%;
+        
+        height: 100px;
+        width: 100px;
 
         background-position: center;
         background-size: 100px 100px;
