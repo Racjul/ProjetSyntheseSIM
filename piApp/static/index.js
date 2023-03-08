@@ -102,25 +102,21 @@ function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
-    element.addEventListener("click",function(e){
-        
-        let targetItemId=e.target.id;
-        document.getElementById(targetItemId).style.backgroundColor="rgba(240,255,0 .4)";
-        deplacer(targetItemId);
+    element.addEventListener("click",deplacer(piece));
 
-    }, false);
 }
 
 
-function deplacer(Id){
+function deplacer(piece){
     
-    let piece = document.getElementById(Id).style.backgroundImage; 
-    //document.getElementById("targetPiece").style.backgroundImage=piece;
+
+     
+    
    
 
     document.addEventListener("click",function(e){
         let deplacement = e.target.id;
-        document.getElementById(deplacement).style.backgroundImage=piece;
+        ajouterPiece(piece,id);
         document.getElementById(Id).style.backgroundImage=null;
     },false)
     
