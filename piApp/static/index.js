@@ -85,6 +85,7 @@ function ajouterPiece(piece,location){
         let targetItemId=e.target.id;
         deplacer(targetItemId);
         console.log(id);
+        console.log("allo");
 
     }, false);
 }
