@@ -104,9 +104,9 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e){
         let targetItemId=e.target.id;
-        deplacer(targetItemId);
-        console.log(id);
+        console.log(targetItemId);
         console.log("allo");
+        deplacer(targetItemId);
 
     }, false);
 }
