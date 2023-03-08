@@ -103,9 +103,9 @@ function ajouterPiece(piece,location){
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
     element.addEventListener("click",function(e){
+        
         let targetItemId=e.target.id;
-        console.log(targetItemId);
-        console.log("allo");
+        document.getElementById(targetItemId).style.backgroundColor="rgba(240,255,0 .4)";
         deplacer(targetItemId);
 
     }, false);
@@ -116,22 +116,15 @@ function deplacer(Id){
     
     let piece = document.getElementById(Id).style.backgroundImage; 
     //document.getElementById("targetPiece").style.backgroundImage=piece;
-    
+   
+
     document.addEventListener("click",function(e){
         let deplacement = e.target.id;
         document.getElementById(deplacement).style.backgroundImage=piece;
         document.getElementById(Id).style.backgroundImage=null;
     },false)
-
-    /*document.addEventListener('mousemove', function(e) {
-
-        let body = document.querySelector('body');
-        let piece = document.getElementById("targetPiece");
-        let left = e.offsetX;
-        let top = e.offsetY;
-        piece.style.left = left + 'px';
-        piece.style.top = top + 'px';
-      });*/
+    
+    
 
 }
 
