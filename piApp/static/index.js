@@ -61,7 +61,25 @@ function start(){
     }
 //création des pièces noires
     ajouterPiece("br","h1");
-    //document.getElementById("h1").style.backgroundImage = "url('/static/images/br.png')";
+    ajouterPiece("bn","h2");
+    ajouterPiece("bb","h3");
+    ajouterPiece("bk","h4");
+    ajouterPiece("bq","h5");
+    ajouterPiece("bb","h6");
+    ajouterPiece("bn","h7");
+    ajouterPiece("br","h8");
+    ajouterPiece("br","h8");
+    ajouterPiece("wr","a1");
+    ajouterPiece("wn","a2");
+    ajouterPiece("wb","a3");
+    ajouterPiece("wk","a4");
+    ajouterPiece("wq","a5");
+    ajouterPiece("wb","a6");
+    ajouterPiece("wn","a7");
+    ajouterPiece("wr","a8");
+   
+    
+    /*document.getElementById("h1").style.backgroundImage = "url('/static/images/br.png')";
     document.getElementById("h2").style.backgroundImage = "url('/static/images/bn.png')";
     document.getElementById("h3").style.backgroundImage = "url('/static/images/bb.png')";
     document.getElementById("h4").style.backgroundImage = "url('/static/images/bk.png')";
@@ -69,15 +87,16 @@ function start(){
     document.getElementById("h6").style.backgroundImage = "url('/static/images/bb.png')";
     document.getElementById("h7").style.backgroundImage = "url('/static/images/bn.png')";
     document.getElementById("h8").style.backgroundImage = "url('/static/images/br.png')";
+    */
 //création des pièces blanches
-    document.getElementById("a1").style.backgroundImage = "url('/static/images/wr.png')";
+    /*document.getElementById("a1").style.backgroundImage = "url('/static/images/wr.png')";
     document.getElementById("a2").style.backgroundImage = "url('/static/images/wn.png')";
     document.getElementById("a3").style.backgroundImage = "url('/static/images/wb.png')";
     document.getElementById("a4").style.backgroundImage = "url('/static/images/wk.png')";
     document.getElementById("a5").style.backgroundImage = "url('/static/images/wq.png')";
     document.getElementById("a6").style.backgroundImage = "url('/static/images/wb.png')";
     document.getElementById("a7").style.backgroundImage = "url('/static/images/wn.png')";
-    document.getElementById("a8").style.backgroundImage = "url('/static/images/wr.png')";
+    document.getElementById("a8").style.backgroundImage = "url('/static/images/wr.png')";*/
 }
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
