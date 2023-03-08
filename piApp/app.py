@@ -1,3 +1,4 @@
+from stockfish import Stockfish
 import os
 import eventlet
 from threading import Lock
@@ -9,11 +10,13 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio= SocketIO(app, async_mode='eventlet')
 
 
+stockfish = Stockfish(path="/usr/games/stockfish")
 
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
     socketio.send("test")
+    print()
   
 
 @app.route('/')
