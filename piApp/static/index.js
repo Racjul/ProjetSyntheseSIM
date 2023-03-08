@@ -113,16 +113,15 @@ function ajouterPiece(piece,location){
 
 
 function deplacer(Id){
-    let TargetCase = document.createElement("div");
-    TargetCase.id="target";
-    TargetCase.backgroundImage=document.getElementById(Id).backgroundImage;
-    document.appendChild(TargetCase);
+    
+    document.getElementById("targetPiece").backgroundImage=document.getElementById(Id).backgroundImage;
+    
 
 
     document.addEventListener('mousemove', function(e) {
 
         let body = document.querySelector('body');
-        let piece = document.getElementById("target");
+        let piece = document.getElementById("targetPiece");
         let left = e.offsetX;
         let top = e.offsetY;
         piece.style.left = left + 'px';
