@@ -60,7 +60,9 @@ function start(){
         document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
     }
 //création des pièces noires
-    document.getElementById("h1").style.backgroundImage = "url('/static/images/br.png')";
+    
+    ajouterPiece(br,h1);
+   
     document.getElementById("h2").style.backgroundImage = "url('/static/images/bn.png')";
     document.getElementById("h3").style.backgroundImage = "url('/static/images/bb.png')";
     document.getElementById("h4").style.backgroundImage = "url('/static/images/bk.png')";
@@ -81,6 +83,7 @@ function start(){
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
+
     element.addEventListener("click",function(e){
         let targetItemId=e.target.id;
         deplacer(targetItemId);
