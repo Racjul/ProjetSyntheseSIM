@@ -110,8 +110,7 @@ function ajouterPiece(piece,location){
 function deplacer(piece){
     
 
-     
-    
+     console.log(piece);
    
 
     document.addEventListener("click",function(e){
