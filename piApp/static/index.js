@@ -115,7 +115,7 @@ function deplacer(piece){
 
     document.addEventListener("click",function(e){
         let deplacement = e.target.id;
-        ajouterPiece(piece,id);
+        ajouterPiece(piece,deplacement);
         document.getElementById(Id).style.backgroundImage=null;
     },false)
     
