@@ -57,3 +57,14 @@ body{
         border-width: 5px;
     
     }
+    
+    #targetPiece{
+        position: absolute;
+        margin:0px 0px 0px 0px;
+        padding:0px 0px 0px 0px;
+        width: 12.5%;
+
+        background-position: center;
+        background-size: 100px 100px;
+        
+    }
