@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio= SocketIO(app, async_mode='eventlet')
 
 
-stockfish = Stockfish(path="/home/admin/Stockfish-sf_15/src/stockfish")
+stockfish = Stockfish(path="/usr/games/stockfish")
 
 @socketio.on('message')
 def handle_message(data):
