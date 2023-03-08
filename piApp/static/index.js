@@ -81,8 +81,24 @@ function start(){
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
-    element.addEventListener("click",deplacer)
+    element.addEventListener("click",function(e){
+        let targetItemId=e.target.id;
+        deplacer(targetItemId);
+
+    }, false);
 }
-function deplacer(){
+
+
+function deplacer(Id){
+    document.addEventListener('mousemove', function(e) {
+        let body = document.querySelector('body');
+        let piece = document.getElementById(Id);
+        let left = e.offsetX;
+        let top = e.offsetY;
+        piece.style.left = left + 'px';
+        piece.style.top = top + 'px';
+      });
 
 }
+
+
