@@ -3,6 +3,7 @@ body{
     background-color: #312E2B;
     }
     #board{
+        overflow: hidden;
         margin-left: 10%;
         margin-top: 5%;
         display: flex;
@@ -60,7 +61,7 @@ body{
     }
     
     #targetPiece{
-        position: relative;
+        position: absolute;
         
         height: 100px;
         width: 100px;
