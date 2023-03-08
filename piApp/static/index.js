@@ -1,9 +1,3 @@
-element.addEventListener("click",function(e){
-    let targetItemId=e.target.id;
-    deplacer(targetItemId);
-    console.log(id);
-
-}, false);
 
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
@@ -87,7 +81,12 @@ function start(){
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
-    
+    element.addEventListener("click",function(e){
+        let targetItemId=e.target.id;
+        deplacer(targetItemId);
+        console.log(id);
+
+    }, false);
 }
 
 
