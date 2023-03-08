@@ -16,7 +16,7 @@ stockfish = Stockfish(path="/usr/games/stockfish")
 def handle_message(data):
     print('received message: ' + data)
     socketio.send("test")
-    print(stockfish.get_best_move())
+    print()
   
 
 @app.route('/')
