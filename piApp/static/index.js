@@ -60,7 +60,7 @@ function start(){
         document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
     }
 //création des pièces noires
-    ajouterPiece("br",h1);
+    ajouterPiece("br","h1");
     //document.getElementById("h1").style.backgroundImage = "url('/static/images/br.png')";
     document.getElementById("h2").style.backgroundImage = "url('/static/images/bn.png')";
     document.getElementById("h3").style.backgroundImage = "url('/static/images/bb.png')";
