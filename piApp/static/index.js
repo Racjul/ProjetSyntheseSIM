@@ -84,15 +84,22 @@ function ajouterPiece(piece,location){
     element.addEventListener("click",function(e){
         let targetItemId=e.target.id;
         deplacer(targetItemId);
+        console.log(id);
 
     }, false);
 }
 
 
 function deplacer(Id){
+    let TargetCase = document.createElement("div");
+    TargetCase.id="target";
+    TargetCase.backgroundImage=document.getElementById(Id).backgroundImage;
+
+
     document.addEventListener('mousemove', function(e) {
+
         let body = document.querySelector('body');
-        let piece = document.getElementById(Id);
+        let piece = document.getElementById("target");
         let left = e.offsetX;
         let top = e.offsetY;
         piece.style.left = left + 'px';
