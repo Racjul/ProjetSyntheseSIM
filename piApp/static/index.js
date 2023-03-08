@@ -115,11 +115,15 @@ function ajouterPiece(piece,location){
 function deplacer(Id){
     
     let piece = document.getElementById(Id).style.backgroundImage; 
-    document.getElementById("targetPiece").style.backgroundImage=piece;
+    //document.getElementById("targetPiece").style.backgroundImage=piece;
     
+    document.addEventListener("click",function(e){
+        let deplacement = e.target.id;
+        document.getElementById(deplacement).style.backgroundImage=piece;
+        document.getElementById(Id).style.backgroundImage=null;
+    },false)
 
-
-    document.addEventListener('mousemove', function(e) {
+    /*document.addEventListener('mousemove', function(e) {
 
         let body = document.querySelector('body');
         let piece = document.getElementById("targetPiece");
@@ -127,7 +131,7 @@ function deplacer(Id){
         let top = e.offsetY;
         piece.style.left = left + 'px';
         piece.style.top = top + 'px';
-      });
+      });*/
 
 }
 
