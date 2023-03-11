@@ -70,3 +70,8 @@ body{
         background-size: 100px 100px;
         
     }
+
+    #test{
+        height: 200px;
+        width: 200px;
+    }
