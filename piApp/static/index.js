@@ -51,9 +51,24 @@ for(let i=1;i<=8;i++)
 {
     for(let j =1;j<=8;j++){
         
-        nouvelleCase.id= (notation[8-i]+(j).toString());
-        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", deplacer(notation[8-i]+(j).toString()));
+        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
+            console.log("case finale changé");
+
+    if(caseI == null)
+    {
+        console.log("case initiale null");
+         return;
+    }
+
+    if(document.getElementById(caseI).style.backgroundImage!=null)
+    {
         
+        ajouterPiece(pieceDeplacement,caseF);
+        document.getElementById(caseI).style.backgroundImage=null;
+        document.getElementById(caseI).removeEventListener("click",function(e){});
+
+    }
+        },false)
     }
 }
 
