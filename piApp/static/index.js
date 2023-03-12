@@ -114,9 +114,17 @@ function deplacer(caseI){
     
     document.addEventListener("click",function(caseF){
         
-        caseF.style.backgroundImage = caseI.document.backgroundImage;
-        caseI.style.backgroundImage=null;
-        
+        if(caseF.target.id!= "start" && caseF.style.backgroundImage==null)
+        {
+            
+            caseF.style.backgroundImage = caseI.style.backgroundImage;
+            caseI.style.backgroundImage=null;
+            
+        }
+        else{
+            alert("coup interdit");
+        }
+
         
 
     },false)
