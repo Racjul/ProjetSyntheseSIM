@@ -56,7 +56,7 @@ for(let i=1;i<=8;i++)
 
             console.log(e.target.style.backgroundImage);
 
-            if(document.getElementById(e.target.id).style.backgroundImage!=null)
+            if(document.getElementById(e.target.id).style.backgroundImage!="")
             {
                 console.log("ca marche calis");
                 return;
