@@ -98,6 +98,7 @@ function start(){
     document.getElementById("a7").style.backgroundImage = "url('/static/images/wn.png')";
     document.getElementById("a8").style.backgroundImage = "url('/static/images/wr.png')";*/
 }
+
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
@@ -112,10 +113,8 @@ function deplacer(piece){
 
     
     document.addEventListener("click",function(e){
-        console.log(piece);
-        let deplacement = e.target.id;
-        ajouterPiece(piece,deplacement);
-        document.getElementById(Id).style.backgroundImage=null;
+        console.log(piece); 
+        
     },false)
     
     
