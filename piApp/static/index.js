@@ -114,7 +114,7 @@ function deplacer(caseI){
     
     document.getElementById("board").addEventListener("click",function(caseF){
         
-        if(caseF.target.id!= "start" && caseF.target.style.backgroundImage==null)
+        if(caseF.target.style.backgroundImage==null)
         {
             console.log("test");
             caseF.target.style.backgroundImage = caseI.style.backgroundImage;
