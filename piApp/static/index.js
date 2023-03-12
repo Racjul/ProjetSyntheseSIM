@@ -110,10 +110,9 @@ function ajouterPiece(piece,location){
 function deplacer(piece){
     
 
-     console.log(piece);
-   
-
+    
     document.addEventListener("click",function(e){
+        console.log(piece);
         let deplacement = e.target.id;
         ajouterPiece(piece,deplacement);
         document.getElementById(Id).style.backgroundImage=null;
