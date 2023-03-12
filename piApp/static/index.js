@@ -111,6 +111,7 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e)
     {
+        console.log("case initiale changé");
         caseI=e.target.id;
         pieceDeplacement= piece;
     },false)
@@ -122,12 +123,17 @@ function ajouterPiece(piece,location){
 
 function deplacer(caseF){
     
+    console.log("case finale changé");
+
     if(caseI == null)
     {
+        console.log("case initiale null");
          return;
     }
+
     if(document.getElementById(caseI).style.backgroundImage!=null)
     {
+        
         ajouterPiece(pieceDeplacement,caseF);
         document.getElementById(caseI).style.backgroundImage=null;
         document.getElementById(caseI).removeEventListener("click",function(e){});
