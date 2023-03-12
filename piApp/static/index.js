@@ -139,7 +139,7 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e)
     {
-        document.getElementById(e.target.id).style.border="red, solid, 1px";
+        document.getElementById(e.target.id).style.border="thick solid red";
         caseI=e.target.id;
         pieceDeplacement= piece;
         console.log(caseI)
