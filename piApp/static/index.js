@@ -47,6 +47,16 @@ nouvelleCase.className = "case noire"
 document.getElementById("start").addEventListener("click",start)
 
 
+for(let i=1;i<=8;i++)
+{
+    for(let j =1;j<=8;j++){
+        
+        nouvelleCase.id= (notation[8-i]+(j).toString());
+        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", deplacer(notation[8-i]+(j).toString()));
+        
+    }
+}
+
 
 function start(){
     
@@ -112,9 +122,10 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e)
     {
-        console.log("case initiale changé");
+        
         caseI=e.target.id;
         pieceDeplacement= piece;
+        console.log(caseI)
     },false)
 
 }
@@ -144,6 +155,6 @@ function deplacer(caseF){
 
 }
 
-document.getElementById("board").addEventListener("click",deplacer(e.target.id));
+
 
 
