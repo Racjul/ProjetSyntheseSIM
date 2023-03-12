@@ -1,5 +1,4 @@
-import { Chess } from 'chess.js'
-const chess = new Chess()
+
 
 
 var caseI = null;
@@ -130,7 +129,7 @@ function deplacer(e){
 
 
     
-    console.log(chess.move({from: caseI.toString(), to:e.target.id.toString()}));
+    
     ajouterPiece(pieceDeplacement,e.target.id);
     document.getElementById(caseI).style.backgroundImage=null;
     document.getElementById(caseI).removeEventListener("click",function(e){});
