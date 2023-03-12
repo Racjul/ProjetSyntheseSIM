@@ -54,14 +54,14 @@ for(let i=1;i<=8;i++)
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             console.log("case finale changé");
 
-            if(document.getElementById(caseI).style.backgroundImage==null)
+            if(document.getElementById(e.target.id).style.backgroundImage!=null)
             {
                 caseI=e.target.id;
                 console.log(caseI);
                 document.getElementById(e.target.id).style.backgroundColor="red";
                 return;
             }
-            else if(document.getElementById(caseI).style.backgroundImage!=null)
+            else if(document.getElementById(e.target.id).style.backgroundImage==null)
             {
                 pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
                 ajouterPiece(pieceDeplacement,e.target.id);
