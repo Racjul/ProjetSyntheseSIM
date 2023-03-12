@@ -121,10 +121,7 @@ function deplacer(caseI){
             caseI.target.style.backgroundImage=null;
             
         }
-        else if(caseF.target.style.backgroundImage!=null)   
-        {
-            alert("coup illégal");
-        }
+        
 
 
         
