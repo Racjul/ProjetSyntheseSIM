@@ -47,33 +47,7 @@ nouvelleCase.className = "case noire"
 document.getElementById("start").addEventListener("click",start)
 
 
-for(let i=1;i<=8;i++)
-{
-    for(let j =1;j<=8;j++){
-        
-        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
-            
 
-            if(document.getElementById(e.target.id).style.backgroundImage!=null)
-            {
-                caseI=e.target.id;
-                console.log(caseI);
-                document.getElementById(e.target.id).style.backgroundColor="red";
-            }
-            else if(document.getElementById(e.target.id).style.backgroundImage==null)
-            {
-                console.log("deplacement");
-                pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
-                ajouterPiece(pieceDeplacement,e.target.id);
-                document.getElementById(caseI).style.backgroundImage=null;
-                document.getElementById(caseI).removeEventListener("click",function(e){});
-                caseI=null;
-
-            }
-            
-        },false)
-    }
-}
 
 
 function start(){
@@ -174,5 +148,31 @@ function deplacer(caseF){
 }
 */
 
+for(let i=1;i<=8;i++)
+{
+    for(let j =1;j<=8;j++){
+        
+        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
+            
 
+            if(document.getElementById(e.target.id).style.backgroundImage!=null)
+            {
+                caseI=e.target.id;
+                console.log(caseI);
+                document.getElementById(e.target.id).style.backgroundColor="red";
+            }
+            else if(document.getElementById(e.target.id).style.backgroundImage==null)
+            {
+                console.log("deplacement");
+                pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
+                ajouterPiece(pieceDeplacement,e.target.id);
+                document.getElementById(caseI).style.backgroundImage=null;
+                document.getElementById(caseI).removeEventListener("click",function(e){});
+                caseI=null;
+
+            }
+            
+        },false)
+    }
+}
 
