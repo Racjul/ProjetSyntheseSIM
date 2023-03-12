@@ -62,12 +62,17 @@ for(let i=1;i<=8;i++)
 
             if(document.getElementById(caseI).style.backgroundImage!=null)
             {
-                
+                pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
                 ajouterPiece(pieceDeplacement,e.target.id);
                 document.getElementById(caseI).style.backgroundImage=null;
                 document.getElementById(caseI).removeEventListener("click",function(e){});
                 caseI=null;
 
+            }
+            else{
+                caseI=e.target.id;
+                console.log(caseI);
+                document.getElementById(e.target.id).style.backgroundColor="red";
             }
         },false)
     }
@@ -89,7 +94,7 @@ function start(){
     //pown
     for(let i =1;i<=8;i++){
         document.getElementById("b"+i.toString()).style.backgroundImage = "url('/static/images/wp.png')"
-
+        
         document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
     }
 //création des pièces noires
@@ -136,14 +141,14 @@ function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
-    element.addEventListener("click",function(e)
+    /*element.addEventListener("click",function(e)
     {
-        e.target.style.backGroundColor ="red";
+        document.getElementById(e.target.id).style.backgroundColor="red";
         caseI=e.target.id;
         pieceDeplacement= piece;
         console.log(caseI)
     },false)
-
+*/
 }
 
 
