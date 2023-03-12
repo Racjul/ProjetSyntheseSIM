@@ -52,17 +52,15 @@ for(let i=1;i<=8;i++)
     for(let j =1;j<=8;j++){
         
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
-            console.log("case finale changé");
-
-            console.log(e.target.style.backgroundImage);
+            
 
             if(document.getElementById(e.target.id).style.backgroundImage!="" ||document.getElementById(e.target.id).style.backgroundImage!=null)
             {
                 document.getElementById(e.target.id).style.border="thick solid red";
                 caseI=e.target.id;
                 pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
-                console.log(pieceDeplacement);
                 console.log(caseI)
+                console.log("");
                 return;
             }
 
@@ -72,6 +70,7 @@ for(let i=1;i<=8;i++)
                 return;
             }
 
+            console.log("déplacement");
             ajouterPiece(pieceDeplacement,e.target.id);
             document.getElementById(caseI).style.backgroundImage=null;
             document.getElementById(caseI).removeEventListener("click",function(e){});
