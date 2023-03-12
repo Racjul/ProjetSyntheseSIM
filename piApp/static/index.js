@@ -54,20 +54,20 @@ for(let i=1;i<=8;i++)
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             console.log("case finale changé");
 
-    if(caseI == null)
-    {
-        console.log("case initiale null");
-         return;
-    }
+            if(caseI == null)
+            {
+                console.log("case initiale null");
+                return;
+            }
 
-    if(document.getElementById(caseI).style.backgroundImage!=null)
-    {
-        
-        ajouterPiece(pieceDeplacement,caseF);
-        document.getElementById(caseI).style.backgroundImage=null;
-        document.getElementById(caseI).removeEventListener("click",function(e){});
+            if(document.getElementById(caseI).style.backgroundImage!=null)
+            {
+                
+                ajouterPiece(pieceDeplacement,e.target.id);
+                document.getElementById(caseI).style.backgroundImage=null;
+                document.getElementById(caseI).removeEventListener("click",function(e){});
 
-    }
+            }
         },false)
     }
 }
@@ -147,7 +147,7 @@ function ajouterPiece(piece,location){
 
 
 
-
+/*
 function deplacer(caseF){
     
     console.log("case finale changé");
@@ -169,7 +169,7 @@ function deplacer(caseF){
 
 
 }
-
+*/
 
 
 
