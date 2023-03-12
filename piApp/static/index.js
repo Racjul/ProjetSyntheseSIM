@@ -1,3 +1,6 @@
+import { Chess } from 'chess.js'
+const chess = new Chess()
+
 
 var caseI = null;
 var pieceDeplacement = null;
@@ -106,29 +109,33 @@ function ajouterPiece(piece,location){
 
 
 function deplacer(e){
+
+
     console.log(document.getElementById(e.target.id).style.backgroundImage);
-            if(document.getElementById(e.target.id).style.backgroundImage!="")
-            {
-                document.getElementById(e.target.id).style.border="thick solid red";
-                caseI=e.target.id;
-                pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
-                console.log(caseI)
-                console.log("");
-                return;
-            }
+    if(document.getElementById(e.target.id).style.backgroundImage!="")
+    {
+        document.getElementById(e.target.id).style.border="thick solid red";
+        caseI=e.target.id;
+        pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
+        console.log(caseI)
+        console.log("");
+        return;
+    }
 
-            if(caseI == null)
-            {
-                console.log("case initiale null");
-                return;
-            }
+    if(caseI == null)
+    {
+        console.log("case initiale null");
+        return;
+    }
 
-            console.log("déplacement");
-            ajouterPiece(pieceDeplacement,e.target.id);
-            document.getElementById(caseI).style.backgroundImage=null;
-            document.getElementById(caseI).removeEventListener("click",function(e){});
-            document.getElementById(caseI).style.border="thick solid transparent";
-            caseI=null;
+
+    
+    console.log(chess.move({from: caseI.toString(), to:e.target.id.toString()}));
+    ajouterPiece(pieceDeplacement,e.target.id);
+    document.getElementById(caseI).style.backgroundImage=null;
+    document.getElementById(caseI).removeEventListener("click",function(e){});
+    document.getElementById(caseI).style.border="thick solid transparent";
+    caseI=null;
     
 
 
