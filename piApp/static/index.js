@@ -54,6 +54,8 @@ for(let i=1;i<=8;i++)
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             console.log("case finale changé");
 
+            console.log(e.target.style.backgroundImage);
+
             if(document.getElementById(e.target.id).style.backgroundImage!=null)
             {
                 console.log("ca marche calis");
