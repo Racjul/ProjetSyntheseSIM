@@ -54,23 +54,24 @@ for(let i=1;i<=8;i++)
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             console.log("case finale changé");
 
+            if(getElementById(e.target.id).style.backgroundImage!=null)
+            {
+                console.log("ca marche calis");
+                return;
+            }
+
             if(caseI == null)
             {
                 console.log("case initiale null");
                 return;
             }
 
-           
-                
+            console.log("j'espere que y'a rien sur la case");
             ajouterPiece(pieceDeplacement,e.target.id);
             document.getElementById(caseI).style.backgroundImage=null;
             document.getElementById(caseI).removeEventListener("click",function(e){});
             document.getElementById(caseI).style.border="thick solid transparent";
             caseI=null;
-            
-
-            
-           
         },false)
     }
 }
