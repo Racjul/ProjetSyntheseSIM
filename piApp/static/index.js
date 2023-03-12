@@ -116,12 +116,16 @@ function deplacer(caseI){
         
         if(caseF.target.id!= "start" && caseF.target.style.backgroundImage==null)
         {
-            
+            console.log("test");
             caseF.target.style.backgroundImage = caseI.style.backgroundImage;
             caseI.target.style.backgroundImage=null;
             
         }
-        
+        else if(caseF.target.style.backgroundImage==null)
+        {
+            alert("coup illégal");
+        }
+
 
         
 
