@@ -122,7 +122,11 @@ function ajouterPiece(piece,location){
 
 function deplacer(caseF){
     
-    if(caseI=! null && document.getElementById(caseI).style.backgroundImage!=null)
+    if(caseI == null)
+    {
+         return;
+    }
+    if(document.getElementById(caseI).style.backgroundImage!=null)
     {
         ajouterPiece(pieceDeplacement,caseF);
         document.getElementById(caseI).style.backgroundImage=null;
