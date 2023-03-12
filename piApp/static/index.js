@@ -112,7 +112,7 @@ function deplacer(caseI){
     
 
     
-    document.addEventListener("click",function(caseF){
+    document.getElementById("board").addEventListener("click",function(caseF){
         
         if(caseF.target.id!= "start" && caseF.target.style.backgroundImage==null)
         {
@@ -121,7 +121,7 @@ function deplacer(caseI){
             caseI.target.style.backgroundImage=null;
             
         }
-        else if(caseF.target.style.backgroundImage!=null)
+        else if(caseF.target.style.backgroundImage!=null)   
         {
             alert("coup illégal");
         }
