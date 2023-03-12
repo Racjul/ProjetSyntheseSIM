@@ -60,7 +60,7 @@ for(let i=1;i<=8;i++)
             {
                 document.getElementById(e.target.id).style.border="thick solid red";
                 caseI=e.target.id;
-                pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(15,17);
+                pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
                 console.log(pieceDeplacement);
                 console.log(caseI)
                 return;
