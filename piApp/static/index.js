@@ -47,7 +47,31 @@ nouvelleCase.className = "case noire"
 document.getElementById("start").addEventListener("click",start)
 
 
+for(let i=1;i<=8;i++)
+{
+    for(let j =1;j<=8;j++){
+        
+        document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
+            console.log("case finale changé");
 
+            if(caseI == null)
+            {
+                console.log("case initiale null");
+                return;
+            }
+
+           
+                
+                ajouterPiece(pieceDeplacement,e.target.id);
+                document.getElementById(caseI).style.backgroundImage=null;
+                document.getElementById(caseI).removeEventListener("click",function(e){});
+                caseI=null;
+
+            
+           
+        },false)
+    }
+}
 
 
 function start(){
@@ -106,52 +130,20 @@ function start(){
     document.getElementById("a6").style.backgroundImage = "url('/static/images/wb.png')";
     document.getElementById("a7").style.backgroundImage = "url('/static/images/wn.png')";
     document.getElementById("a8").style.backgroundImage = "url('/static/images/wr.png')";*/
-
-
-    for(let i=1;i<=8;i++)
-    {
-        for(let j =1;j<=8;j++){
-            
-            document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
-                
-    
-                if(document.getElementById(e.target.id).style.backgroundImage!=null)
-                {
-                    caseI=e.target.id;
-                    console.log(caseI);
-                    document.getElementById(e.target.id).style.backgroundColor="red";
-                }
-                else if(document.getElementById(e.target.id).style.backgroundImage==null)
-                {
-                    console.log("deplacement");
-                    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
-                    ajouterPiece(pieceDeplacement,e.target.id);
-                    document.getElementById(caseI).style.backgroundImage=null;
-                    document.getElementById(caseI).removeEventListener("click",function(e){});
-                    caseI=null;
-    
-                }
-                
-            },false)
-        }
-    }
-
-
-
 }
 
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
-    /*element.addEventListener("click",function(e)
+    element.addEventListener("click",function(e)
     {
         document.getElementById(e.target.id).style.backgroundColor="red";
         caseI=e.target.id;
         pieceDeplacement= piece;
         console.log(caseI)
     },false)
-*/
+
 }
 
 
