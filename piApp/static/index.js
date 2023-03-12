@@ -1,4 +1,7 @@
 
+var caseI = null;
+var pieceDeplacement = null;
+
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
@@ -34,7 +37,8 @@ for(let i= 1; i<=8;i++){
 nouvelleCase.className = "case noire"
         }
 
-        
+        nouvelleCase.addEventListener("click", deplacer(nouvelleCase.target.id));
+
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
 
@@ -47,13 +51,15 @@ function start(){
     
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
-            document.getElementById( notation[i]+ j.toString()).style.backgroundImage="";
+            document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
 
         }
     }
 
     socket.send("Partie initialisé")
 
+
+    //pown
     for(let i =1;i<=8;i++){
         document.getElementById("b"+i.toString()).style.backgroundImage = "url('/static/images/wp.png')"
 
@@ -103,34 +109,27 @@ function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
-    element.addEventListener("click",deplacer(element));
+    element.addEventListener("click",function(e)
+    {
+        caseI=e.target.id;
+        pieceDeplacement= piece;
+    },false)
 
 }
 
 
-function deplacer(caseI){
-    
-
-    
-    document.getElementById("board").addEventListener("click",function(caseF){
-        
-        if(caseF.target.style.backgroundImage==null)
-        {
-            console.log("test");
-            caseF.target.style.backgroundImage = caseI.style.backgroundImage;
-            caseI.target.style.backgroundImage=null;
-            
-        }
-        
 
 
-        
+function deplacer(caseF){
+    
+    if(caseI=! null && document.getElementById(caseI).style.backgroundImage!=null)
+    {
+        ajouterPiece(pieceDeplacement,caseF);
+        document.getElementById(caseI).style.backgroundImage=null;
+        document.getElementById(caseI).removeEventListener("click",function(e){});
 
-    },false)
+    }
 
-    
-    
-    
 
 }
 
