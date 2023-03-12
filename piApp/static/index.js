@@ -108,14 +108,21 @@ function ajouterPiece(piece,location){
 }
 
 
-function deplacer(piece){
+function deplacer(caseI){
     
 
     
-    piece.addEventListener("click",function(e){
-        console.log(piece); 
+    document.addEventListener("click",function(e){
+        caseF = e.document.id;
         
+        caseF.document.backgroundImage = caseI.document.backgroundImage;
+        caseI.document.backgroundImage=null;
+        
+        
+
     },false)
+
+    
     
     
 
