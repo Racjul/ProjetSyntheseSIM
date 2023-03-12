@@ -37,7 +37,7 @@ for(let i= 1; i<=8;i++){
 nouvelleCase.className = "case noire"
         }
 
-        nouvelleCase.addEventListener("click", deplacer(nouvelleCase.target.id));
+        nouvelleCase.addEventListener("click", deplacer(nouvelleCase.id));
 
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
     }
