@@ -113,8 +113,8 @@ function deplacer(caseI){
 
     
     document.addEventListener("click",function(e){
-        caseF = e.document.id;
         
+
         caseF.document.backgroundImage = caseI.document.backgroundImage;
         caseI.document.backgroundImage=null;
         
