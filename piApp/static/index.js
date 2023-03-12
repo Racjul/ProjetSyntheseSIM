@@ -53,8 +53,8 @@ for(let i=1;i<=8;i++)
         
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             
-
-            if(document.getElementById(e.target.id).style.backgroundImage!="" ||document.getElementById(e.target.id).style.backgroundImage!=null)
+            console.log(document.getElementById(e.target.id).style.backgroundImage);
+            if(document.getElementById(e.target.id).style.backgroundImage!="")
             {
                 document.getElementById(e.target.id).style.border="thick solid red";
                 caseI=e.target.id;
