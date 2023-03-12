@@ -112,7 +112,7 @@ function deplacer(piece){
     
 
     
-    document.addEventListener("click",function(e){
+    piece.addEventListener("click",function(e){
         console.log(piece); 
         
     },false)
