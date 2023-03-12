@@ -121,7 +121,7 @@ function deplacer(caseI){
             caseI.style.backgroundImage=null;
             
         }
-        else{
+        else if(caseF.style.backgroundImage==null){
             alert("coup interdit");
         }
 
