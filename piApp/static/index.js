@@ -56,9 +56,12 @@ for(let i=1;i<=8;i++)
 
             console.log(e.target.style.backgroundImage);
 
-            if(document.getElementById(e.target.id).style.backgroundImage!="")
+            if(document.getElementById(e.target.id).style.backgroundImage!="" ||document.getElementById(e.target.id).style.backgroundImage!=null)
             {
-                console.log("ca marche calis");
+                document.getElementById(e.target.id).style.border="thick solid red";
+                caseI=e.target.id;
+                pieceDeplacement= piece;
+                console.log(caseI)
                 return;
             }
 
@@ -68,7 +71,6 @@ for(let i=1;i<=8;i++)
                 return;
             }
 
-            console.log("j'espere que y'a rien sur la case");
             ajouterPiece(pieceDeplacement,e.target.id);
             document.getElementById(caseI).style.backgroundImage=null;
             document.getElementById(caseI).removeEventListener("click",function(e){});
@@ -143,10 +145,11 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e)
     {
-        document.getElementById(e.target.id).style.border="thick solid red";
+        /*document.getElementById(e.target.id).style.border="thick solid red";
         caseI=e.target.id;
         pieceDeplacement= piece;
         console.log(caseI)
+        */
     },false)
 
 }
