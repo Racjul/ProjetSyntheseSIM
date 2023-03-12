@@ -40,7 +40,7 @@ nouvelleCase.className = "case noire"
         
 
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
-        nouvelleCase.addEventListener("click", deplacer(nouvelleCase.id));
+        
     }
 
 }
@@ -143,5 +143,7 @@ function deplacer(caseF){
 
 
 }
+
+document.getElementById("board").addEventListener("click",deplacer(e.target.id));
 
 
