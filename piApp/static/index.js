@@ -62,10 +62,11 @@ for(let i=1;i<=8;i++)
 
            
                 
-                ajouterPiece(pieceDeplacement,e.target.id);
-                document.getElementById(caseI).style.backgroundImage=null;
-                document.getElementById(caseI).removeEventListener("click",function(e){});
-                caseI=null;
+            ajouterPiece(pieceDeplacement,e.target.id);
+            document.getElementById(caseI).style.backgroundImage=null;
+            document.getElementById(caseI).removeEventListener("click",function(e){});
+            caseI=null;
+            document.getElementById(caseI).style.border=null;
 
             
            
@@ -138,7 +139,7 @@ function ajouterPiece(piece,location){
 
     element.addEventListener("click",function(e)
     {
-        document.getElementById(e.target.id).style.backgroundColor="red";
+        document.getElementById(e.target.id).style.border="red, solid, 1px";
         caseI=e.target.id;
         pieceDeplacement= piece;
         console.log(caseI)
