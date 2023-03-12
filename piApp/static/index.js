@@ -54,14 +54,15 @@ for(let i=1;i<=8;i++)
         document.getElementById(notation[8-i]+(j).toString()).addEventListener("click", function(e){
             console.log("case finale changé");
 
-            
-            if(document.getElementById(caseI).style.backgroundImage!=null)
+            if(document.getElementById(caseI).style.backgroundImage==null)
             {
-                if(caseI == null)
-                {
-                    console.log("case initiale null");
-                    return;
-                }
+                caseI=e.target.id;
+                console.log(caseI);
+                document.getElementById(e.target.id).style.backgroundColor="red";
+                return;
+            }
+            else if(document.getElementById(caseI).style.backgroundImage!=null)
+            {
                 pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(15,17);
                 ajouterPiece(pieceDeplacement,e.target.id);
                 document.getElementById(caseI).style.backgroundImage=null;
@@ -69,11 +70,7 @@ for(let i=1;i<=8;i++)
                 caseI=null;
 
             }
-            else{
-                caseI=e.target.id;
-                console.log(caseI);
-                document.getElementById(e.target.id).style.backgroundColor="red";
-            }
+            
         },false)
     }
 }
