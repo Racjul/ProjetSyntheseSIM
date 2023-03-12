@@ -65,8 +65,9 @@ for(let i=1;i<=8;i++)
             ajouterPiece(pieceDeplacement,e.target.id);
             document.getElementById(caseI).style.backgroundImage=null;
             document.getElementById(caseI).removeEventListener("click",function(e){});
-            caseI=null;
             document.getElementById(caseI).style.border="thick solid transparent";
+            caseI=null;
+            
 
             
            
