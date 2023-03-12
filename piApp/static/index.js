@@ -103,7 +103,7 @@ function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
 
-    element.addEventListener("click",deplacer(piece));
+    element.addEventListener("click",deplacer(element));
 
 }
 
