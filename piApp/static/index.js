@@ -1,5 +1,6 @@
 var caseI = null;
 var pieceDeplacement = null;
+var tour = "b";
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
@@ -131,14 +132,29 @@ function ajouterPiece(piece,location){
 //permet de transmettre les informations des coups demandés 
 function deplacer(e){
 
-    if(document.getElementById(e.target.id).style.backgroundImage!="")
+    //si l'utilisateur clique sur une pièce 
+    if(document.getElementById(e.target.id).style.backgroundImage!="" )
     {
-        document.getElementById(e.target.id).style.border="thick solid red";
-        caseI=e.target.id;
+        //stock le nom de la piece que le joueur veut déplacer
         pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
-        return;
+
+        //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
+        if(tour == pieceDeplacement.substring(0,1) )
+        {
+            document.getElementById(e.target.id).style.border="thick solid red";
+            caseI=e.target.id;
+            return;
+        }
+        else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
+        { 
+            console.log("manger une pièce")
+            socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
+            return;
+        }
     }
 
+
+    //S'il clique sur une case vide, mais qu'il n'a clické sur aucune case avant, on ne fait rien
     if(caseI == null)
     {
         console.log("case initiale null");
