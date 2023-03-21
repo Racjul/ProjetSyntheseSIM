@@ -1,23 +1,39 @@
-
-
-
 var caseI = null;
 var pieceDeplacement = null;
-
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
-                socket.emit('my event', {data: 'I\'m connected!'});
-                socket.send("test")
+                socket.send("connection établie: " + socket.id )
 });
 
 socket.on('message',function(msg){
     console.log(msg)
 })
 
+// Effectue le coup suite à la vérification 
+socket.on("coupValide",(piece,id,caseI)=>
+{
+    ajouterPiece(piece,id)
+    document.getElementById(caseI).removeEventListener("click",function(e){});
+    document.getElementById(caseI).style.border="thick solid transparent";
+    caseI=null;
+})
+
+// Remet les paramètres à 0 et informe que son coup est invalide dans le cas d'un coup invalide
+socket.on("coupInvalide",(caseI)=>
+{
+    alert("Coup non-autorisé");
+    document.getElementById(caseI).removeEventListener("click",function(e){});
+    document.getElementById(caseI).style.border="thick solid transparent";
+    caseI=null;
+})
+
 //création de l'échéquier
+
+
 const board = document.getElementById("board");
 
+//création des colonnes qui vont stocker les cases
 for(let i =1; i<=8;i++){
     let nouvelleColonne = document.createElement("div"); 
     nouvelleColonne.id = "row_"+i.toString();
@@ -27,6 +43,11 @@ for(let i =1; i<=8;i++){
 
 const notation = ["a","b","c","d","e","f","g","h"]
 
+/*
+création des 64 cases 
+placement des cases dans le tableau qui prend la forme d'une matrice 8x8 
+puis attribution de leur valeur sous la forme de la notation officiel des échecs (FIDE)
+*/
 for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
@@ -48,7 +69,7 @@ nouvelleCase.className = "case noire"
 }
 document.getElementById("start").addEventListener("click",start)
 
-
+// donne aux cases un event listener permettant l'initialisation d'un déplacement de pièce
 for(let i=1;i<=8;i++)
 {
     for(let j =1;j<=8;j++){
@@ -62,6 +83,7 @@ for(let i=1;i<=8;i++)
 
 function start(){
     
+    //remet à 0 les cases
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
             document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
@@ -69,10 +91,10 @@ function start(){
         }
     }
 
-    socket.send("Partie initialisé")
+    socket.send("Partie initialisé (JOUER) : " + socket.id)
 
 
-    //pown
+//pawn
     for(let i =1;i<=8;i++){
         document.getElementById("b"+i.toString()).style.backgroundImage = "url('/static/images/wp.png')"
         
@@ -98,7 +120,7 @@ function start(){
     ajouterPiece("wr","a8");
    
 }
-
+//change le background image d'une case plutôt que d'initialisé de nouveaux éléments dans une page (facilite le déplacement des pièces par la suite)
 function ajouterPiece(piece,location){
     element = document.getElementById(location)
     element.style.backgroundImage = "url('/static/images/"+piece+".png')"
@@ -106,18 +128,14 @@ function ajouterPiece(piece,location){
 
 
 
-
+//permet de transmettre les informations des coups demandés 
 function deplacer(e){
 
-
-    console.log(document.getElementById(e.target.id).style.backgroundImage);
     if(document.getElementById(e.target.id).style.backgroundImage!="")
     {
         document.getElementById(e.target.id).style.border="thick solid red";
         caseI=e.target.id;
         pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
-        console.log(caseI)
-        console.log("");
         return;
     }
 
@@ -128,16 +146,9 @@ function deplacer(e){
     }
 
 
-    
-    
-    ajouterPiece(pieceDeplacement,e.target.id);
-    document.getElementById(caseI).style.backgroundImage=null;
-    document.getElementById(caseI).removeEventListener("click",function(e){});
-    document.getElementById(caseI).style.border="thick solid transparent";
-    caseI=null;
-    
-
-
+    //demande au serveur si le coup est possibe
+    //si oui, voir socket.on(coupValide,(...))
+    socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
 }
 
 
