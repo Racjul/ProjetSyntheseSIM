@@ -16,9 +16,11 @@ socket.on("coupValide",(info)=>
 {
     console.log("coup valide");
 
-    var id = info.substring(1,3);
+    var id = info.substring(2,4);
     console.log(id);
 
+    caseI= info.substring(4,6);
+    pieceDeplacement.substring(0,2);
     ajouterPiece(pieceDeplacement,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
