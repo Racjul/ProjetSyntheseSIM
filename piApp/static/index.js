@@ -180,8 +180,6 @@ function deplacer(e){
     console.log(caseI+e.target.id);
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
-    socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
-    
     if(tour = "b")
     {
         tour = "w";
@@ -189,6 +187,8 @@ function deplacer(e){
     else{
         tour = "b";
     }
+    socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
+    
 }
 
 
