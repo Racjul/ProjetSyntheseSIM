@@ -14,6 +14,7 @@ socket.on('message',function(msg){
 // Effectue le coup suite à la vérification 
 socket.on("coupValide",(piece,id,caseI)=>
 {
+    console.log("coup valide");
     ajouterPiece(piece,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
@@ -102,7 +103,7 @@ function start(){
     ajouterPiece("bn","b8");
     ajouterPiece("bb","c8");
     ajouterPiece("bk","e8");
-    ajouterPiece("bq","b8");
+    ajouterPiece("bq","d8");
     ajouterPiece("bb","f8");
     ajouterPiece("bn","g8");
     ajouterPiece("br","h8");
