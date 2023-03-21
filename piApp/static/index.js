@@ -32,16 +32,16 @@ socket.on("coupInvalide",(caseI)=>
 
 
 const board = document.getElementById("board");
+const notation = ["a","b","c","d","e","f","g","h"]
 
 //création des colonnes qui vont stocker les cases
-for(let i =1; i<=8;i++){
+for(let i =0; i<8;i++){
     let nouvelleColonne = document.createElement("div"); 
-    nouvelleColonne.id = "row_"+i.toString();
+    nouvelleColonne.id = "row_"+notation[i].toString();
     nouvelleColonne.className= "row"
     board.appendChild(nouvelleColonne);  
 }
 
-const notation = ["a","b","c","d","e","f","g","h"]
 
 /*
 création des 64 cases 
@@ -51,7 +51,7 @@ puis attribution de leur valeur sous la forme de la notation officiel des échec
 for(let i= 1; i<=8;i++){
     for(let j =1;j<=8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[8-i]+(j).toString());
+        nouvelleCase.id= (notation[j-1]+(8-i).toString());
         if((i+j)%2==0){
             nouvelleCase.className ="case blanche";
             
