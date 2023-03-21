@@ -28,6 +28,7 @@ def handle_message(data):
 def handle_my_custom_event(piece,id ,caseInitial):
     if(stockfish.is_move_correct(caseInitial+ id)):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
+        stockfish.make_moves_from_current_position(caseInitial+id)
     else:
         socketio.emit("coupInvalide",caseInitial)
 

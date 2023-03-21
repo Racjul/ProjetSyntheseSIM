@@ -1,6 +1,6 @@
 var caseI = null;
 var pieceDeplacement = null;
-var tour = "w";
+var tour;
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
@@ -88,7 +88,7 @@ for(let i=1;i<=8;i++)
 
 
 function start(){
-    
+    tour = "w";
     //remet à 0 les cases
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
@@ -143,6 +143,7 @@ function deplacer(e){
         pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
         console.log("le tour de " + pieceDeplacement.substring(0,1));
+        console.log(tour);
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
         if(tour == pieceDeplacement.substring(0,1))
