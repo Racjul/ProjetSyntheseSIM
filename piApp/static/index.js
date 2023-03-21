@@ -24,6 +24,7 @@ socket.on("coupValide",(info)=>
     ajouterPiece(pieceDeplacement,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
+    document.getElementById(caseI).style.backgroundImage=null;
     caseI=null;
     pieceDeplacement=null;
 })
@@ -141,8 +142,10 @@ function deplacer(e){
         //stock le nom de la piece que le joueur veut déplacer
         pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
+        console.log("le tour de " + pieceDeplacement.substring(0,1));
+
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
-        if(tour == pieceDeplacement.substring(0,1) )
+        if(tour == pieceDeplacement.substring(0,1))
         {
             document.getElementById(e.target.id).style.border="thick solid red";
             caseI=e.target.id;
@@ -161,7 +164,7 @@ function deplacer(e){
             {
                 tour = "w";
             }
-            
+
             return;
         }
     }
