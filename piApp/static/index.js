@@ -59,7 +59,7 @@ for(let i= 0; i<8;i++){
             nouvelleCase.className = "case noire"
         }
 
-        document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
+        document.getElementById("row_"+notation[i].toString()).appendChild(nouvelleCase);
         
     }
 
