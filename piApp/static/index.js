@@ -48,19 +48,16 @@ création des 64 cases
 placement des cases dans le tableau qui prend la forme d'une matrice 8x8 
 puis attribution de leur valeur sous la forme de la notation officiel des échecs (FIDE)
 */
-for(let i= 1; i<=8;i++){
-    for(let j =1;j<=8;j++){
+for(let i= 0; i<8;i++){
+    for(let j =0;j<8;j++){
         let nouvelleCase = document.createElement("div");
-        nouvelleCase.id= (notation[j-1]+(8-i).toString());
+        nouvelleCase.id= (notation[j]+(8-i).toString());
         if((i+j)%2==0){
             nouvelleCase.className ="case blanche";
-            
         }
         else{
-nouvelleCase.className = "case noire"
+            nouvelleCase.className = "case noire"
         }
-
-        
 
         document.getElementById("row_"+i.toString()).appendChild(nouvelleCase);
         
