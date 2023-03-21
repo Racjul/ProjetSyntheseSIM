@@ -24,7 +24,6 @@ socket.on("coupValide",(piece,id,caseI)=>
 socket.on("coupInvalide",(caseI)=>
 {
     alert("Coup non-autorisé");
-    document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
     caseI=null;
 })
@@ -149,6 +148,7 @@ function deplacer(e){
         { 
             console.log("manger une pièce")
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
+            tour="b";
             return;
         }
     }
@@ -161,10 +161,11 @@ function deplacer(e){
         return;
     }
 
-
+    console.log(caseI+e.target.id);
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
     socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
+    tour ="w";
 }
 
 
