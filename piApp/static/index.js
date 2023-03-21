@@ -92,29 +92,28 @@ function start(){
 
 
 //pawn
-    for(let i =1;i<=8;i++){
-        document.getElementById("b"+i.toString()).style.backgroundImage = "url('/static/images/wp.png')"
+    for(let i =0;i<8;i++){
+        document.getElementById(notation[i].toString()+"2").style.backgroundImage = "url('/static/images/wp.png')"
         
-        document.getElementById("g"+i.toString()).style.backgroundImage = "url('/static/images/bp.png')"
+        document.getElementById(notation[i].toString()+"7").style.backgroundImage = "url('/static/images/bp.png')"
     }
 //création des pièces noires
-    ajouterPiece("br","h1");
-    ajouterPiece("bn","h2");
-    ajouterPiece("bb","h3");
-    ajouterPiece("bk","h4");
-    ajouterPiece("bq","h5");
-    ajouterPiece("bb","h6");
-    ajouterPiece("bn","h7");
-    ajouterPiece("br","h8");
+    ajouterPiece("br","a8");
+    ajouterPiece("bn","b8");
+    ajouterPiece("bb","c8");
+    ajouterPiece("bk","e8");
+    ajouterPiece("bq","b8");
+    ajouterPiece("bb","f8");
+    ajouterPiece("bn","g8");
     ajouterPiece("br","h8");
     ajouterPiece("wr","a1");
-    ajouterPiece("wn","a2");
-    ajouterPiece("wb","a3");
-    ajouterPiece("wk","a4");
-    ajouterPiece("wq","a5");
-    ajouterPiece("wb","a6");
-    ajouterPiece("wn","a7");
-    ajouterPiece("wr","a8");
+    ajouterPiece("wn","b1");
+    ajouterPiece("wb","c1");
+    ajouterPiece("wk","e1");
+    ajouterPiece("wq","d1");
+    ajouterPiece("wb","f1");
+    ajouterPiece("wn","g1");
+    ajouterPiece("wr","h1");
    
 }
 //change le background image d'une case plutôt que d'initialisé de nouveaux éléments dans une page (facilite le déplacement des pièces par la suite)
