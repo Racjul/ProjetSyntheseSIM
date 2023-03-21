@@ -17,10 +17,10 @@ socket.on("coupValide",(info)=>
     console.log("coup valide");
 
     var id = info.substring(2,4);
-    console.log(id);
-
     caseI= info.substring(4,6);
     pieceDeplacement.substring(0,2);
+
+
     ajouterPiece(pieceDeplacement,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
@@ -152,7 +152,16 @@ function deplacer(e){
         { 
             console.log("manger une pièce")
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
-            tour="b";
+            
+            if(tour ="w")
+            {
+                tour ="b";
+            }
+            else
+            {
+                tour = "w";
+            }
+            
             return;
         }
     }
@@ -169,7 +178,14 @@ function deplacer(e){
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
     socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
-    tour ="w";
+    
+    if(tour = "b")
+    {
+        tour = "w";
+    }
+    else{
+        tour = "b";
+    }
 }
 
 
