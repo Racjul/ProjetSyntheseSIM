@@ -161,8 +161,9 @@ function deplacer(e){
             {
                 tour ="b";
             }
-            else
+            else if(tour ="b")
             {
+                console.log("chage de tour");
                 tour = "w";
             }
 
@@ -185,7 +186,8 @@ function deplacer(e){
     {
         tour = "w";
     }
-    else{
+    else if (tour ="w"){
+        console.log("change de tour");
         tour = "b";
     }
     socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
