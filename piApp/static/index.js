@@ -12,13 +12,18 @@ socket.on('message',function(msg){
 })
 
 // Effectue le coup suite à la vérification 
-socket.on("coupValide",(piece,id,caseI)=>
+socket.on("coupValide",(info)=>
 {
     console.log("coup valide");
-    ajouterPiece(piece,id)
+
+    var id = info.substring(1,3);
+    console.log(id);
+
+    ajouterPiece(pieceDeplacement,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
     caseI=null;
+    pieceDeplacement=null;
 })
 
 // Remet les paramètres à 0 et informe que son coup est invalide dans le cas d'un coup invalide
