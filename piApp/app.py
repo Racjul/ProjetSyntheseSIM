@@ -43,7 +43,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
             socketio.emit("checkmate")
     else:
         socketio.emit("coupInvalide",caseInitial)
-        
+#permet de vérifier le coup du joueur et d'effectuer le coup du bot      
 @socketio.on('coupDemandeBot')
 def handle_my_custom_event(piece,id ,caseInitial):
     if(stockfish.is_move_correct(caseInitial+ id)):
