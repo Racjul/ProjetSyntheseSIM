@@ -31,7 +31,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
     if(stockfish.is_move_correct(caseInitial+ id)):
         stockfish.make_moves_from_current_position([caseInitial+id])
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
-        stockfish.get_board_visual()
+        print(stockfish.get_board_visual())
     else:
         socketio.emit("coupInvalide",caseInitial)
 
