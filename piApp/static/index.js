@@ -1,6 +1,7 @@
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
+computer = false;
 var socket = io();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
@@ -191,6 +192,21 @@ function deplacer(e){
     
 }
 
+
+function jouerOrdinateur()
+{
+    if(computer == false)
+    {
+        computer=true;
+        document.getElementById("computer").style.backgroundColor="#bb1f03";
+    }
+    else if(computer = true)
+    {
+        computer = false;
+        document.getElementById("computer").style.backgroundColor="#769656";
+    }
+    console.log(computer);
+}
 
 
 
