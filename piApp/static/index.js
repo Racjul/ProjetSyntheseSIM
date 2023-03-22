@@ -31,12 +31,13 @@ socket.on("coupValide",(info)=>
     }
     else if(pieceDeplacement == "wp")
     {
-        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1) != caseF.substring(0,1))
+        if(document.getElementsById(caseF).style.backgroundImage==null)
         {
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))-1).toString()).style.backgroundImage=null;
         }
     }
 
+    
     
 
     ajouterPiece(pieceDeplacement,caseF)
