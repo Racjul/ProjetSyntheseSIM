@@ -223,7 +223,7 @@ function deplacer(e){
     //si l'utilisateur clique sur une pièce 
     if(document.getElementById(e.target.id).style.backgroundImage!="" )
     {
-        if(pieceDeplacement!= null)
+        if(pieceDeplacement!= null && caseI != null)
         {
             document.getElementById(caseI).style.border="thick solid transparent";
         }
