@@ -43,12 +43,12 @@ socket.on("coupValide",(info)=>
             ajouterPiece("br","d8")
         } 
     }
-
+    background = document.getElementById(caseF).style.backgroundImage;
 
     console.log("piece deplacement: " + pieceDeplacement);
     console.log("caseI sub: " + caseI.substring(0,1) );
     console.log("caseF sub: " + caseF.substring(0,1) );
-    console.log("background: " + document.getElementById(caseF).style.backgroundImage == " ")
+    console.log(document.getElementById(caseF).style.backgroundImage == background)
 
     if(pieceDeplacement=="bp")
     {
