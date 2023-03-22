@@ -197,7 +197,15 @@ function deplacer(e){
         }
         else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
         { 
-            socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
+            if(computer == false){
+        
+                socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI) }
+        
+            else{
+                socket.emit("coupDemandeBot",pieceDeplacement,e.target.id,caseI)
+        
+            } 
+            
             return;
         }
     }
