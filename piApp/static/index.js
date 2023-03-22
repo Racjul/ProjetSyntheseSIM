@@ -326,7 +326,7 @@ function jouerOrdinateur()
 
 function changerElo()
 {
-    Elo = document.getElementById("inputElo").textContent;
+    Elo = document.getElementById("inputElo").value;
     if(Elo==0)
     {
         Elo=250;
