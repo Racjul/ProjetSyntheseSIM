@@ -17,10 +17,7 @@ app.config['SECRET_KEY'] = 'test'
 socketio= SocketIO(app, async_mode='eventlet')
 
 #permet de donner la directory de l'engine d'échec
-stockfish = Stockfish(path="/usr/share/man/man6/stockfish.6")
-
-stockfish.set_depth(5)
-stockfish.set_elo_rating(1350)
+stockfish = Stockfish(path="/usr/games/stockfish")
 
 #permet de print dans la console, les messages reçus provenant du site web
 @socketio.on('message')
@@ -60,7 +57,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
             socketio.emit("checkmate")
             return
         
-        best = stockfish.get_best_move()
+        best = stockfish.get_best_move_time(2000)
         print()
         print("Le bot a fait: "+best)
         stockfish.make_moves_from_current_position([best])
