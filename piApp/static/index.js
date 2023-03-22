@@ -48,11 +48,11 @@ socket.on("coupValide",(info)=>
     console.log("piece deplacement: " + pieceDeplacement);
     console.log("caseI sub: " + caseI.substring(0,1) );
     console.log("caseF sub: " + caseF.substring(0,1) );
-    console.log("background: " + document.getElementById(caseF).style.backgroundImage == "" )
+    console.log("background: " + document.getElementById(caseF).style.backgroundImage)
 
     if(pieceDeplacement=="bp")
     {
-        if(document.getElementById(caseF).style.backgroundImage == nul && caseI.substring(0,1) != caseF.substring(0,1))
+        if(document.getElementById(caseF).style.backgroundImage == null && caseI.substring(0,1) != caseF.substring(0,1))
         {
             console.log("en passant");
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
