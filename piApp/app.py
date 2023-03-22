@@ -7,7 +7,6 @@ from flask_socketio import SocketIO, send,emit
 
 
 
-board = chess.board()
 #permet de donner la directory des fichier statics du projet
 app = Flask(__name__,static_url_path='/static')
 
