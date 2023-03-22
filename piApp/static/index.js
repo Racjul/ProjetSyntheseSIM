@@ -48,6 +48,11 @@ socket.on("coupInvalide",(caseI)=>
     caseI=null;
 })
 
+socket.on("checkmate",()=>{
+    alert("Checkmate!")
+    
+})
+
 //création de l'échéquier
 
 
