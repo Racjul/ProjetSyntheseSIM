@@ -17,7 +17,7 @@ socket.on("coupValide",(info)=>
 {
 
 
-    caseF = info.substring(2,4);
+    let caseF = info.substring(2,4);
     caseI= info.substring(4,6);
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
     //roque
@@ -52,7 +52,8 @@ socket.on("coupValide",(info)=>
 
     if(pieceDeplacement=="bp")
     {
-        if(document.getElementById(caseF).style.backgroundImage == "" && caseI.substring(0,1) != caseF.substring(0,1))
+        
+        if((document.getElementById(caseF).style.backgroundImage == "") && (caseI.substring(0,1) != caseF.substring(0,1)))
         {
             console.log("en passant");
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
