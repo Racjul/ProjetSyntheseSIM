@@ -49,6 +49,7 @@ socket.on("coupValide",(info)=>
     {
         if(document.getElementById(caseF).style.backgroundImage == null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
+            console.log("en passant");
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
         }
     }
@@ -56,6 +57,7 @@ socket.on("coupValide",(info)=>
     {
         if(document.getElementById(caseF).style.backgroundImage==null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
+            console.log("en passant");
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))-1).toString()).style.backgroundImage=null;
         }
     }
