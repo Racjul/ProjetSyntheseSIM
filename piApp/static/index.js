@@ -17,12 +17,12 @@ socket.on("coupValide",(info)=>
 {
 
 
-    caseF = info.substring(2,4);
+    var caseF = info.substring(2,4);
     caseI= info.substring(4,6);
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
 
 
-    if(pieceDeplacement=="bp")
+    /*if(pieceDeplacement=="bp")
     {
         if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1) != caseF.substring(0,1))
         {
@@ -37,7 +37,7 @@ socket.on("coupValide",(info)=>
         }
     }
 
-    
+    */
     
 
     ajouterPiece(pieceDeplacement,caseF)
