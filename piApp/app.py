@@ -36,6 +36,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
 
         print(stockfish.get_best_move_time(500))
         print(stockfish.get_board_visual())
+        print(stockfish.get_evaluation())
         
     else:
         socketio.emit("coupInvalide",caseInitial)
