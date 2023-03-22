@@ -21,6 +21,23 @@ socket.on("coupValide",(info)=>
     caseI= info.substring(4,6);
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
 
+
+    if(tour == "b")
+    {
+        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1) != caseF.substring(0,1))
+        {
+            document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
+        }
+    }
+
+    if(tour == "w")
+    {
+        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1) != caseF.substring(0,1))
+        {
+            document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))-1).toString()).style.backgroundImage=null;
+        }
+    }
+
     
 
     ajouterPiece(pieceDeplacement,caseF)
