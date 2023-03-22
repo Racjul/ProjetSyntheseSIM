@@ -185,7 +185,7 @@ function deplacer(e){
     {
         if(pieceDeplacement!= null)
         {
-            document.getElementById(pieceDeplacement).style.border="thick solid transparent";
+            document.getElementById(caseI).style.border="thick solid transparent";
         }
 
         //stock le nom de la piece que le joueur veut déplacer
