@@ -15,13 +15,13 @@ socket.on('message',function(msg){
 // Effectue le coup suite à la vérification 
 socket.on("coupValide",(info)=>
 {
-    console.log("coup valide");
+
 
     caseF = info.substring(2,4);
     caseI= info.substring(4,6);
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
 
-    console.log(pieceDeplacement);
+    
 
     ajouterPiece(pieceDeplacement,caseF)
     document.getElementById(caseI).removeEventListener("click",function(e){});
@@ -39,6 +39,33 @@ socket.on("coupValide",(info)=>
                 console.log("chage de tour");
                 tour = "w";
             }
+        
+})
+
+socket.on("coupValideBot",(info)=>
+{
+caseI = info.substring(0,2);
+caseF = info.substring(2,4)
+pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
+
+    
+
+ajouterPiece(pieceDeplacement,caseF)
+document.getElementById(caseI).removeEventListener("click",function(e){});
+document.getElementById(caseI).style.border="thick solid transparent";
+document.getElementById(caseI).style.backgroundImage=null;
+caseI=null;
+pieceDeplacement=null;
+
+if(tour =="w")
+{
+    tour ="b";
+}
+else if(tour =="b")
+{
+    console.log("chage de tour");
+    tour = "w";
+}
 })
 
 // Remet les paramètres à 0 et informe que son coup est invalide dans le cas d'un coup invalide
@@ -187,8 +214,14 @@ function deplacer(e){
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
     
-    
-    socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
+    if(computer == false){
+        
+        socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI) }
+
+    else{
+        socket.emit("coupDemandeBot",pieceDeplacement,e.target.id,caseI)
+
+    } 
     
 }
 
