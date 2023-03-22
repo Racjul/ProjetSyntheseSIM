@@ -49,15 +49,14 @@ def handle_my_custom_event(piece,id ,caseInitial):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
         
         print(stockfish.get_board_visual())
-        print(stockfish.get_evaluation())
 
         if(stockfish.get_evaluation()['type'] =='mate' and stockfish.get_evaluation()['value'] == 0):
             socketio.emit("checkmate")
         a = stockfish.get_best_move_time(1000)
         stockfish.make_moves_from_current_position([a])
         socketio.emit("coupValideBot",a)
+        
         print(stockfish.get_board_visual())
-        print(stockfish.get_evaluation())
 
         if(stockfish.get_evaluation()['type'] =='mate' and stockfish.get_evaluation()['value'] == 0):
             socketio.emit("checkmate")
