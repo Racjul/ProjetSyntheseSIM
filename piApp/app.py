@@ -5,6 +5,8 @@ from threading import Lock
 from flask import Flask,render_template,request
 from flask_socketio import SocketIO, send,emit
 
+
+board = chess.board()
 #permet de donner la directory des fichier statics du projet
 app = Flask(__name__,static_url_path='/static')
 
@@ -28,7 +30,7 @@ def handle_message(data):
 def handle_my_custom_event(piece,id ,caseInitial):
     if(stockfish.is_move_correct(caseInitial+ id)):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
-        stockfish.make_moves_from_current_position("e2e4")
+        board.push_san("e2e4")
     else:
         socketio.emit("coupInvalide",caseInitial)
 

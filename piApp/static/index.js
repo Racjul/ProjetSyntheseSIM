@@ -157,11 +157,11 @@ function deplacer(e){
             console.log("manger une pièce")
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
             
-            if(tour ="w")
+            if(tour =="w")
             {
                 tour ="b";
             }
-            else if(tour ="b")
+            else if(tour =="b")
             {
                 console.log("chage de tour");
                 tour = "w";
@@ -182,11 +182,11 @@ function deplacer(e){
     console.log(caseI+e.target.id);
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
-    if(tour = "b")
+    if(tour == "b")
     {
         tour = "w";
     }
-    else if (tour ="w"){
+    else if (tour =="w"){
         console.log("change de tour");
         tour = "b";
     }
