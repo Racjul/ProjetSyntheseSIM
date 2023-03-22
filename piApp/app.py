@@ -28,7 +28,8 @@ def handle_message(data):
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')
 def handle_my_custom_event(piece,id ,caseInitial):
-    if(stockfish.is_move_correct(caseInitial+ id)):
+    if(stockfish.is_move_correct(caseInitial+ id))
+        stockfish.make_moves_from_current_position([str(caseInitial)+str(id)]):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
     else:
         socketio.emit("coupInvalide",caseInitial)
