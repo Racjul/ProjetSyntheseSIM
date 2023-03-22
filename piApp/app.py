@@ -31,8 +31,17 @@ def handle_my_custom_event(piece,id ,caseInitial):
     if(stockfish.is_move_correct(caseInitial+ id)):
         stockfish.make_moves_from_current_position([caseInitial+id])
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
+        stockfish.get_board_visual()
     else:
         socketio.emit("coupInvalide",caseInitial)
+
+#permet de placer la position par défaut du jeu
+@socketio.on('restart')
+def handle_my_custom_event():
+    stockfish.set_fen_position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+
+
+
 
 # retourne la page index si aucune directory est demandée
 @app.route('/')

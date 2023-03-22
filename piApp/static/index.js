@@ -109,7 +109,7 @@ function start(){
     }
 
     socket.send("Partie initialisé (JOUER) : " + socket.id)
-
+    socket.emit("restart")
 
 //pawn
     for(let i =0;i<8;i++){
