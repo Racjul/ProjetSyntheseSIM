@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'test'
 socketio= SocketIO(app, async_mode='eventlet')
 
 #permet de donner la directory de l'engine d'échec
-stockfish = Stockfish(path="/usr/games/stockfish")
+stockfish = Stockfish(path="/usr/share/man/man6/stockfish.6")
 
 stockfish.set_depth(5)
 stockfish.set_elo_rating(1350)
