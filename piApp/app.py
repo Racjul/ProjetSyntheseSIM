@@ -37,7 +37,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
         print(best)
         print(stockfish.get_board_visual())
 
-        if(best == "None"):
+        if(best == None or best== "None" or best == 'None'):
             socketio.emit("checkmate")
     else:
         socketio.emit("coupInvalide",caseInitial)
