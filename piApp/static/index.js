@@ -326,10 +326,10 @@ function jouerOrdinateur()
 
 function changerElo()
 {
-    Elo = document.getElementById("inputElo");
+    Elo = document.getElementById("inputElo").textContent;
     if(Elo==0)
     {
-        Elo=1;
+        Elo=250;
     }
     console.log(Elo);
 }
