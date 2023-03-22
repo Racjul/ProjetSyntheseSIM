@@ -47,14 +47,14 @@ socket.on("coupValide",(info)=>
 
     if(pieceDeplacement=="bp")
     {
-        if(document.getElementsById(caseF).style.backgroundImage == null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
+        if(document.getElementById(caseF).style.backgroundImage == null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
         }
     }
     else if(pieceDeplacement == "wp")
     {
-        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
+        if(document.getElementById(caseF).style.backgroundImage==null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))-1).toString()).style.backgroundImage=null;
         }
