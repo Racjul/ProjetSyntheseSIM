@@ -75,3 +75,23 @@ body{
         height: 200px;
         width: 200px;
     }
+
+    #computer:hover{
+        background-color: #bb1f03;
+        border-color: aliceblue;
+        border-width: 5px;
+
+    }
+
+    #computer{
+        position: absolute;
+        margin-left: 75%;
+        top: 50%;
+        display: inline-block;
+        width: 200px;
+        height: 75px;
+        background-color: #769656;
+        border-color: #769656;
+        color: white;
+        border-radius: 10px;
+    }
