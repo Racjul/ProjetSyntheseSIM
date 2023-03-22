@@ -21,6 +21,7 @@ socket.on("coupValide",(info)=>
     pieceDeplacement.substring(0,2);
 
 
+    document.getElementById(id).style.backgroundImage=null;
     ajouterPiece(pieceDeplacement,id)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
@@ -163,11 +164,7 @@ function deplacer(e){
         }
         else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
         { 
-            console.log("C'est mauvais");
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
-            
-            
-
             return;
         }
     }
