@@ -331,5 +331,5 @@ function changerElo()
     {
         Elo=250;
     }
-    console.log(Elo);
+    console.log(document.getElementById("inputElo").value);
 }
