@@ -33,11 +33,11 @@ def handle_my_custom_event(piece,id ,caseInitial):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
         
 
-
-        print(stockfish.get_best_move_time(500))
+        best = stockfish.get_best_move_time(500)
+        print(best)
         print(stockfish.get_board_visual())
-        print(stockfish.get_evaluation())
-        if(stockfish.get_evaluation()['type'] =='mate' and stockfish.get_evaluation()['value'] == 0):
+
+        if(best == "None"):
             socketio.emit("checkmate")
     else:
         socketio.emit("coupInvalide",caseInitial)
@@ -49,17 +49,21 @@ def handle_my_custom_event(piece,id ,caseInitial):
         socketio.emit("coupValide",str(piece)+ str(id)+str(caseInitial))
         
         print(stockfish.get_board_visual())
-
-        if(stockfish.get_evaluation()['type'] =='mate' and stockfish.get_evaluation()['value'] == 0):
-            socketio.emit("checkmate")
-        a = stockfish.get_best_move_time(1000)
-        stockfish.make_moves_from_current_position([a])
-        socketio.emit("coupValideBot",a)
         
+        best = stockfish.get_best_move_time(500)
+        if(best == None or best== "None" or best == 'None'):
+            socketio.emit("checkmate")
+            return
+        
+        best = stockfish.get_best_move_time(500)
+        stockfish.make_moves_from_current_position([best])
+        socketio.emit("coupValideBot",best)
+        best = stockfish.get_best_move_time(500)
         print(stockfish.get_board_visual())
 
-        if(stockfish.get_evaluation()['type'] =='mate' and stockfish.get_evaluation()['value'] == 0):
+        if(best == None or best== "None" or best == 'None'):
             socketio.emit("checkmate")
+            return
     else:
         socketio.emit("coupInvalide",caseInitial)
 
