@@ -99,12 +99,10 @@ body{
     #elo{
         position: absolute;
         margin-left: 75%;
-        top: 50%;
+        top: 62%;
         display: inline-block;
         width: 200px;
-        height: 75px;
-        background-color: #769656;
-        border-color: #769656;
+        height: 40px;
         color: white;
         border-radius: 10px;
     }

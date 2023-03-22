@@ -3,6 +3,7 @@ var pieceDeplacement = null;
 var tour;
 computer = false;
 var socket = io();
+Elo=1500;
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
@@ -323,4 +324,12 @@ function jouerOrdinateur()
 }
 
 
-
+function changerElo()
+{
+    Elo = document.getElementById("inputElo");
+    if(Elo==0)
+    {
+        Elo=1;
+    }
+    console.log(Elo);
+}

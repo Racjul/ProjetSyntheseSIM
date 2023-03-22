@@ -45,9 +45,9 @@
           <div id="board"></div>
           <button type="button" class="btn btn-outline-success" id = "start">Start</button>
           <button type="button" id="computer" onclick="jouerOrdinateur()">Play with computer</button>
-          <div class="elo">
+          <div id="elo">
             <div>Elo: </div>
-            <input type="text">
+            <input onchange="changerElo" type="text" id="inputElo">
           </div>
     </body>
 </html>
