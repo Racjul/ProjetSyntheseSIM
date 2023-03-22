@@ -152,16 +152,15 @@ function deplacer(e){
     if(document.getElementById(e.target.id).style.backgroundImage!="" )
     {
         //stock le nom de la piece que le joueur veut déplacer
-        pieceDeplacementTemp= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
+        pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
         
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
-        if(tour == pieceDeplacementTemp.substring(0,1))
+        if(tour == pieceDeplacement.substring(0,1))
         {
             document.getElementById(e.target.id).style.border="thick solid red";
             caseI=e.target.id;
-            pieceDeplacement=pieceDeplacementTemp;
             return;
         }
         else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
