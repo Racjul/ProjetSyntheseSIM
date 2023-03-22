@@ -19,7 +19,7 @@ socketio= SocketIO(app, async_mode='eventlet')
 #permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish")
 
-stockfish.set_depth(2)
+stockfish.set_depth(7)
 stockfish.set_elo_rating(1350)
 
 #permet de print dans la console, les messages reçus provenant du site web
@@ -40,9 +40,9 @@ def handle_my_custom_event(piece,id ,caseInitial):
         print(stockfish.get_board_visual())
 
         #verify checkmate
-        best = stockfish.get_best_move_time(500)
-        if(best == None or best== "None" or best == 'None'):
-            socketio.emit("checkmate")
+        #best = stockfish.get_best_move_time(500)
+        #if(best == None or best== "None" or best == 'None'):
+         #   socketio.emit("checkmate")
     else:
         socketio.emit("coupInvalide",caseInitial)
         
@@ -56,11 +56,11 @@ def handle_my_custom_event(piece,id ,caseInitial):
         
         #verify checkmate
         best = stockfish.get_best_move_time(500)
-        if(best == None or best== "None" or best == 'None'):
-            socketio.emit("checkmate")
-            return
+        #if(best == None or best== "None" or best == 'None'):
+         #   socketio.emit("checkmate")
+          #  return
         
-        best = stockfish.get_best_move()
+        best = stockfish.get_best_move_time(1000)
         print()
         print("Le bot a fait: "+best)
         stockfish.make_moves_from_current_position([best])
@@ -69,10 +69,10 @@ def handle_my_custom_event(piece,id ,caseInitial):
         print(stockfish.get_board_visual())
         
         #verify checkmate
-        best = stockfish.get_best_move_time(500)
-        if(best == None or best== "None" or best == 'None'):
-            socketio.emit("checkmate")
-            return
+        #best = stockfish.get_best_move_time(500)
+        #if(best == None or best== "None" or best == 'None'):
+         #   socketio.emit("checkmate")
+          #  return
     else:
         socketio.emit("coupInvalide",caseInitial)
 
