@@ -297,14 +297,10 @@ function deplacer(e){
     //si oui, voir socket.on(coupValide,(...))
     
     if(computer == false){
-        
         socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI) }
-
     else{
         socket.emit("coupDemandeBot",pieceDeplacement,e.target.id,caseI)
-
     } 
-    
 }
 
 
@@ -335,6 +331,6 @@ function changerElo()
     
     console.log(Elo);
 
-    socket.emit("coupInvalide",Elo);
+    socket.emit("changerElo",Elo);
 
 }

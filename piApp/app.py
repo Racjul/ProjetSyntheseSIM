@@ -82,8 +82,8 @@ def handle_my_custom_event():
 
 @socketio.on('changerElo')
 def handle_my_custom_event(Elo):
-    stockfish.set_elo_rating(Elo)
     print("Nouvelle Elo " + Elo)
+    stockfish.set_elo_rating(Elo)
 
 
 
