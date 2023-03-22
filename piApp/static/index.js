@@ -27,6 +27,16 @@ socket.on("coupValide",(info)=>
     document.getElementById(caseI).style.backgroundImage=null;
     caseI=null;
     pieceDeplacement=null;
+
+    if(tour =="w")
+            {
+                tour ="b";
+            }
+            else if(tour =="b")
+            {
+                console.log("chage de tour");
+                tour = "w";
+            }
 })
 
 // Remet les paramètres à 0 et informe que son coup est invalide dans le cas d'un coup invalide
@@ -157,15 +167,7 @@ function deplacer(e){
             console.log("manger une pièce")
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
             
-            if(tour =="w")
-            {
-                tour ="b";
-            }
-            else if(tour =="b")
-            {
-                console.log("chage de tour");
-                tour = "w";
-            }
+            
 
             return;
         }
@@ -182,14 +184,8 @@ function deplacer(e){
     console.log(caseI+e.target.id);
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
-    if(tour == "b")
-    {
-        tour = "w";
-    }
-    else if (tour =="w"){
-        console.log("change de tour");
-        tour = "b";
-    }
+    
+    
     socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI)  
     
 }
