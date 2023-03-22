@@ -22,23 +22,23 @@ socket.on("coupValide",(info)=>
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
     //roque
     if(pieceDeplacement == "wk"){
-        if(caseI == e1 && caseF==g1 ){
+        if(caseI == "e1" && caseF=="g1" ){
             document.getElementById("h1").style.backgroundImage == null
             ajouterPiece("wr","f1")
 
         }
-        if(caseI == e1 && caseF==c1 ){
+        if(caseI == "e1" && caseF=="c1" ){
             document.getElementById("a1").style.backgroundImage == null
             ajouterPiece("wr","d1")
         }
     }
     if(pieceDeplacement =="bk"){
-        if(caseI == e8 && caseF==g8 ){
+        if(caseI == "e8" && caseF=="g8" ){
             document.getElementById("h8").style.backgroundImage == null
             ajouterPiece("br","f8")
 
         }
-        if(caseI == e8 && caseF==c8 ){
+        if(caseI == "e8" && caseF=="c8" ){
             document.getElementById("a8").style.backgroundImage == null
             ajouterPiece("br","d8")
         } 
@@ -87,28 +87,28 @@ caseI = info.substring(0,2);
 caseF = info.substring(2,4)
 pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
 
-//roque
-if(pieceDeplacement == "wk"){
-    if(caseI == e1 && caseF==g1 ){
-        document.getElementById("h1").style.backgroundImage == null
-        ajouterPiece("wr","f1")
+    //roque
+    if(pieceDeplacement == "wk"){
+        if(caseI == "e1" && caseF=="g1" ){
+            document.getElementById("h1").style.backgroundImage == null
+            ajouterPiece("wr","f1")
 
+        }
+        if(caseI == "e1" && caseF=="c1" ){
+            document.getElementById("a1").style.backgroundImage == null
+            ajouterPiece("wr","d1")
+        }
     }
-    if(caseI == e1 && caseF==c1 ){
-        document.getElementById("a1").style.backgroundImage == null
-        ajouterPiece("wr","d1")
-    }
-}
-if(pieceDeplacement =="bk"){
-    if(caseI == e8 && caseF==g8 ){
-        document.getElementById("h8").style.backgroundImage == null
-        ajouterPiece("br","f8")
+    if(pieceDeplacement =="bk"){
+        if(caseI == "e8" && caseF=="g8" ){
+            document.getElementById("h8").style.backgroundImage == null
+            ajouterPiece("br","f8")
 
-    }
-    if(caseI == e8 && caseF==c8 ){
-        document.getElementById("a8").style.backgroundImage == null
-        ajouterPiece("br","d8")
-    } 
+        }
+        if(caseI == "e8" && caseF=="c8" ){
+            document.getElementById("a8").style.backgroundImage == null
+            ajouterPiece("br","d8")
+        } 
 }
     
 
