@@ -18,11 +18,10 @@ socket.on("coupValide",(info)=>
 
     caseF = info.substring(2,4);
     caseI= info.substring(4,6);
-    pieceDeplacement.substring(0,2);
+    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
 
     console.log(pieceDeplacement);
 
-    document.getElementById(caseF).style.backgroundImage="";
     ajouterPiece(pieceDeplacement,caseF)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
