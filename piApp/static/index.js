@@ -44,24 +44,23 @@ socket.on("coupValide",(info)=>
         } 
     }
 
-console.log(caseF);
 
-    /*if(pieceDeplacement=="bp")
+    if(pieceDeplacement=="bp")
     {
-        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1) != caseF.substring(0,1))
+        if(document.getElementsById(caseF).style.backgroundImage == null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))+1).toString()).style.backgroundImage=null;
         }
     }
     else if(pieceDeplacement == "wp")
     {
-        if(document.getElementsById(caseF).style.backgroundImage==null)
+        if(document.getElementsById(caseF).style.backgroundImage==null && caseI.substring(0,1).toString() != caseF.substring(0,1).toString())
         {
             document.getElementById(caseF.substring(0,1)+(parseInt(caseF.substring(1,2))-1).toString()).style.backgroundImage=null;
         }
     }
 
-    */
+    
     
 
     ajouterPiece(pieceDeplacement,caseF)
