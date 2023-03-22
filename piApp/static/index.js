@@ -152,13 +152,14 @@ function deplacer(e){
     if(document.getElementById(e.target.id).style.backgroundImage!="" )
     {
         //stock le nom de la piece que le joueur veut déplacer
-        pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
+        pieceDeplacementTemp= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
         
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
-        if(tour == pieceDeplacement.substring(0,1))
+        if(tour == pieceDeplacementTemp.substring(0,1))
         {
+            pieceDeplacement=pieceDeplacement;
             document.getElementById(e.target.id).style.border="thick solid red";
             caseI=e.target.id;
             return;
@@ -170,7 +171,7 @@ function deplacer(e){
         }
     }
 
-
+    pieceDeplacement=pieceDeplacementTemp;
     //S'il clique sur une case vide, mais qu'il n'a clické sur aucune case avant, on ne fait rien
     if(caseI == null)
     {
