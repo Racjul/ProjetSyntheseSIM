@@ -152,8 +152,7 @@ function deplacer(e){
         //stock le nom de la piece que le joueur veut déplacer
         pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
-        console.log("le tour de " + pieceDeplacement.substring(0,1));
-        console.log(tour);
+        
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
         if(tour == pieceDeplacement.substring(0,1))
@@ -164,7 +163,7 @@ function deplacer(e){
         }
         else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
         { 
-            console.log("manger une pièce")
+            console.log("C'est mauvais");
             socket.emit("coupDemande",pieceDeplacement,e.target.id,caseI);
             
             
