@@ -50,16 +50,20 @@ def handle_my_custom_event(piece,id ,caseInitial):
         
         print(stockfish.get_board_visual())
         
+        
         best = stockfish.get_best_move_time(500)
         if(best == None or best== "None" or best == 'None'):
             socketio.emit("checkmate")
             return
         
         best = stockfish.get_best_move_time(500)
+        print()
+        print("Le bot a fait: "+best)
         stockfish.make_moves_from_current_position([best])
         socketio.emit("coupValideBot",best)
         best = stockfish.get_best_move_time(500)
         print(stockfish.get_board_visual())
+        
 
         if(best == None or best== "None" or best == 'None'):
             socketio.emit("checkmate")
