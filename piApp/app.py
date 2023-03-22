@@ -19,6 +19,9 @@ socketio= SocketIO(app, async_mode='eventlet')
 #permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish")
 
+stockfish.set_depth(5)
+stockfish.set_elo_rating(1350)
+
 #permet de print dans la console, les messages reçus provenant du site web
 @socketio.on('message')
 def handle_message(data):
