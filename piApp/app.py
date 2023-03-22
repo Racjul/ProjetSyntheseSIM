@@ -80,9 +80,10 @@ def handle_my_custom_event(piece,id ,caseInitial):
 def handle_my_custom_event():
     stockfish.set_fen_position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
 
-@socketio.on('changerElo',)
+@socketio.on('changerElo')
 def handle_my_custom_event(Elo):
     stockfish.set_elo_rating(Elo)
+    print("Nouvelle Elo " + Elo)
 
 
 
