@@ -159,9 +159,9 @@ function deplacer(e){
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
         if(tour == pieceDeplacementTemp.substring(0,1))
         {
-            pieceDeplacement=pieceDeplacement;
             document.getElementById(e.target.id).style.border="thick solid red";
             caseI=e.target.id;
+            pieceDeplacement=pieceDeplacementTemp;
             return;
         }
         else if(caseI != null) //si la pièce n'est pas une pièce du joueur a qui c'est le tour, ca veut dire qu'il mange une pièce
@@ -171,7 +171,7 @@ function deplacer(e){
         }
     }
 
-    pieceDeplacement=pieceDeplacementTemp;
+
     //S'il clique sur une case vide, mais qu'il n'a clické sur aucune case avant, on ne fait rien
     if(caseI == null)
     {
