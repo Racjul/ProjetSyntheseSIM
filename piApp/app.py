@@ -138,7 +138,9 @@ def algo(x,y):
     #représante le nombre de degré que la branche tourne (relié au grand engrenage)
     angle_par_step_grand_engrenage = raportEngrenage * angle_par_step_petit_engrenage
 
-    Angle1 = math.degrees(math.atan())
+
+    #les angles sont a partir de l'axe des y pour l'agle  et à partir de l'autre branche pour l'angle 2
+    Angle1 = math.degrees(math.atan(y/x)-2*math.sin(math.sqrt((x^2)+(y^2))/2))
 
      
 
