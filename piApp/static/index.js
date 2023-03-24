@@ -273,13 +273,14 @@ function deplacer(e){
         }
 
         //stock le nom de la piece que le joueur veut déplacer
-        pieceDeplacement= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
+        pieceDeplacementTemp= document.getElementById(e.target.id).style.backgroundImage.substring(20,22);
 
         
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
         if(tour == pieceDeplacement.substring(0,1))
         {
+            pieceDeplacement=pieceDeplacementTemp;
             document.getElementById(e.target.id).style.border="thick solid red";
             caseI=e.target.id;
             return;
