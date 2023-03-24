@@ -25,10 +25,10 @@ socket.on("coupValide",(info)=>
     let caseF = info.substring(2,4);
     caseI= info.substring(4,6);
    
-    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
+    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
     
     
-    if(info.slice(-1) == "q"){
+    if(info.lenght() == 8){
         pieceDeplacement = tour + "q"
     }
 
