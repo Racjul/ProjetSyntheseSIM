@@ -21,7 +21,7 @@ socket.on('message',function(msg){
 socket.on("coupValide",(info)=>
 {
 
-    
+    console.log(info)
     let caseF = info.substring(2,4);
     caseI= info.substring(4,6);
    
