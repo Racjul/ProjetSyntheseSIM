@@ -17,10 +17,17 @@ socket.on('message',function(msg){
 socket.on("coupValide",(info)=>
 {
 
-
+    
     let caseF = info.substring(2,4);
     caseI= info.substring(4,6);
+   
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22)
+    
+    
+    if(info.slice(-1) == "q"){
+        pieceDeplacement = tour + "q"
+    }
+
     //roque
     if(pieceDeplacement == "wk"){
         if(caseI == "e1" && caseF=="g1" ){
@@ -44,6 +51,9 @@ socket.on("coupValide",(info)=>
             ajouterPiece("br","d8")
         } 
     }
+
+
+
     background = document.getElementById(caseF).style.backgroundImage;
 
     console.log("piece deplacement: " + pieceDeplacement);
@@ -82,7 +92,7 @@ socket.on("coupValide",(info)=>
             }
             else if(tour =="b")
             {
-                console.log("chage de tour");
+                console.log("change de tour");
                 tour = "w";
             }
         
@@ -330,7 +340,7 @@ function changerElo()
     }
     
     console.log(Elo);
-
+    
     socket.emit("changerElo",Elo);
 
 }
