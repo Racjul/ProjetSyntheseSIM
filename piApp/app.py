@@ -94,7 +94,7 @@ def index():
     return render_template('index.html', async_mode=socketio.async_mode)
 
 if __name__ == '__main__':
-    os.system("source ~/ProjetSyntheseSIM/piApp/env/bin/activate")
+    
     os.system("gunicorn --bind 0.0.0.0:8000 --worker-class eventlet -w 1 app:app")
 
 
