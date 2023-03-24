@@ -92,12 +92,10 @@ socket.on("coupValide",(info)=>
 
     if(tour =="w")
             {
-                timer.stop();
                 tour ="b";
             }
             else if(tour =="b")
             {
-                timer.startClock();
                 console.log("change de tour");
                 tour = "w";
             }
@@ -145,13 +143,11 @@ pieceDeplacement=null;
 if(tour =="w")
 {
     tour ="b";
-    timer.stop();
 }
 else if(tour =="b")
 {
     console.log("chage de tour");
     tour = "w";
-    timer.startClock();
 }
 })
 
