@@ -4,7 +4,7 @@ var tour;
 computer = false;
 var socket = io();
 var Elo=1500;
-var timer= new Timer(10);
+//var timer= new Timer(10);
 partieCommencé = false;
 
 
@@ -354,7 +354,7 @@ function changerElo()
     socket.emit("changerElo",Elo);
 
 }
-
+/*
 function changerTimer()
 {
     if(!partieCommencé)
@@ -411,3 +411,4 @@ class Timer{
         
     
 }
+*/
