@@ -30,6 +30,7 @@ socket.on("coupValide",(info)=>
     
     if(info.length == 8){
         pieceDeplacement = tour + "q"
+        console.log(pieceDeplacement)
     }
 
     //roque
@@ -60,10 +61,7 @@ socket.on("coupValide",(info)=>
 
     background = document.getElementById(caseF).style.backgroundImage;
 
-    console.log("piece deplacement: " + pieceDeplacement);
-    console.log("caseI sub: " + caseI.substring(0,1) );
-    console.log("caseF sub: " + caseF.substring(0,1) );
-    console.log(document.getElementById(caseF).style.backgroundImage == ""  )
+
 
     if(pieceDeplacement=="bp")
     {
@@ -146,7 +144,7 @@ if(tour =="w")
 }
 else if(tour =="b")
 {
-    console.log("chage de tour");
+    console.log("change de tour");
     tour = "w";
 }
 })
@@ -304,7 +302,7 @@ function deplacer(e){
     //S'il clique sur une case vide, mais qu'il n'a clické sur aucune case avant, on ne fait rien
     if(caseI == null)
     {
-        console.log("case initiale null");
+  
         return;
     }
 
@@ -332,7 +330,7 @@ function jouerOrdinateur()
         computer = false;
         document.getElementById("computer").style.backgroundColor="#769656";
     }
-    console.log(computer);
+    
 }
 
 
@@ -345,7 +343,7 @@ function changerElo()
         Elo=250;
     }
     
-    console.log(Elo);
+
     
     socket.emit("changerElo",Elo);
 
