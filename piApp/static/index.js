@@ -28,7 +28,7 @@ socket.on("coupValide",(info)=>
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
     
     
-    if(info.length == 8){
+    if(info.length == 7){
         pieceDeplacement = tour + "q"
         console.log(pieceDeplacement)
     }
@@ -306,7 +306,7 @@ function deplacer(e){
         return;
     }
 
-    console.log(caseI+e.target.id);
+
     //demande au serveur si le coup est possibe
     //si oui, voir socket.on(coupValide,(...))
     
