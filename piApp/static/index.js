@@ -28,7 +28,7 @@ socket.on("coupValide",(info)=>
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
     
     
-    if(info.length() == 8){
+    if(info.length == 8){
         pieceDeplacement = tour + "q"
     }
 
