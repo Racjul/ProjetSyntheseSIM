@@ -278,7 +278,7 @@ function deplacer(e){
         
 
         //Si la pièce est une piece du joueur à qui c'est le tour, on stock la pièce comme pièce à déplacer
-        if(tour == pieceDeplacement.substring(0,1))
+        if(tour == pieceDeplacementTemp.substring(0,1))
         {
             pieceDeplacement=pieceDeplacementTemp;
             document.getElementById(e.target.id).style.border="thick solid red";
