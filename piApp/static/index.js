@@ -220,7 +220,6 @@ for(let i=1;i<=8;i++)
 
 function start(){
     tour = "w";
-    timer.startClock();
     partieCommencé=true;
     //remet à 0 les cases
     for(let i= 0;i<8;i++){
