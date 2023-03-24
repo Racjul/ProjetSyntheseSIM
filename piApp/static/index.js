@@ -4,6 +4,10 @@ var tour;
 computer = false;
 var socket = io();
 var Elo=1500;
+//var timer= new Timer(10);
+partieCommencé = false;
+
+
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
@@ -212,6 +216,7 @@ for(let i=1;i<=8;i++)
 
 function start(){
     tour = "w";
+    partieCommencé=true;
     //remet à 0 les cases
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
@@ -344,3 +349,61 @@ function changerElo()
     socket.emit("changerElo",Elo);
 
 }
+/*
+function changerTimer()
+{
+    if(!partieCommencé)
+    {
+        timer.time= document.getElementById("UserTimer").value;
+    }
+}
+
+
+
+class Timer{
+    constructor(ClockTime, tour)
+    {
+        this.time= ClockTime*60;
+        this.minute=0
+        this.seconde=0;
+        this.stop=true;
+
+        setInterval(this.updateClock,1000);
+
+    }
+
+    updateInterface()
+    {
+        this.minute=Math.floor(this.time/60);
+        this.seconde = time%60;
+        document.getElementById("time").value=( this.minute.toString() + ":" +  this.seconde.toString());
+        
+    }
+
+    startClock()
+    {
+        stop=true; 
+    }
+
+    stop()
+    {
+        stop=true;
+    }
+
+    
+    updateClock()
+    {
+        
+        if(!stop)
+        {
+            time--;
+            this.updateInterface();
+        }
+            
+    }
+           
+
+        
+    
+}
+*/
