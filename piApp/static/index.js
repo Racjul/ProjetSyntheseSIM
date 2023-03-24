@@ -27,10 +27,8 @@ socket.on("coupValide",(info)=>
    
     pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
     
+
     
-    if(info.lenght() == 8){
-        pieceDeplacement = tour + "q"
-    }
 
     //roque
     if(pieceDeplacement == "wk"){
