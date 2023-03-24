@@ -64,7 +64,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
         print("Le bot a fait: "+best)
         stockfish.make_moves_from_current_position([best])
         socketio.emit("coupValideBot",best)
-        
+        print("Le bot a fait:" +best)
         print(stockfish.get_board_visual())
         
         #verify checkmate
@@ -94,6 +94,7 @@ def index():
     return render_template('index.html', async_mode=socketio.async_mode)
 
 if __name__ == '__main__':
+    os.system("source ~/ProjetSyntheseSIM/piApp/env/bin/activate")
     os.system("gunicorn --bind 0.0.0.0:8000 --worker-class eventlet -w 1 app:app")
 
 
