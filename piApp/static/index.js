@@ -22,16 +22,22 @@ socket.on("coupValide",(info)=>
 {
 
     console.log(info)
-    let caseF = info.substring(2,4);
-    caseI= info.substring(4,6);
-   
-    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
-    
-    
     if(info.length == 7){
         pieceDeplacement = tour + "q"
+        caseI= info.substring(5,7);
+        caseF = info.substring(2,4);
         console.log(pieceDeplacement)
     }
+   else{
+    caseI= info.substring(4,6);
+    caseF = info.substring(2,4);
+   
+    pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
+   }
+  
+    
+    
+ 
 
     //roque
     if(pieceDeplacement == "wk"){
