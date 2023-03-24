@@ -33,6 +33,7 @@ def handle_my_custom_event(piece,id ,caseInitial):
 
     if((piece == "wp" and id[1] == '8') or (piece == "bp" and id[1] == '1')):
             id = id+"q"
+            print("promotion")
             
     if(stockfish.is_move_correct(caseInitial+ id)):
         stockfish.make_moves_from_current_position([caseInitial+id])
