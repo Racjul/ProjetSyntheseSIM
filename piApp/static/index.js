@@ -17,6 +17,7 @@ socket.on('message',function(msg){
     console.log(msg)
 })
 
+
 // Effectue le coup suite à la vérification 
 socket.on("coupValide",(info)=>
 {
@@ -106,6 +107,14 @@ socket.on("coupValide",(info)=>
         
 })
 
+
+socket.on("actualize",(fen)=>{
+arr=fen2array(fen.split(' ')[0]);
+console.log(arr);
+})
+
+
+//meme fonction mais pour les coups effectue par l'engine
 socket.on("coupValideBot",(info)=>
 {
 caseI = info.substring(0,2);
@@ -325,7 +334,8 @@ function deplacer(e){
 
 
 function jouerOrdinateur()
-{
+{   
+    socket.emit("actualizeWeb")
     if(computer == false)
     {
         computer=true;
@@ -339,6 +349,27 @@ function jouerOrdinateur()
     
 }
 
+//orivoir21
+function fen2array(fen) {
+    var rowChars = [];
+    var transform = [];
+    fen.split('/').forEach(function (row) {
+        row.split('').forEach(function (char) {
+            if (isNaN(parseInt(char))) {
+                rowChars.push(char);
+            }
+            else {
+                var emptySquares = parseInt(char);
+                for (var i = 0; i < emptySquares; i++) {
+                    rowChars.push("");
+                }
+            }
+        });
+        transform.push(rowChars);
+        rowChars = [];
+    });
+    return transform;
+}
 
 function changerElo()
 {
@@ -354,61 +385,3 @@ function changerElo()
     socket.emit("changerElo",Elo);
 
 }
-/*
-function changerTimer()
-{
-    if(!partieCommencé)
-    {
-        timer.time= document.getElementById("UserTimer").value;
-    }
-}
-
-
-
-class Timer{
-    constructor(ClockTime, tour)
-    {
-        this.time= ClockTime*60;
-        this.minute=0
-        this.seconde=0;
-        this.stop=true;
-
-        setInterval(this.updateClock,1000);
-
-    }
-
-    updateInterface()
-    {
-        this.minute=Math.floor(this.time/60);
-        this.seconde = time%60;
-        document.getElementById("time").value=( this.minute.toString() + ":" +  this.seconde.toString());
-        
-    }
-
-    startClock()
-    {
-        stop=true; 
-    }
-
-    stop()
-    {
-        stop=true;
-    }
-
-    
-    updateClock()
-    {
-        
-        if(!stop)
-        {
-            time--;
-            this.updateInterface();
-        }
-            
-    }
-           
-
-        
-    
-}
-*/

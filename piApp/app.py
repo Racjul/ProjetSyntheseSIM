@@ -21,11 +21,13 @@ socketio= SocketIO(app, async_mode='eventlet')
 stockfish = Stockfish(path="/usr/games/stockfish",depth=18)
 
 
+
 #permet de print dans la console, les messages reçus provenant du site web
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
     socketio.send("Connection établie")
+
 
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')
@@ -50,6 +52,9 @@ def handle_my_custom_event(piece,id ,caseInitial):
             socketio.emit("checkmate")
     else:
         socketio.emit("coupInvalide",caseInitial)
+
+
+
 #permet de vérifier le coup du joueur et d'effectuer le coup du bot      
 @socketio.on('coupDemandeBot')
 def handle_my_custom_event(piece,id ,caseInitial):
@@ -87,10 +92,18 @@ def handle_my_custom_event(piece,id ,caseInitial):
 def handle_my_custom_event():
     stockfish.set_fen_position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
 
+
+
 @socketio.on('changerElo')
 def handle_my_custom_event(Elo):
     print("Nouvelle Elo " + Elo)
     stockfish.set_elo_rating(Elo)
+
+
+
+@socketio.on('actualizeWeb')
+def hangdle_my_custom_event():
+    socketio.emit("actualize",stockfish.get_fen_position())
 
 
 
