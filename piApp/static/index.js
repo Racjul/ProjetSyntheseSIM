@@ -8,7 +8,7 @@ var Elo=1500;
 partieCommencé = false;
 
 
-setInterval(socket.emit("actualizeWeb"),1000)
+
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
@@ -17,7 +17,7 @@ socket.on('connect', function() {
 socket.on('message',function(msg){
     console.log(msg)
 })
-
+setInterval(function(){socket.emit("actualizeWeb")},1000)
 
 // Effectue le coup suite à la vérification 
 socket.on("coupValide",(info)=>
