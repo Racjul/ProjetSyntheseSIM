@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = 'test'
 socketio= SocketIO(app, async_mode='eventlet')
 
 #permet de donner la directory de l'engine d'échec
-stockfish = Stockfish(path="/home/admin/ProjetSyntheseSIM/piApp/stockfish",depth=18)
+stockfish = Stockfish(path="/usr/games/stockfish",depth=18)
 
 
 #permet de print dans la console, les messages reçus provenant du site web
