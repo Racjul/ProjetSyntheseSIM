@@ -8,7 +8,7 @@ var Elo=1500;
 partieCommencé = false;
 
 
-
+setInterval(socket.emit("actualizeWeb"),1000)
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
@@ -336,7 +336,7 @@ function deplacer(e){
 
 function jouerOrdinateur()
 {   
-    socket.emit("actualizeWeb")
+  
     if(computer == false)
     {
         computer=true;
