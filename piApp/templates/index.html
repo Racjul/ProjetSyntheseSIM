@@ -28,13 +28,30 @@
                     <a class="nav-link texteAccueil" href="#">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link texteAccueil" href="#">Features</a>
+                    <a class="nav-link texteAccueil" href="#">
+                      <button type="button" class="btn btn-outline-success" id = "start">Start</button>
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link texteAccueil" href="#">Pricing</a>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Elo
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item" href="#">
+                          <div>Elo: </div>
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"><input type="text" id="inputElo"></a></li>
+                        <li><a class="dropdown-item" href="#"><button onclick="changerElo()">Valider</button></a></li>
+                      </ul>
+                    </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link texteAccueil" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link texteAccueil" href="#" tabindex="-1" >
+                      <button type="button" id="computer" onclick="jouerOrdinateur()">Play with computer</button>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -43,13 +60,9 @@
        
         <!-- Jeu d'échec -->
           <div id="board"></div>
-          <button type="button" class="btn btn-outline-success" id = "start">Start</button>
-          <button type="button" id="computer" onclick="jouerOrdinateur()">Play with computer</button>
-          <div id="elo">
-            <div>Elo: </div>
-            <input type="text" id="inputElo">
-            <button onclick="changerElo()">Valider</button>
-          </div>
+          
+          
+
           <div class="timer">
             <div id="time"></div>
             <div id="turn"></div>
