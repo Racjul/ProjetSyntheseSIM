@@ -1,4 +1,4 @@
-import * as jsonman from './jsonman'
+import * as jsonman from './jsonmanjs'
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
@@ -6,7 +6,7 @@ var computer = false;
 var socket = io();
 var Elo=1500;
 //var timer= new Timer(10);
-partieCommencé = false;
+
 
 
 
