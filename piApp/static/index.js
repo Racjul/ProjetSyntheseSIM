@@ -1,4 +1,4 @@
-import * as jsonman from './jsonman'
+
 
 var caseI = null;
 var pieceDeplacement = null;
