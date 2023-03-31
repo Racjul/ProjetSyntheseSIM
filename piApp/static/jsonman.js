@@ -20,10 +20,7 @@ function fen2array(fen) {
     });
     return transform;
 }
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var fen2array_1 = __importDefault(require("../fen2array/fen2array"));
+
 // resolve default values
 function getOptions(options) {
     if (typeof options !== "object") {
