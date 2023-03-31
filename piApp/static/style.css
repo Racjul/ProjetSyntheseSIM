@@ -82,10 +82,8 @@ body{
     }
 
     #computer{
-        position: absolute;
-        margin-left: 75%;
-        top: 50%;
-        display: inline-block;
+
+
         width: 200px;
         height: 75px;
         background-color: #769656;
