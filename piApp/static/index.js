@@ -1,4 +1,4 @@
-import * as jsonman from './jsonmanjs'
+import * as jsonman from './jsonman.js'
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
