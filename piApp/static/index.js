@@ -112,10 +112,10 @@ socket.on("coupValide",(info)=>
 
 
 socket.on("actualize",(fen)=>{
-    identique = true
-    boardState=fen2json(fen.split(' ')[0]);
+    var identique = true
+    var boardState=fen2json(fen.split(' ')[0]);
     tour = fen.split(' ')[1];
-    cases = document.getElementsByClassName('case')
+    var cases = document.getElementsByClassName('case')
     for(var i =0;i<cases.length;i++){
         if((boardState.hasOwnProperty(cases[i])==null && cases[i].style.backgroundImage!=null))
         {
