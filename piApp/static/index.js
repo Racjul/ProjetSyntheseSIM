@@ -112,8 +112,35 @@ socket.on("coupValide",(info)=>
 
 
 socket.on("actualize",(fen)=>{
+    identique = true
     boardState=jsonman.fen2json(fen.split(' ')[0]);
-    tour = fen.split(' ')[1]
+    tour = fen.split(' ')[1];
+    cases = document.getElementsByClassName('case')
+    for(var i =0;i<cases.length;i++){
+        if((boardState.hasOwnProperty(cases[i])==null && cases[i].style.backgroundImage!=null))
+        {
+            identique=false;
+        }
+        
+        else if(boardState.hasOwnProperty(cases[i])!=null &&cases[i].style.backgroundImage==null)
+        {
+            identique=false;
+        }
+        else if(boardState[cases[i]] != cases.style.backgroundImage.substring(20,22))
+        {
+            identique = false   
+        }
+    }
+    if (!identique){
+        for(let i= 0;i<8;i++){
+            for(let j=1;j<=8;j++){
+                document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
+            }
+        }
+        for(var key in boardState){
+            ajouterPiece(boardState[key],key)
+        }
+    }   
     console.log(boardState);
 })
 
