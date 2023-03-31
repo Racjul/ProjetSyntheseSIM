@@ -8,7 +8,7 @@ var Elo=1500;
 
 
 
-
+test();
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
@@ -259,7 +259,7 @@ for(let i=1;i<=8;i++)
 
 function start(){
     tour = "w";
-    partieCommencé=true;
+    
     //remet à 0 les cases
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
