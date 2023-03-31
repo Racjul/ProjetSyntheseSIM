@@ -1,7 +1,7 @@
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
-computer = false;
+var computer = false;
 var socket = io();
 var Elo=1500;
 //var timer= new Timer(10);
