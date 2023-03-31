@@ -1,4 +1,4 @@
-import { fen2json } from "static/jsonman";
+import { fen2json } from "./jsonman";
 var caseI = null;
 var pieceDeplacement = null;
 var tour;

@@ -59,7 +59,7 @@ function key2coo(col, row) {
     var colLetter = colsLetters[col];
     return "" + colLetter + row.toString();
 }
-function fen2json(fen, options) {
+export function fen2json(fen, options) {
     options = getOptions(options);
     var fenArray = fen2array_1.default(fen);
     var fenJson = {};
@@ -82,4 +82,3 @@ function fen2json(fen, options) {
     });
     return fenJson;
 }
-export{fen2json};
