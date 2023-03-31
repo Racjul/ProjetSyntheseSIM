@@ -112,8 +112,9 @@ socket.on("coupValide",(info)=>
 
 
 socket.on("actualize",(fen)=>{
-boardState=jsonman.fen2json(fen.split(' ')[0]);
-console.log(boardState);
+    boardState=jsonman.fen2json(fen.split(' ')[0]);
+    tour = fen.split(' ')[1]
+    console.log(boardState);
 })
 
 
@@ -237,7 +238,6 @@ function start(){
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
             document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
-
         }
     }
 
