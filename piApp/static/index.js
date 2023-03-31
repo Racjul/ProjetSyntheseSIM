@@ -6,7 +6,7 @@ var computer = false;
 var socket = io();
 var Elo=1500;
 //var timer= new Timer(10);
-partieCommencé = false;
+
 
 
 
