@@ -1,12 +1,12 @@
-import { fen2json } from "./jsonman.js";
+
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
-var computer = false;
+computer = false;
 var socket = io();
 var Elo=1500;
 //var timer= new Timer(10);
-
+partieCommencé = false;
 
 
 
@@ -112,10 +112,10 @@ socket.on("coupValide",(info)=>
 
 
 socket.on("actualize",(fen)=>{
-    var identique = true
-    var boardState=fen2json(fen.split(' ')[0]);
+    identique = true
+    boardState=fen2json(fen.split(' ')[0]);
     tour = fen.split(' ')[1];
-    var cases = document.getElementsByClassName('case')
+    cases = document.getElementsByClassName('case')
     for(var i =0;i<cases.length;i++){
         if((boardState.hasOwnProperty(cases[i])==null && cases[i].style.backgroundImage!=null))
         {
