@@ -11,8 +11,7 @@ partieCommencé = false;
 
 
 socket.connect('http://0.0.0.0:8000')
-socket.on('connect', function() 
-{
+socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
 });
 
@@ -113,7 +112,7 @@ socket.on("coupValide",(info)=>
 
 socket.on("actualize",(fen)=>{
     identique = true
-    boardState=fen2json(fen.split(' ')[0]);
+    boardState=jsonman.fen2json(fen.split(' ')[0]);
     tour = fen.split(' ')[1];
     cases = document.getElementsByClassName('case')
     for(var i =0;i<cases.length;i++){
