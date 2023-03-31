@@ -11,7 +11,8 @@ partieCommencé = false;
 
 
 socket.connect('http://0.0.0.0:8000')
-socket.on('connect', function() {
+socket.on('connect', function() 
+{
                 socket.send("connection établie: " + socket.id )
 });
 
