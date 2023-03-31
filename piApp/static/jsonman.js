@@ -23,7 +23,7 @@ export function fen2array(fen) {
 export var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-export var fen2array_1 = __importDefault(require("../fen2array/fen2array"));
+var fen2array_1 = __importDefault(require("../fen2array/fen2array"));
 // resolve default values
 export function getOptions(options) {
     if (typeof options !== "object") {
