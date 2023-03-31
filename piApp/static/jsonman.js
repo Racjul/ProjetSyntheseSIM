@@ -1,6 +1,6 @@
 
 // cc orivoir21
-export function fen2array(fen) {
+function fen2array(fen) {
     var rowChars = [];
     var transform = [];
     fen.split('/').forEach(function (row) {
@@ -20,12 +20,12 @@ export function fen2array(fen) {
     });
     return transform;
 }
-export var __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var fen2array_1 = __importDefault(require("../fen2array/fen2array"));
 // resolve default values
-export function getOptions(options) {
+function getOptions(options) {
     if (typeof options !== "object") {
         options = {
             isRemoveEmptySquare: true,
@@ -46,20 +46,20 @@ export function getOptions(options) {
     }
     return options;
 }
-export function getColor(square) {
+function getColor(square) {
     if (square === square.toLocaleUpperCase()) {
         return "w";
     }
     return "b";
 }
-export function key2coo(col, row) {
+function key2coo(col, row) {
     var colsLetters = "abcdefgh";
     row += 1;
     row = 8 - row + (1);
     var colLetter = colsLetters[col];
     return "" + colLetter + row.toString();
 }
-export function fen2json(fen, options) {
+function fen2json(fen, options) {
     options = getOptions(options);
     var fenArray = fen2array_1.default(fen);
     var fenJson = {};
@@ -82,3 +82,4 @@ export function fen2json(fen, options) {
     });
     return fenJson;
 }
+export{fen2json};

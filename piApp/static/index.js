@@ -1,5 +1,4 @@
-
-
+import { fen2json } from "./jsonman";
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
@@ -113,7 +112,7 @@ socket.on("coupValide",(info)=>
 
 socket.on("actualize",(fen)=>{
     identique = true
-    boardState=jsonman.fen2json(fen.split(' ')[0]);
+    boardState=fen2json(fen.split(' ')[0]);
     tour = fen.split(' ')[1];
     cases = document.getElementsByClassName('case')
     for(var i =0;i<cases.length;i++){
