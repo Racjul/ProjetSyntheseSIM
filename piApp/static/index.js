@@ -1,4 +1,3 @@
-
 var caseI = null;
 var pieceDeplacement = null;
 var tour;
