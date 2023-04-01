@@ -92,7 +92,7 @@ def handle_my_custom_event():
     stockfish.set_fen_position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
 
 
-
+#change difficulty of the bot
 @socketio.on('changerElo')
 def handle_my_custom_event(Elo):
     print("Nouvelle Elo " + Elo)
