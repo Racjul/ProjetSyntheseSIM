@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from stockfish import Stockfish
 import os
 import eventlet
