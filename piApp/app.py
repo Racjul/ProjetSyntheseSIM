@@ -101,9 +101,7 @@ def handle_my_custom_event(Elo):
 
 
 
-@socketio.on('actualizeWeb')
-def hangdle_my_custom_event():
-    socketio.emit("actualize",stockfish.get_fen_position())
+
 
 
 
