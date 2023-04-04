@@ -172,3 +172,36 @@ socket.on("checkmate",()=>{
     alert("Checkmate!")
     
 })
+
+
+socket.on("actualize",(data)=>{
+    fen = data
+    var rowChars = [];
+    var transform = [];
+    fen.split('/').forEach(function (row) {
+        row.split('').forEach(function (char) {
+            if (isNaN(parseInt(char))) {
+                rowChars.push(char);
+            }
+            else {
+                var emptySquares = parseInt(char);
+                for (var i = 0; i < emptySquares; i++) {
+                    rowChars.push("");
+                }
+            }
+        });
+        transform.push(rowChars);
+        rowChars = [];
+    });
+
+    ligne = ["a","b","c","d","e","f","g","h"]
+    colonne = [1,2,3,4,5,6,7,8]
+    
+    ligne.forEach(numL =>{
+        colonne.forEach(numC =>{
+            console.log(numL + numC)
+        })
+    })
+    
+})
+
