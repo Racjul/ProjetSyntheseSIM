@@ -9,6 +9,7 @@ import math
 
 
 
+
 #permet de donner la directory des fichier statics du projet
 app = Flask(__name__,static_url_path='/static')
 
@@ -27,8 +28,10 @@ stockfish = Stockfish(path="/usr/games/stockfish",depth=18)
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
-    socketio.send("Connection établie")
-
+    
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected: ' + socketio.id)
 
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')

@@ -1,8 +1,12 @@
+//liste des events listener des socket
+
+
+//permet de vérifier qu'il y a bien eu une connection
 socket.on('connect', function() {
     socket.send("connection établie: " + socket.id )
 });
 
-
+//debugage
 socket.on('message',function(msg)
 {
     console.log(msg)
@@ -13,6 +17,7 @@ socket.on('message',function(msg)
 
 
 // Effectue le coup suite à la vérification 
+// C'est le ping qui est recu lorsque le coup est validé
 socket.on("coupValide",(info)=>
 {
 
@@ -101,7 +106,7 @@ socket.on("coupValide",(info)=>
 
 
 
-
+// meme fonction que coup valide ,mais ce n'est pas l'utilisateur qui rentre le coup
 socket.on("coupValideBot",(info)=>
 {
 caseI = info.substring(0,2);
@@ -152,40 +157,6 @@ pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substrin
 })
 
 
-/*
-socket.on("actualize",(fen)=>{
-    identique = true
-    boardState=jsonman.fen2json(fen.split(' ')[0]);
-    tour = fen.split(' ')[1];
-    cases = document.getElementsByClassName('case')
-    for(var i =0;i<cases.length;i++){
-        if((boardState.hasOwnProperty(cases[i])==null && cases[i].style.backgroundImage!=null))
-        {
-            identique=false;
-        }
-        
-        else if(boardState.hasOwnProperty(cases[i])!=null &&cases[i].style.backgroundImage==null)
-        {
-            identique=false;
-        }
-        else if(boardState[cases[i]] != cases.style.backgroundImage.substring(20,22))
-        {
-            identique = false   
-        }
-    }
-    if (!identique){
-        for(let i= 0;i<8;i++){
-            for(let j=1;j<=8;j++){
-                document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
-            }
-        }
-        for(var key in boardState){
-            ajouterPiece(boardState[key],key)
-        }
-    }   
-    console.log(boardState);
-})
-*/
 // Remet les paramètres à 0 et informe que son coup est invalide dans le cas d'un coup invalide
 socket.on("coupInvalide",(caseI)=>
 {
@@ -194,6 +165,7 @@ socket.on("coupInvalide",(caseI)=>
     caseI=null;
 })
 
+// Permet d'afficher si la partie est terminée
 socket.on("checkmate",()=>{
     alert("Checkmate!")
     
