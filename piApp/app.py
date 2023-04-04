@@ -29,9 +29,6 @@ stockfish = Stockfish(path="/usr/games/stockfish",depth=18)
 def handle_message(data):
     print('received message: ' + data)
     
-@socketio.on('disconnect')
-def test_disconnect():
-    print('Client disconnected: ' + socketio.id)
 
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')
@@ -106,7 +103,8 @@ def handle_my_custom_event(Elo):
 
 @socketio.on('actualizeWeb')
 def hangdle_my_custom_event():
-    print("test")
+    print(stockfish.get_fen_position())
+    socketio.emit("actualize",stockfish.get_fen_position())
 
 
 

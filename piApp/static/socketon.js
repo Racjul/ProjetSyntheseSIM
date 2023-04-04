@@ -6,6 +6,8 @@ socket.on('connect', function() {
     socket.send("connection établie: " + socket.id )
 });
 
+
+
 //debugage
 socket.on('message',function(msg)
 {
