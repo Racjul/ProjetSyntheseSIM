@@ -13,7 +13,9 @@ socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
 });
 
-setInterval(function(){socket.emit("actualizeWeb")},1000)
+setInterval(function(){
+    socket.emit("actualizeWeb");
+},1000)
 
 
 

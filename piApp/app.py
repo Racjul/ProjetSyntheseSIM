@@ -101,7 +101,9 @@ def handle_my_custom_event(Elo):
 
 
 
-
+@socketio.on('actualizeWeb')
+def hangdle_my_custom_event():
+    print("test")
 
 
 
