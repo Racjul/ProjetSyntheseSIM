@@ -236,7 +236,7 @@ socket.on("actualize",(data)=>{
                     {
                         color="w"
                     }
-                    ajouterPiece(color + tableau[i][j].toLowerCase(), document.getElementById(ligne[j] + colonne[i]).style.backgroundImage.substring(20,22))
+                    ajouterPiece(color + tableau[i][j].toLowerCase(), ligne[j] + colonne[i])
                     color = "b"
                 }
             }
