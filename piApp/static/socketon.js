@@ -205,7 +205,11 @@ socket.on("actualize",(data)=>{
     {
         for(var j = 0; j < 8;j++)
         {
-            document.getElementById(ligne[i] + colonne[j])
+           if(document.getElementById(ligne[i] + colonne[j]).style.backgroundImage.substring(21,22) != tableau[i][j].toLowerCase())
+           {
+            console.log("Update");
+            different = true; 
+           }
         }
     }
   
