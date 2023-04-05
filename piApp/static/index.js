@@ -24,9 +24,11 @@ setInterval(function(){
         socket.emit("actualizeWeb");
     }
 
-},1000);
+},3000);
 
-
+function containsUppercase(str) {
+    return /[A-Z]/.test(str);
+  }
 
 
 
@@ -87,11 +89,7 @@ function start(){
     tour = "w";
     commencer = true;
     //remet à 0 les cases
-    for(let i= 0;i<8;i++){
-        for(let j=1;j<=8;j++){
-            document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
-        }
-    }
+
 
     socket.send("Partie initialisé (JOUER) : " + socket.id)
     socket.emit("restart")

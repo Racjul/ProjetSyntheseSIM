@@ -205,17 +205,42 @@ socket.on("actualize",(data)=>{
     {
         for(var j = 0; j < 8;j++)
         {
-           if(document.getElementById(ligne[j] + colonne[i]).style.backgroundImage.substring(21,22) != tableau[i][j].toLowerCase())
-           {
-            console.log("Update");
-            different = true; 
-           }
+            if((document.getElementById(ligne[j] + colonne[i]).style.backgroundImage == null) && (tableau[i][j]!='')){
+                different=true;
+            }
+            else if((document.getElementById(ligne[j] + colonne[i]).style.backgroundImage != null) && (tableau[i][j]==''))
+            {
+                different = true
+            }
+            else if(document.getElementById(ligne[j] + colonne[i]).style.backgroundImage.substring(21,22) != tableau[i][j].toLowerCase())
+            {
+
+                different = true; 
+            }
         }
     }
   
     if(different)
     {
-        
+        var color = "b";
+        for(let i= 0;i<8;i++){
+            for(let j=1;j<=8;j++){
+                document.getElementById( notation[i]+ j.toString()).style.backgroundImage=null;
+            }
+        }
+        for(let i= 0;i<8;i++){
+            for(let j=0;j<8;j++){
+                if(tableau[i][j] != '')
+                {
+                    if(containsUppercase(tableau[i][j]))
+                    {
+                        color="w"
+                    }
+                    ajouterPiece(color + tableau[i][j].toLowerCase(), ocument.getElementById(ligne[j] + colonne[i]).style.backgroundImage.substring(21,22))
+                    color = "b"
+                }
+            }
+        }
     }
     
 })
