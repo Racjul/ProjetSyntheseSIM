@@ -175,7 +175,8 @@ socket.on("checkmate",()=>{
 
 
 socket.on("actualize",(data)=>{
-    fen = data
+    fen = data.split(' ')[0]
+    tour = data.split(' ')[1]
     var rowChars = [];
     var transform = [];
     fen.split('/').forEach(function (row) {
@@ -194,12 +195,13 @@ socket.on("actualize",(data)=>{
         rowChars = [];
     });
 
-    ligne = ["a","b","c","d","e","f","g","h"]
-    colonne = [1,2,3,4,5,6,7,8]
-    
+    ligne = ["a","b","c","d","e","f","g","h"];
+    colonne = [1,2,3,4,5,6,7,8];
+    console.log(transform);  
+    console.log(tour)  
     ligne.forEach(numL =>{
         colonne.forEach(numC =>{
-            console.log(numL + numC)
+            
         })
     })
     
