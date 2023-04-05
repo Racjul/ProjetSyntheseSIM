@@ -198,14 +198,14 @@ socket.on("actualize",(data)=>{
     ligne = ["a","b","c","d","e","f","g","h"];
     colonne = ["1","2","3","4","5","6","7","8"];
     tableau = transform.reverse();
-    console.log(tableau);  
+    console.log(transform);  
     console.log(tour)  
     var different = false;
     for(var i =0;i<8;i++)
     {
         for(var j = 0; j < 8;j++)
         {
-            Document.getElementById(ligne[i] + colonne[j])
+            document.getElementById(ligne[i] + colonne[j])
         }
     }
   
