@@ -4,6 +4,7 @@ var tour;
 var computer = false;
 var socket = io();
 var Elo=1500;
+var connected  = false
 //var timer= new Timer(10);
 
 
@@ -11,11 +12,18 @@ var Elo=1500;
 socket.connect('http://0.0.0.0:8000')
 socket.on('connect', function() {
                 socket.send("connection établie: " + socket.id )
+                connected = true
+
 });
 
 setInterval(function(){
-    socket.emit("actualizeWeb");
-},1000)
+    
+    if(connected)
+    {
+        socket.emit("actualizeWeb");
+    }
+
+},1000);
 
 
 
