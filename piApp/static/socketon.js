@@ -199,11 +199,13 @@ socket.on("actualize",(data)=>{
     colonne = [1,2,3,4,5,6,7,8];
     console.log(transform);  
     console.log(tour)  
+    /*
     ligne.forEach(numL =>{
         colonne.forEach(numC =>{
             
         })
     })
+    */
     
 })
 
