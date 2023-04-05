@@ -205,9 +205,7 @@ socket.on("actualize",(data)=>{
     {
         for(var j = 0; j < 8;j++)
         {
-            console.log(document.getElementById(ligne[i] + colonne[j]).style.backgroundImage.substring(21,22))
-            console.log(tableau[i][j].toLowerCase())
-           if(document.getElementById(ligne[i] + colonne[j]).style.backgroundImage.substring(21,22) != tableau[i-1][j-1].toLowerCase())
+           if(document.getElementById(ligne[j] + colonne[i]).style.backgroundImage.substring(21,22) != tableau[i][j].toLowerCase())
            {
             console.log("Update");
             different = true; 
