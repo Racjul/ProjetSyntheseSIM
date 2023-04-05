@@ -5,6 +5,7 @@ var computer = false;
 var socket = io();
 var Elo=1500;
 var connected  = false
+var commencer = false
 //var timer= new Timer(10);
 
 
@@ -18,7 +19,7 @@ socket.on('connect', function() {
 
 setInterval(function(){
     
-    if(connected)
+    if(connected && commencer)
     {
         socket.emit("actualizeWeb");
     }
@@ -84,7 +85,7 @@ for(let i=1;i<=8;i++)
 
 function start(){
     tour = "w";
-    
+    commencer = true;
     //remet à 0 les cases
     for(let i= 0;i<8;i++){
         for(let j=1;j<=8;j++){
