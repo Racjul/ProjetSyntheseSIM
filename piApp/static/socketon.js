@@ -196,16 +196,22 @@ socket.on("actualize",(data)=>{
     });
 
     ligne = ["a","b","c","d","e","f","g","h"];
-    colonne = [1,2,3,4,5,6,7,8];
-    console.log(transform);  
+    colonne = ["1","2","3","4","5","6","7","8"];
+    tableau = transform.reverse();
+    console.log(tableau);  
     console.log(tour)  
-    /*
-    ligne.forEach(numL =>{
-        colonne.forEach(numC =>{
-            
-        })
-    })
-    */
+    var different = false;
+    for(var i =0;i<8;i++)
+    {
+        for(var j = 0; j < 8;j++)
+        {
+            Document.getElementById(ligne[i] + colonne[j])
+        }
+    }
+  
+    if(different)
+    {
+        
+    }
     
 })
-
