@@ -19,6 +19,7 @@
 
 const int stepsPerRevolutionBottom = 200;  // change this to fit the number of steps per revolution
 const int stepsPerRevolutionUpper = 336;  // change this to fit the number of steps per revolution
+const int buttonPin = 2;
 // for your motor
 
 // initialize the stepper library on pins 8 through 11:
@@ -28,12 +29,15 @@ Stepper myStepperUpper(stepsPerRevolutionUpper, 4, 5, 6, 7);
 
 
 
-
+int boutonPhase = LOW;
 
 void setup() {
   // set the speed at 60 rpm:
   myStepperBottom.setSpeed(30);
   myStepperUpper.setSpeed(30);
+
+    // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
   
   // initialize the serial port:
   Serial.begin(9600);
@@ -41,31 +45,30 @@ void setup() {
 
 void loop() {
 
-  deplacer(90,90);
-  delay(500);
-  
-  deplacer(-90,-90);
-  delay(500);
+  if(boutonPhase == HIGH)
+  {
+    deplacer(90,90);
+    boutonPhase = LOW;
+
+    delay(2000);
+  }
+  else
+  {
+    boutonPhase = digitalRead(buttonPin);
+  }
+
 
 }
 
 
 int angleToStep(float angle, bool upper)
 {
-  if(upper)
-  {
-    return ceil((angle * 336)/360);
-  }
-  else
-  {
-    return ceil((angle * 200)/360);
-  }
-
-  return 0;
+  return ceil((angle * 331)/360);
 }
 
 void deplacer(float angleUp, float angleBottom)
 {
+
   float stepUp = angleToStep(angleUp,true);
   float stepBottom = angleToStep(angleBottom,false);
 
@@ -73,45 +76,36 @@ void deplacer(float angleUp, float angleBottom)
   int cptStepBottom=0;
   int cptStepUp=0;
 
-  while(true)
+  while(i<=abs(stepUp) || i<= abs(stepBottom))
   {
-    if((i % 2 == 0) && cptStepUp < abs(stepUp))
+    if(i<=abs(stepUp))
     {
       if(stepUp<0)
       {
         myStepperUpper.step(-1);
-        cptStepUp++;
       }
-      else if(stepUp >0)
+      else if(stepUp>0)
       {
         myStepperUpper.step(1);
-        cptStepUp++;
       }
-
-      
     }
-    else if((i % 2 != 0 ) && cptStepBottom < stepBottom)
+    
+    if(i<=abs(stepBottom))
     {
       if(stepBottom<0)
       {
         myStepperBottom.step(-1);
-        cptStepBottom++;
       }
-      else if(stepBottom >0)
+      else if(stepBottom>0)
       {
         myStepperBottom.step(1);
-        cptStepBottom++;
       }
-
-    }
-    else
-    {
-      break;
     }
     i++;
-
-    delay(10);
   }
+
+
+
 
 }
 
