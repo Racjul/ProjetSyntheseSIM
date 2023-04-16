@@ -66,7 +66,6 @@ def handle_my_custom_event(piece, id, caseInitial):
             return
 
         best = stockfish.get_best_move_time(1000)
-        print()
         stockfish.make_moves_from_current_position([best])
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)

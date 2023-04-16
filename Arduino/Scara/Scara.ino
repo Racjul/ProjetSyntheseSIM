@@ -7,7 +7,6 @@ AccelStepper stepperBottom(AccelStepper::FULL4WIRE, 4, 5, 6, 7);
 AccelStepper stepperTop(AccelStepper::FULL4WIRE, 8,9,10,11);
 
 MultiStepper steppers;
-eval "$(ssh-ag
 int boutonPhase = LOW;
 const int buttonPin = 2;
 long position[2];
@@ -16,7 +15,6 @@ void deplacer(double,double,int,int);
  
 
 void setup() {
-  // put your setup code here, to run once:
 
   Serial.begin(9600);
 
@@ -30,7 +28,6 @@ void setup() {
 }
 
 void loop() {
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU+GhHJRDMvnOdKu9NSlo2q6xJ7pWS1pxcwx4lQ2MpX mathisbaril1@hotmail.com
 
   boutonPhase = digitalRead(buttonPin);
 
