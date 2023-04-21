@@ -69,8 +69,6 @@ def nbCaseTraverser(caseI, caseF):
 
   
 
-
-
 def grille():
     posX = -111
     posY = -111
