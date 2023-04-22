@@ -28,69 +28,43 @@ void setup() {
 
   steppers.addStepper(stepperTop);
   steppers.addStepper(stepperBottom);
-
- 
 }
 
 void loop() {
   
-  
+//LE void ne fonctionne pas 
+
   if(Serial.available())
   {
-    angles = Serial.readStringUntil("\n");
-  }
-
-  
-  if(angles != "")
-  {
     delay(1000);
-    
-    
-
-    
-    int upI = angles.substring(0,angles.indexOf(",")).toInt();
+    double upI = angles.substring(0,angles.indexOf(",")).toDouble();
     angles.remove(0,angles.indexOf(",")+1);
-    int bottomI = angles.substring(0,angles.indexOf(",")).toInt();
+    double bottomI = angles.substring(0,angles.indexOf(",")).toDouble();
     angles.remove(0,angles.indexOf(",")+1);
-    //Serial.println(upI);
-    //erial.println(bottomI);
     deplacer(upI,bottomI,150,1000);
 
-    int tempUp;
-    int tempBottom;
+    double tempUp;
+    double tempBottom;
     while(angles.length()>0)
     {
-      tempUp = angles.substring(0,angles.indexOf(",")).toInt();
+      tempUp = angles.substring(0,angles.indexOf(",")+1).toDouble();
       angles.remove(0,angles.indexOf(",")+1);
-      tempBottom = angles.substring(0,angles.indexOf(",")).toInt();
+      tempBottom = angles.substring(0,angles.indexOf(",")+1).toDouble();
       angles.remove(0,angles.indexOf(",")+1);
-      //Serial.println(tempUp);
-      //Serial.println(tempBottom);
-      deplacer(tempUp,tempBottom,75,0);
+      deplacer(tempUp,tempBottom,50,10);
     }
   
     delay(1000);
 
-    deplacer(0,0,150,0);
-
+    deplacer(0,0,150,100);
+   
   
-    
-    
-    
+
     angles = "";
     
 
  
   }
-
-
-  
-
-
-
-
-
-
 
 
 }
@@ -102,8 +76,8 @@ void deplacer(double angleTop, double angleBottom, int maxSpeed, int delayTime)
   stepperTop.setMaxSpeed(maxSpeed);
 
 
-  position[1] = round(angleTop * 333 / 360);
-  position[0] = round(angleBottom * 333 / 360);
+  position[1] = angleTop * 1000 / 360;
+  position[0] = angleBottom * 500 / 360;
 
   steppers.moveTo(position);
   steppers.runSpeedToPosition();
