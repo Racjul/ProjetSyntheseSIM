@@ -196,46 +196,46 @@ def cooToAngle(x,y,L):
 
 ####################################
 # Main()
+if __name__ == "__main__":
+    grille = grille()
 
-grille = grille()
+    xi=0
+    xf=0
+    yi=0
+    yf=0
+    L=107
 
-xi=0
-xf=0
-yi=0
-yf=0
-L=107
-
-while(True):
+    while(True):
     
 
-    caseI = input("choisissez une case initiale : ")
-    caseF = input("choisissez une case finale: ")
+        caseI = input("choisissez une case initiale : ")
+        caseF = input("choisissez une case finale: ")
 
 
 
 
-    ## La variable chemin contient toute les cases à partir de la case initiales jusqu'a la case finale 
-    chemin = nbCaseTraverser(caseI,caseF)
-    chemin.insert(0,caseI)
-    print(chemin)
+        ## La variable chemin contient toute les cases à partir de la case initiales jusqu'a la case finale 
+        chemin = nbCaseTraverser(caseI,caseF)
+        chemin.insert(0,caseI)
+        print(chemin)
 
-    listCoo = ''
+        listCoo = ''
 
-    for x in chemin:
-        for y in range(8):
-            for z in range(8):
-                temp = grille[y][z]
-                if temp.get("notation") == x:
-                    x = temp.get("posX")
-                    y = temp.get("posY")
-                    print(str(x) + ", " + str(y))
-                    listCoo = listCoo + (cooToAngle(x,y,L) + ',')
-                    break
+        for x in chemin:
+            for y in range(8):
+                for z in range(8):
+                    temp = grille[y][z]
+                    if temp.get("notation") == x:
+                        x = temp.get("posX")
+                        y = temp.get("posY")
+                        print(str(x) + ", " + str(y))
+                        listCoo = listCoo + (cooToAngle(x,y,L) + ',')
+                        break
 
 
-    ##arduino.write(str.encode(listCoo))
+        ##arduino.write(str.encode(listCoo))
         
-    print(listCoo)
+        print(listCoo)
 
 
 
