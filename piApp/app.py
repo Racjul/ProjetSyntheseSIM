@@ -3,7 +3,8 @@ from stockfish import Stockfish
 import os
 import eventlet
 eventlet.monkey_patch()
-from threading import Lock
+import threading as th
+import time
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
 import math
@@ -20,7 +21,8 @@ socketio = SocketIO(app, async_mode='eventlet')
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 
-
+timeW = 600
+timeB = 600
 # permet de print dans la console, les messages reçus provenant du site web
 @socketio.on('message')
 def handle_message(data):
@@ -103,6 +105,13 @@ def hangdle_my_custom_event():
 def index():
     return render_template('index.html', async_mode=socketio.async_mode)
 
+def sendTime(timeW,timeB)
+    
+def startTimer(timeW,timeB):
+    th.Timer()
 
+######################################
+# main()
 if __name__ == '__main__':
     os.system("gunicorn --bind 0.0.0.0:8000 --worker-class eventlet -w 1 app:app")
+    startTimer(timeW,timeB)

@@ -6,10 +6,8 @@ var socket = io();
 var Elo=1500;
 var connected  = false
 var commencer = false
-var timer;
-var timerB = document.getElementById("timerB");
-var timerW = document.getElementById("timerW")
-//var timer= new Timer(10);
+
+
 
 
 
@@ -33,24 +31,7 @@ function containsUppercase(str)
 {
     return /[A-Z]/.test(str);
 }
-setInterval(function(){
-    var time;
-if(tour == "w")
-{
-    time = timerW.innerHTML;
-    sec = parseInt(time.split(':')[0]);
-    minutes = parseInt(time.split(':')[1]);
-    timerW.innerHTML = time;
-    
-}
-else
-{
-   time =  timerB.innerHTML;
 
-   timerB.innerHTML = time;
-}
-
-},1000)
 
 
 
