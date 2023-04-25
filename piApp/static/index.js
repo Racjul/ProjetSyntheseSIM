@@ -1,11 +1,14 @@
 var caseI = null;
 var pieceDeplacement = null;
-var tour;
+var tour= "w";
 var computer = false;
 var socket = io();
 var Elo=1500;
 var connected  = false
 var commencer = false
+var timer;
+var timerB = document.getElementById("timerB");
+var timerW = document.getElementById("timerW")
 //var timer= new Timer(10);
 
 
@@ -26,9 +29,28 @@ setInterval(function(){
 
 },2000);
 
-function containsUppercase(str) {
+function containsUppercase(str) 
+{
     return /[A-Z]/.test(str);
-  }
+}
+setInterval(function(){
+    var time;
+if(tour == "w")
+{
+    time = timerW.innerHTML;
+    sec = parseInt(time.split(':')[0]);
+    minutes = parseInt(time.split(':')[1]);
+    timerW.innerHTML = time;
+    
+}
+else
+{
+   time =  timerB.innerHTML;
+
+   timerB.innerHTML = time;
+}
+
+},1000)
 
 
 
@@ -36,7 +58,6 @@ function containsUppercase(str) {
 
 
 //création de l'échéquier
-
 
 const board = document.getElementById("board");
 const notation = ["a","b","c","d","e","f","g","h"]

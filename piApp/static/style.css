@@ -101,3 +101,15 @@ body{
         border-color: #769656;
         color: white;
     }
+    
+    #timerB
+    {
+        background-color: black;
+        width: 200px;
+    }
+
+    #timerW
+    {
+        background-color: white;
+        width: 200px;
+    }
