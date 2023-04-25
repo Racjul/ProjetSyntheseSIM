@@ -1,7 +1,6 @@
 import math
 import serial
-import threading as th
-import time
+
 
 ##arduino = serial.Serial('/dev/ttyACM5', 9600, timeout=.1)
 
