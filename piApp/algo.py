@@ -1,6 +1,7 @@
 import math
 import serial
-
+import threading as th
+import time
 
 ##arduino = serial.Serial('/dev/ttyACM5', 9600, timeout=.1)
 
@@ -193,10 +194,8 @@ def cooToAngle(x,y,L):
 
 
 
-
-####################################
-# Main()
-if __name__ == "__main__":
+def test():
+    
     grille = grille()
 
     xi=0
@@ -237,6 +236,14 @@ if __name__ == "__main__":
         
         print(listCoo)
 
+
+
+
+
+####################################
+# Main()
+if __name__ == "__main__":
+    test()
 
 
 
