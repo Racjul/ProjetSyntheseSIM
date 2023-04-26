@@ -102,7 +102,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         best = stockfish.get_best_move_time(1000)
         
         print(stockfish.will_move_be_a_capture(best))
-        if stockfish.will_move_be_a_capture(best) == "Capture.DIRECT_CAPTURE":
+        if stockfish.will_move_be_a_capture(best) == stockfish.Capture.DIRECT_CAPTURE:
             print("cool")
             capture = True
         stockfish.make_moves_from_current_position([best])
