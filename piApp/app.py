@@ -8,6 +8,9 @@ import time
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
 import math
+from algo import Grille
+
+grille = Grille(128,"white")
 
 # permet de donner la directory des fichier statics du projet
 app = Flask(__name__, static_url_path='/static')
@@ -41,6 +44,7 @@ def handle_my_custom_event(piece, id, caseInitial):
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
+        print(grille.move(caseInitial,id,False,False))
 
         print(stockfish.get_board_visual())
 
@@ -115,3 +119,4 @@ def startTimer(timeW,timeB):
 if __name__ == '__main__':
     os.system("gunicorn --bind 0.0.0.0:8000 --worker-class eventlet -w 1 app:app")
     startTimer(timeW,timeB)
+

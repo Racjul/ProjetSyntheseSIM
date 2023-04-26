@@ -2,7 +2,7 @@ import math
 import serial
 import numpy as np
 
-arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=.1)
+##arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=.1)
 
 class Grille:
     
