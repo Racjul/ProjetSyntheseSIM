@@ -47,7 +47,7 @@ timeB = 600
 def handle_message(data):
     print('received message: ' + data)
     thread = th.Thread(target=lireSerial)
-    thread.start
+    thread.start()
 
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')
