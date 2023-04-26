@@ -27,16 +27,16 @@ stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 lock = th.Lock()
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.reset_input_buffer()
-def lireSerial(ser):
+def lireSerial():
     while True:
-        with lock:
-            print("TEST")
-            line = ser.readline().decode('utf-8').rstrip()
-            print(line)
-            lock.release
-            time.sleep(1)
+        lock.acquire()
+        print("TEST")
+        line = ser.readline().decode('utf-8').rstrip()
+        print(line)
+        lock.release()
+        time.sleep(1)
             
-thread = th.Thread(target=lireSerial, args=(ser,))
+thread = th.Thread(target=lireSerial, args=())
 thread.start()
 
 
@@ -68,9 +68,9 @@ def handle_my_custom_event(piece, id, caseInitial):
         socketio.emit("coupValide", piece + id + caseInitial)
         
         print(stockfish.get_board_visual())
-        with lock:
-            ser.write((grille.move(caseInitial,id,False,False)+"%").encode())
-            lock.release()
+        lock.acquire()
+        ser.write((grille.move(caseInitial,id,False,False)+"%").encode())
+        lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
@@ -99,9 +99,9 @@ def handle_my_custom_event(piece, id, caseInitial):
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)
         print(stockfish.get_board_visual())
-        with lock:
-            ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
-            lock.release
+        lock.acquire()
+        ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
+        lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
