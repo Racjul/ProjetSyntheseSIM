@@ -26,16 +26,16 @@ socketio = SocketIO(app, async_mode='eventlet')
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.reset_input_buffer()
-ser.reset_output_buffer()
+
 
 def lireSerial():
     while True:
+        print("TEST")
         line = ser.readline().decode('utf-8').rstrip()
         print(line)
         time.sleep(1)
 
-thread = th.Thread(target=lireSerial)
-thread.start
+
 timeW = 600
 timeB = 600
 
@@ -46,7 +46,8 @@ timeB = 600
 @socketio.on('message')
 def handle_message(data):
     print('received message: ' + data)
-
+    thread = th.Thread(target=lireSerial)
+    thread.start
 
 # permet de vérifier si le coup est valide à l'aide de l'engine stockfish
 @socketio.on('coupDemande')
