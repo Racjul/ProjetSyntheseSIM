@@ -38,6 +38,7 @@ void loop() {
   }
     
 
+        print(stockfish.will_move_be_a_capture(best))
 }
 
 

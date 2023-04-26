@@ -11,6 +11,7 @@ from algo import Grille
 import serial
 
 playWithWebSite= True
+capture = False
 
 grille = Grille(128,"white")
 
@@ -99,7 +100,8 @@ def handle_my_custom_event(piece, id, caseInitial):
 
         best = stockfish.get_best_move_time(1000)
         
-        print(stockfish.will_move_be_a_capture(best))
+        if stockfish.will_move_be_a_capture(best) == "Stockfish.Capture.DIRECT_CAPTURE":
+            capture = True
         stockfish.make_moves_from_current_position([best])
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)
@@ -107,7 +109,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         lock.acquire()
         ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
         ##ser.write(angles.encode())
-        grille.move(best[:2],best[2:],False,False)
+        grille.move(best[:2],best[2:],capture,False)
         
 
         ##ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
