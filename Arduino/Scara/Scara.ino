@@ -31,17 +31,18 @@ void setup() {
 void loop() {
   if(i==0)
   {
-    String angles1 ="48.1,347.2,38.5,354.8,29.3,363.8,20.6,376.3,13.0,398.5,";
-    String angles2 = "";
+    String angles1 ="55.6,183.2,47.2,193.3,39.7,205.2,33.5,219.5,29.3,236.9,";
 
-    deplacer(angles1,angles2);
+    deplacer(angles1);
     i++;
   }
 }
 
 
-void deplacer(String angles1,String angles2)
+void deplacer(String angles1)
 {
+  
+
   delay(1000);
   double upI = angles1.substring(0,angles1.indexOf(",")).toDouble();
   angles1.remove(0,angles1.indexOf(",")+1);
@@ -62,11 +63,6 @@ void deplacer(String angles1,String angles2)
   
   delay(1000);
 
-  if(angles2 != "")
-  {
-    delay(1000);
-    deplacer(angles2,"");
-  }
 
   rotationMoteur(0,0,150,100);
 }
@@ -85,4 +81,5 @@ void rotationMoteur(double angleTop, double angleBottom, int maxSpeed, int delay
 
   delay(delayTime);
 }  
+
 
