@@ -32,7 +32,7 @@ def lireSerial(ser):
         line = ser.readline().decode('utf-8').rstrip()
         print(line)
         time.sleep(1)
-thread = th.Thread(target=lireSerial, args=(ser))
+thread = th.Thread(target=lireSerial, args=(ser,))
 thread.start()
 
 
