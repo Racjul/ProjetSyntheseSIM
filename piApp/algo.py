@@ -320,15 +320,15 @@ class Grille:
             angles2 = self.pathToAngle(path)
             print(angles2)
     
- """
- def test():
+ 
+def test():
    
-	grille = Grille(127,"white")
-	capture = False
-	cI = input("Entrez une case initile: ")
-	cF = input("Entrez une case finale: ")
+    grille = Grille(127,"white")
+    capture = False
+    cI = input("Entrez une case initile: ")
+    cF = input("Entrez une case finale: ")
 
-	print(grille.move(cI,cF,capture,False))
+    print(grille.move(cI,cF,capture,False))
 	##arduino.write(str.encode(grille.deplacer(cI,cF)))
 	##print(grille.cooToAngle(17,-79))
 
@@ -338,7 +338,7 @@ if __name__ == "__main__":
 	test()
 
 
-"""
+
             
             
         
