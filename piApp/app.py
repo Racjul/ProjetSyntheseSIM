@@ -106,7 +106,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
         ##ser.write(angles.encode())
         grille.move(best[:2],best[2:],False,False)
-        print(stockfish.will_move_be_a_capture(caseInitial+id))
+        print(stockfish.will_move_be_a_capture(best))
 
         ##ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
         lock.release()
