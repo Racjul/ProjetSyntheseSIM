@@ -74,7 +74,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)
         print(stockfish.get_board_visual())
-        print(grille.move(best[0,1],best[2,3]))
+        print(grille.move(best[:2],best[2:]))
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
