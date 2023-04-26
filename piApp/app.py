@@ -11,6 +11,7 @@ from algo import Grille
 import serial
 
 grille = Grille(128,"white")
+angles = None
 
 # permet de donner la directory des fichier statics du projet
 app = Flask(__name__, static_url_path='/static')
@@ -66,10 +67,11 @@ def handle_my_custom_event(piece, id, caseInitial):
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
-        
+        print(stockfish.will_move_be_a_capture(caseInitial+id))
         print(stockfish.get_board_visual())
         lock.acquire()
-        ser.write((grille.move(caseInitial,id,False,False)+"%").encode())
+        angles = "p" + grille.move(caseInitial,id,False,False)+"%"
+        ##ser.write(("p" + grille.move(caseInitial,id,False,False)+"%").encode())
         lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)
@@ -100,7 +102,9 @@ def handle_my_custom_event(piece, id, caseInitial):
         print("Le bot a fait:" + best)
         print(stockfish.get_board_visual())
         lock.acquire()
-        ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
+        angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
+        ser.write(angles.encode())
+        ##ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
         lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)

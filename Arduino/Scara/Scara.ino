@@ -34,38 +34,57 @@ void loop() {
     Serial.print("You sent me: ");
     Serial.println(data);
     deplacer(data);
+    rotationMoteur(0,0,150,100);
   }
     
 
 }
 
 
-void deplacer(String angles1)
+void deplacer(String angles)
 {
   
+  if (angles[0] == "c"){
+    angles.indexOf(";");
+    String anglesCapture = angles.substring(0,angle.indexOf(";")+1);
+    angles.remove(0,angles.indexOf(";")+1);
+    deplacer(anglesCapture);
+  }
+  else if(angles[0] == "P")
+  {
+    angles.indexOf(";");
+    String anglesPlayer = angles.substring(0,angle.indexOf(";")+1);
+    angles.remove(0,angles.indexOf(";")+1);
+    deplacer(anglePlayer);
+  }
+
+
+
+
+
 
   delay(1000);
-  double upI = angles1.substring(0,angles1.indexOf(",")).toDouble();
-  angles1.remove(0,angles1.indexOf(",")+1);
-  double bottomI = angles1.substring(0,angles1.indexOf(",")).toDouble();
-  angles1.remove(0,angles1.indexOf(",")+1);
+  double upI = angles.substring(0,angles.indexOf(",")).toDouble();
+  angles.remove(0,angles.indexOf(",")+1);
+  double bottomI = angles.substring(0,angles.indexOf(",")).toDouble();
+  angles.remove(0,angles.indexOf(",")+1);
   rotationMoteur(upI,bottomI,150,1000);
 
   double tempUp;
   double tempBottom;
-  while(angles1.length()>0)
+  while(angles.length()>0)
   {
-    tempUp = angles1.substring(0,angles1.indexOf(",")+1).toDouble();
-    angles1.remove(0,angles1.indexOf(",")+1);
-    tempBottom = angles1.substring(0,angles1.indexOf(",")+1).toDouble();
-    angles1.remove(0,angles1.indexOf(",")+1);
+    tempUp = angles.substring(0,angles.indexOf(",")+1).toDouble();
+    angles.remove(0,angles.indexOf(",")+1);
+    tempBottom = angles.substring(0,angles.indexOf(",")+1).toDouble();
+    angles.remove(0,angles.indexOf(",")+1);
     rotationMoteur(tempUp,tempBottom,50,10);
   }
   
   delay(1000);
 
 
-  rotationMoteur(0,0,150,100);
+  
 }
 
 void rotationMoteur(double angleTop, double angleBottom, int maxSpeed, int delayTime)
