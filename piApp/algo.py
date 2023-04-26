@@ -320,7 +320,7 @@ class Grille:
             angles2 = self.pathToAngle(path)
             print(angles2)
     
-  
+ """
  def test():
    
 	grille = Grille(127,"white")
@@ -338,7 +338,7 @@ if __name__ == "__main__":
 	test()
 
 
-
+"""
             
             
         
