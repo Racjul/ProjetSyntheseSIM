@@ -68,7 +68,6 @@ def handle_my_custom_event(piece, id, caseInitial):
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
-        print(stockfish.will_move_be_a_capture(caseInitial+id))
         print(stockfish.get_board_visual())
         lock.acquire()
         
@@ -107,6 +106,8 @@ def handle_my_custom_event(piece, id, caseInitial):
         ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
         ##ser.write(angles.encode())
         grille.move(best[:2],best[2:],False,False)
+        print(stockfish.will_move_be_a_capture(caseInitial+id))
+
         ##ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
         lock.release()
         # verify checkmate
