@@ -2,7 +2,7 @@ import math
 import serial
 import numpy as np
 
-##arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=.1)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 class Grille:
     
@@ -13,6 +13,8 @@ class Grille:
         self.nbColumn = 17
         self.listNotation = ['a','b','c','d','e','f','g','h']
         self.grille = []
+        
+        
         
         
         i=8
@@ -262,14 +264,17 @@ class Grille:
         return angles 
     
     def move(self,caseI,caseF,capture, enPassant):
-        
+        angles = ""
         if capture and enPassant== False:
             print(self.moveCapture(caseF))
+            angles = "c" + self.moveCapture(caseF) + ";"
             
             
         path = self.chemin(caseI,caseF)
-        angles = self.pathToAngle(path)
-        return angles
+        angles = angles + self.pathToAngle(path)
+        ser.write(angles.encode())
+    
+        
               
     def castleKingSide(self):
         if self.colorBot== "white":
