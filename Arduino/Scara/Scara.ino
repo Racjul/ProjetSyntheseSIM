@@ -29,13 +29,13 @@ void setup() {
 }
 
 void loop() {
-  if(i==0)
-  {
-    String angles1 ="55.6,183.2,47.2,193.3,39.7,205.2,33.5,219.5,29.3,236.9,";
-
-    deplacer(angles1);
-    i++;
+    if (Serial.available() > 0) {
+    String data = Serial.readStringUntil('%');
+    
+    deplacer(data);
   }
+    
+
 }
 
 

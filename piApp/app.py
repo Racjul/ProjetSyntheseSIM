@@ -8,6 +8,7 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
 import math
 from algo import Grille
+import serial
 
 grille = Grille(128,"white")
 
@@ -22,6 +23,9 @@ socketio = SocketIO(app, async_mode='eventlet')
 
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser.reset_input_buffer()
+ser.reset_output_buffer()
 
 timeW = 600
 timeB = 600
@@ -74,7 +78,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)
         print(stockfish.get_board_visual())
-        print(grille.move(best[:2],best[2:],False,False))
+        ser.write(grille.move(best[:2],best[2:],False,False)+"%")
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
