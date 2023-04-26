@@ -47,9 +47,9 @@ def handle_my_custom_event(piece, id, caseInitial):
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
-        coup = piece + id + caseInitial
+        
         print(stockfish.get_board_visual())
-        ser.write((grille.move(coup[:2],coup[2:],False,False)+"%").encode())
+        ser.write((grille.move(caseInitial,id,False,False)+"%").encode())
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
