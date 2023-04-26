@@ -31,7 +31,8 @@ void setup() {
 void loop() {
     if (Serial.available() > 0) {
     String data = Serial.readStringUntil('%');
-    
+    Serial.print("You sent me: ");
+    Serial.println(data);
     deplacer(data);
   }
     

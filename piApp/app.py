@@ -21,14 +21,27 @@ app.config['SECRET_KEY'] = 'test'
 # permet de définir la librairie à utiliser pour la comunication serveur
 socketio = SocketIO(app, async_mode='eventlet')
 
+
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.reset_input_buffer()
 ser.reset_output_buffer()
 
+def lireSerial():
+    while True:
+        line = ser.readline().decode('utf-8').rstrip()
+        print(line)
+        time.sleep(1)
+
+thread = th.Thread(target=lireSerial)
+thread.start
 timeW = 600
 timeB = 600
+
+
+
+
 # permet de print dans la console, les messages reçus provenant du site web
 @socketio.on('message')
 def handle_message(data):
