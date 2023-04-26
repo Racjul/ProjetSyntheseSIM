@@ -43,7 +43,6 @@ def handle_my_custom_event(piece, id, caseInitial):
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
-        print(grille.move(caseInitial,id,False,False))
 
         print(stockfish.get_board_visual())
 

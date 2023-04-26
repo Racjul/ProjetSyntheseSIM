@@ -323,7 +323,7 @@ class Grille:
  
 def test():
    
-    grille = Grille(127,"white")
+    grille = Grille(127,"black")
     capture = False
     cI = input("Entrez une case initile: ")
     cF = input("Entrez une case finale: ")
