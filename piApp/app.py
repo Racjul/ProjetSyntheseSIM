@@ -109,14 +109,10 @@ def hangdle_my_custom_event():
 def index():
     return render_template('index.html', async_mode=socketio.async_mode)
 
-def sendTime(timeW,timeB)
-    
-def startTimer(timeW,timeB):
-    th.Timer()
 
 ######################################
 # main()
 if __name__ == '__main__':
     os.system("gunicorn --bind 0.0.0.0:8000 --worker-class eventlet -w 1 app:app")
-    startTimer(timeW,timeB)
+    
 
