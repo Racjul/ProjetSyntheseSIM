@@ -112,6 +112,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         lock.acquire()
         ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
         ##ser.write(angles.encode())
+        print("move")
         grille.move(best[:2],best[2:],capture,False)
         
 
