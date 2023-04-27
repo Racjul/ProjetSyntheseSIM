@@ -38,26 +38,27 @@ void loop() {
   }
     
 
-        print(stockfish.will_move_be_a_capture(best))
 }
 
 
 void deplacer(String angles)
 {
   
-  if (angles[0] == "c"){
-    angles.indexOf(";");
-    String anglesCapture = angles.substring(0,angle.indexOf(";")+1);
+  if(angles[0] == 'c'){
+    String anglesCapture = angles.substring(1,angles.indexOf(";"));
     angles.remove(0,angles.indexOf(";")+1);
+    Serial.println(anglesCapture);
+    Serial.println(angles);
     deplacer(anglesCapture);
   }
-  else if(angles[0] == "P")
+  else if(angles[0] == 'p')
   {
     angles.indexOf(";");
-    String anglesPlayer = angles.substring(0,angle.indexOf(";")+1);
-    angles.remove(0,angles.indexOf(";")+1);
-    deplacer(anglePlayer);
+    String anglesPlayer = angles.substring(0,angles.indexOf(";"));
+    angles.remove(1,angles.indexOf(";"));
+    deplacer(anglesPlayer);
   }
+
 
 
 

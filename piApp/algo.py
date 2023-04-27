@@ -260,7 +260,7 @@ class Grille:
         
         
         
-        angles = angles+ str(self.cooToAngle(posXCapture,posYCapture)+",")
+        angles = angles+ str(self.cooToAngle(posXCapture,posYCapture,False)+",")
         return angles 
     
     def move(self,caseI,caseF,capture, enPassant):
@@ -329,7 +329,7 @@ class Grille:
 def test():
    
     grille = Grille(127,"black")
-    capture = False
+    capture = True
     cI = input("Entrez une case initile: ")
     cF = input("Entrez une case finale: ")
 
