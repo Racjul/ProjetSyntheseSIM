@@ -108,11 +108,12 @@ def handle_my_custom_event(piece, id, caseInitial):
         stockfish.make_moves_from_current_position([best])
         socketio.emit("coupValideBot", best)
         print("Le bot a fait:" + best)
+        print(f"caseI:  {best[:2]}, caseF: {best[2:]}")
+
         print(stockfish.get_board_visual())
         lock.acquire()
         ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
         ##ser.write(angles.encode())
-        print("move")
         grille.move(best[:2],best[2:],capture,False)
         
 
