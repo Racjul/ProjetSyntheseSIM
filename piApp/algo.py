@@ -249,7 +249,7 @@ class Grille:
         
         path = self.chemin(caseCapture,None)
         
-        ligne = posLigne = 16- ((2 * (int(caseCapture[1]) -1))+1)
+        ligne  = 16- ((2 * (int(caseCapture[1]) -1))+1)
         i=1
         
         while self.grille[ligne + i-1][16].get("posY") != posYCapture:
