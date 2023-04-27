@@ -13,7 +13,7 @@ import serial
 playWithWebSite= True
 capture = False
 
-grille = Grille(128,"white")
+grille = Grille(127,"white")
 
 # permet de donner la directory des fichier statics du projet
 app = Flask(__name__, static_url_path='/static')
