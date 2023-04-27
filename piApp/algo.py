@@ -266,7 +266,7 @@ class Grille:
     def move(self,caseI,caseF,capture, enPassant):
         angles = ""
         if capture and enPassant== False:
-            print(self.moveCapture(caseF))
+            ##print(self.moveCapture(caseF))
             angles = "c" + self.moveCapture(caseF) + ";"
             
             
