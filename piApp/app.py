@@ -28,14 +28,14 @@ socketio = SocketIO(app, async_mode='eventlet')
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 lock = th.Lock()
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-ser.reset_input_buffer()
+##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+##ser.reset_input_buffer()
 def lireSerial():
     while True:
         lock.acquire()
         print("TEST")
-        line = ser.readline().decode('utf-8').rstrip()
-        print(line)
+        ###line = ser.readline().decode('utf-8').rstrip()
+        ##print(line)
         lock.release()
         time.sleep(1)
             
