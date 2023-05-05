@@ -1,12 +1,12 @@
 #ifndef Multiplexer_h
 #define Multiplexer_h
 
-#include "Arduino.h"
+#include<Arduino.h>
 
 class Multiplexer
 {
 private:
-    int* listOut;
+    int* listeOut;
 public:
     Multiplexer(int out1,int out2,int out3,int out4, int ana1);
     ~Multiplexer();

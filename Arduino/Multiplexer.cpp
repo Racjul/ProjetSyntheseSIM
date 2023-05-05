@@ -1,4 +1,4 @@
-#include"Arduino.h"
+#include<Arduino.h>
 #include"Multiplexer.h"
 
 Multiplexer::Multiplexer(int out1,int out2,int out3,int out4, int ana1)
@@ -19,23 +19,22 @@ Multiplexer::Multiplexer(int out1,int out2,int out3,int out4, int ana1)
     digitalWrite(out3, LOW);
     digitalWrite(out4, LOW);
 
-    listOut[] = [out1,out2,out3,out4]; 
+    int liste[4] = {out1,out2,out3,out4}; 
+    listeOut = liste;
 }
 
-Multiplexer::readChannel(int channelNumber)
+float Multiplexer::readChannel(int channelNumber)
 {
-    
-
     for(int i= 0; i<4;i++)
     {
-        digitalWrite(listOut[i],channel[channelNumber][i]) ;   
+        digitalWrite(listeOut[i],channel[channelNumber][i]);   
     }
 
     return analogRead(ana1);
 }
 
 
-Multiplexer:~Multiplexer()
+Multiplexer::~Multiplexer()
 {
-    delete[] listOut;
+    delete[] listeOut;
 }
