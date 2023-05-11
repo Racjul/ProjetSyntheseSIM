@@ -4,8 +4,8 @@
 #include <string.h>
 
 
-AccelStepper stepperBottom(AccelStepper::FULL4WIRE, 4, 5, 6, 7);
-AccelStepper stepperTop(AccelStepper::FULL4WIRE, 8,9,10,11);
+AccelStepper stepperTop(AccelStepper::FULL4WIRE, 4, 5, 6, 7);
+AccelStepper stepperBottom(AccelStepper::FULL4WIRE, 8,9,10,11);
 
 MultiStepper steppers;
 long position[2];

@@ -272,6 +272,7 @@ class Grille:
             
         path = self.chemin(caseI,caseF)
         angles = angles + self.pathToAngle(path) + "%"
+        print("it works")
         ser.write(angles.encode())
     
         
