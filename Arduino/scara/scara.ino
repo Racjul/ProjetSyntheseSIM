@@ -95,8 +95,8 @@ void rotationMoteur(double angleTop, double angleBottom, int maxSpeed, int delay
   stepperTop.setMaxSpeed(maxSpeed);
 
 
-  position[1] = angleTop * 1000 / 360;
-  position[0] = angleBottom * 500 / 360;
+  position[1] = -angleTop * 1000 / 360;
+  position[0] = -angleBottom * 500 / 360;
 
   steppers.moveTo(position);
   steppers.runSpeedToPosition();
