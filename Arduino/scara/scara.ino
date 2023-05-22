@@ -20,10 +20,9 @@ void setup() {
   // put your setup code here, to run once:
 
   Serial.begin(9600);
-
+  pinMode(5,OUTPUT);
   stepperBottom.setAcceleration(20);
   stepperTop.setAcceleration(20);
-
   steppers.addStepper(stepperTop);
   steppers.addStepper(stepperBottom);
 }
@@ -63,15 +62,13 @@ void deplacer(String angles)
 
 
 
-
-
   delay(1000);
   double upI = angles.substring(0,angles.indexOf(",")).toDouble();
   angles.remove(0,angles.indexOf(",")+1);
   double bottomI = angles.substring(0,angles.indexOf(",")).toDouble();
   angles.remove(0,angles.indexOf(",")+1);
   rotationMoteur(upI,bottomI,150,1000);
-
+  digitalWrite(5,HIGH);
   double tempUp;
   double tempBottom;
   while(angles.length()>0)
@@ -82,7 +79,7 @@ void deplacer(String angles)
     angles.remove(0,angles.indexOf(",")+1);
     rotationMoteur(tempUp,tempBottom,50,10);
   }
-  
+  digitalWrite(5,LOW);
   delay(1000);
 
 
@@ -103,5 +100,3 @@ void rotationMoteur(double angleTop, double angleBottom, int maxSpeed, int delay
 
   delay(delayTime);
 }  
-
-
