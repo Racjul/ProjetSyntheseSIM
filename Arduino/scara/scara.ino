@@ -30,7 +30,7 @@ void setup() {
 }
 
 void loop() {
-  /*
+  
     if (Serial.available() > 0) {
     String data = Serial.readStringUntil('%');
     Serial.print("You sent me: ");
@@ -38,12 +38,7 @@ void loop() {
     deplacer(data);
     rotationMoteur(0,0,150,100);
   }
-    */
   
-  Serial.print("allo");
-  deplacer(angles);
-  rotationMoteur(0,0,150,100);
-  delay(50000);
 }
 
 
