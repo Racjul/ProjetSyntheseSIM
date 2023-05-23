@@ -33,7 +33,6 @@ lock = th.Lock()
 def lireSerial():
     while True:
         lock.acquire()
-        print("TEST")
         ###line = ser.readline().decode('utf-8').rstrip()
         ##print(line)
         lock.release()
