@@ -2,7 +2,7 @@ import math
 import serial
 import numpy as np
 
-##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 class Grille:
     
@@ -273,7 +273,7 @@ class Grille:
         path = self.chemin(caseI,caseF)
         angles = angles + self.pathToAngle(path) + "%"
         print("it works")
-        ##ser.write(angles.encode())
+        ser.write(angles.encode())
     
         
               
