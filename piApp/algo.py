@@ -2,7 +2,7 @@ import math
 import serial
 import numpy as np
 
-##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 class Grille:
     
@@ -27,7 +27,7 @@ class Grille:
                 if row % 2 !=0 and column % 2 !=0:
                     case = {
                     "notation" : self.listNotation[k] + str(i),
-                    "posX" : posX + (16* column),
+                    "posX" : posX + (20* column),
                     "posY" : posY
                     }
                     print(case)
@@ -39,13 +39,13 @@ class Grille:
                 else :
                     case = {
                     "notation" : 'ligne',
-                    "posX" : posX + (16 * column),
+                    "posX" : posX + (20 * column),
                     "posY" : posY 
                     }
 
                 temp.append(case)
             self.grille.append(temp)
-            posY -= 16
+            posY -=20
 
         self.grilleCapture =[]
         for x in range(8):
@@ -273,7 +273,7 @@ class Grille:
         path = self.chemin(caseI,caseF)
         angles = angles + self.pathToAngle(path) + "%"
         print("it works")
-        ##ser.write(angles.encode())
+        ser.write(angles.encode())
     
         
               
