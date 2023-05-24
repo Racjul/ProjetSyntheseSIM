@@ -25,20 +25,50 @@ app.config['SECRET_KEY'] = 'test'
 socketio = SocketIO(app, async_mode='eventlet')
 
 
+
+def fen_to_board(fen):
+    board = []
+    for row in fen.split('/'):
+        brow = []
+        for c in row:
+            if c == ' ':
+                break
+            elif c in '12345678':
+                brow.extend( ['--'] * int(c) )
+            elif c == 'p':
+                brow.append( 'bp' )
+            elif c == 'P':
+                brow.append( 'wp' )
+            elif c > 'Z':
+                brow.append( 'b'+c.upper() )
+            else:
+                brow.append( 'w'+c )
+
+        board.append( brow )
+    return board
+
+
+
+
 # permet de donner la directory de l'engine d'échec
-stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 lock = th.Lock()
+stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
+
 
 def lireSerial():
-    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    ser.reset_input_buffer()
+    global stockfish
+    ##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    ##ser.reset_input_buffer()
     while True:
-        lock.acquire()
-        line = ser.readline().decode('utf-8').rstrip()
-        print(line)
-        lock.release()
-        time.sleep(1)
+        with lock:
+            ##line = ser.readline().decode('utf-8').rstrip()
+            ##print(line)
+            time.sleep(1)
             
+
+
+
+
 thread = th.Thread(target=lireSerial, args=())
 thread.start()
 
@@ -65,7 +95,7 @@ def handle_my_custom_event(piece, id, caseInitial):
     if ((piece == "wp" and id[1] == '8') or (piece == "bp" and id[1] == '1')):
         id = id + "q"
         print("promotion")
-
+    
     if (stockfish.is_move_correct(caseInitial + id)):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
