@@ -28,13 +28,14 @@ socketio = SocketIO(app, async_mode='eventlet')
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 lock = th.Lock()
-##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-##ser.reset_input_buffer()
+
 def lireSerial():
+    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    ser.reset_input_buffer()
     while True:
         lock.acquire()
-        ###line = ser.readline().decode('utf-8').rstrip()
-        ##print(line)
+        line = ser.readline().decode('utf-8').rstrip()
+        print(line)
         lock.release()
         time.sleep(1)
             
@@ -69,11 +70,6 @@ def handle_my_custom_event(piece, id, caseInitial):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
         print(stockfish.get_board_visual())
-        lock.acquire()
-        
-        ##angles = "p" + grille.move(caseInitial,id,False,False)+"%"
-        ##ser.write(("p" + grille.move(caseInitial,id,False,False)+"%").encode())
-        lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
@@ -110,14 +106,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         print(f"caseI:  {best[:2]}, caseF: {best[2:]}")
 
         print(stockfish.get_board_visual())
-        lock.acquire()
-        ##angles = angles + grille.move(best[:2],best[2:],False,False)+"%"
-        ##ser.write(angles.encode())
         grille.move(best[:2],best[2:],capture,False)
-        
-
-        ##ser.write((grille.move(best[:2],best[2:],False,False)+"%").encode())
-        lock.release()
         # verify checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):

@@ -25,7 +25,7 @@ setInterval(function(){
         socket.emit("actualizeWeb");
     }
 
-},4000);
+},2000);
 
 function containsUppercase(str) 
 {
