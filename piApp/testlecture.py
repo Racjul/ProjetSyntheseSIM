@@ -14,7 +14,6 @@ def lireSerial():
     while True:
         with lock:
             if reading:
-                print("lock fonctionne")
                 line = ser.readline().decode('utf-8').rstrip()
                 print(line)
                 ser.reset_input_buffer()
@@ -54,6 +53,7 @@ if __name__ == "__main__":
         with lock:
             ser.write("s#".encode('utf-8'))
             reading = True
+
 
 
 
