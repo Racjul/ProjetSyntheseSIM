@@ -94,7 +94,7 @@ void rotationMoteur(double angleTop, double angleBottom, int maxSpeed, int delay
   stepperTop.setMaxSpeed(maxSpeed);
 
   double position1 = -angleTop * 1000 / 360;
-  double position2 = -angleBottom * 500 / 360;
+  double position2 = -angleBottom * 333.33 / 360;
 
   Serial.println(position1);
   Serial.println(position2);
