@@ -1,4 +1,26 @@
-fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+import threading as th
+import time
+import serial
+lock = th.Lock()
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+
+
+
+def lireSerial():
+    global ser  
+    while reading:
+        with lock:
+            line = ser.readline().decode('utf-8').rstrip()
+            print(line)
+            ser.reset_input_buffer()
+            reading = False
+            
+
+
+
+
+thread = th.Thread(target=lireSerial, args=())
+thread.start()
 
 def fen_to_board(fen):
     board = []
@@ -21,5 +43,11 @@ def fen_to_board(fen):
         board.append( brow )
     return board
 
+if __name__ == "__main__":
+    while True:
+        input()
+        with lock:
+            ser.write("send".encode('utf-8'))
+            reading = True
 
-print( fen_to_board(fen) )
+
