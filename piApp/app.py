@@ -198,7 +198,7 @@ def handle_my_custom_event():
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
             threadV = th.Thread(target=flashVert, args=())
             threadV.start()
-            print(lettre[empty[1]]+"/"+chiffre[empty[0]]+"/"+lettre[full[1]]+"/"+chiffre[full[0]])
+            print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
             stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
         else:
             threadR = th.Thread(target=flashRouge, args=())
