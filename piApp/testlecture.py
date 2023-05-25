@@ -1,6 +1,7 @@
 import threading as th
 import time
 import serial
+reading = False
 lock = th.Lock()
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
@@ -8,12 +9,16 @@ ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 def lireSerial():
     global ser  
-    while reading:
+    global reading
+    print(reading)
+    while True:
         with lock:
-            line = ser.readline().decode('utf-8').rstrip()
-            print(line)
-            ser.reset_input_buffer()
-            reading = False
+            if reading:
+                print("lock fonctionne")
+                line = ser.readline().decode('utf-8').rstrip()
+                print(line)
+                ser.reset_input_buffer()
+                reading = False
             
 
 
@@ -47,7 +52,9 @@ if __name__ == "__main__":
     while True:
         input()
         with lock:
-            ser.write("send".encode('utf-8'))
+            ser.write("s#".encode('utf-8'))
             reading = True
+
+
 
 
