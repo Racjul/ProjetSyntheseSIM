@@ -175,7 +175,9 @@ def handle_my_custom_event():
                 if lignes[i][j] == "1" and lignes2[i][j] == "0":
                     print("test:" + lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])
                     if(stockfish.is_move_correct(lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])):
+                        
                         stockfish.make_moves_from_current_position([lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]]])
+                        socketio.emit("actualize", stockfish.get_fen_position())
                         if True:
                             best = stockfish.get_best_move_time(1000)
                     
@@ -199,6 +201,7 @@ def handle_my_custom_event():
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
             print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
             stockfish.make_moves_from_current_position([lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]]])
+            socketio.emit("actualize", stockfish.get_fen_position())
             if True:
                 best = stockfish.get_best_move_time(1000)
         
@@ -226,7 +229,7 @@ def handle_my_custom_event():
     
     
            
-    socketio.emit("actualize", stockfish.get_fen_position())
+    
 
 
 # retourne la page index si aucune directory est demandée
