@@ -139,7 +139,7 @@ def handle_my_custom_event(Elo):
     stockfish.set_elo_rating(Elo)
 
 
-@socketio.on('actualizeWeb',)
+@socketio.on('actualizeWeb')
 def handle_my_custom_event(bot):
     chiffre = "12345678"
     lettre = "abcdefgh"
