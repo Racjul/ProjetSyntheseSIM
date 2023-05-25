@@ -1,7 +1,7 @@
 var caseI = null;
 var pieceDeplacement = null;
 var tour= "w";
-var computer = false;
+let computer = false;
 var socket = io();
 var Elo=1500;
 var connected  = false
@@ -24,14 +24,14 @@ setInterval(function(){
     {
         if (computer)
         {
-            socket.emit("actualizeWeb",true);
+            socket.send("actualizeWeb",true);
 
         }
         else{
-            socket.emit("actualizeWeb",false);
+            socket.send("actualizeWeb",false);
         }
     }
-
+    
 },3000);
 
 function containsUppercase(str) 
