@@ -22,8 +22,14 @@ setInterval(function(){
     
     if(connected && commencer)
     {
-        
-        socket.emit("actualizeWeb",computer);
+        if (computer)
+        {
+            socket.emit("actualizeWeb",true);
+
+        }
+        else{
+            socket.emit("actualizeWeb",false);
+        }
     }
 
 },3000);
