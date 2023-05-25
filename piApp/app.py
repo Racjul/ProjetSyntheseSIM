@@ -169,6 +169,7 @@ def handle_my_custom_event():
     ser.reset_input_buffer()
     lignes = line.split('/')
     board = fen_to_board(stockfish.get_fen_position())
+    print("test")
     for i in range(8):
         for j in range(8):
             if board[i][j] == "--" and lignes[j][i] == '1':
@@ -179,6 +180,7 @@ def handle_my_custom_event():
                 difference +=1
                 empty[0] = i
                 empty[1] = j
+    print(difference)
     if difference == 1:
         thread = th.Thread(target=flashJaune, args=())
         thread.start()
