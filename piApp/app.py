@@ -164,6 +164,7 @@ def handle_my_custom_event():
                 empty[1] = j
     print(difference)
     if difference == 1:
+        print("attendre 4 secondes")
         time.sleep(4)
         ser.write("s#".encode('utf-8'))
         line2 = ser.readline().decode('utf-8').rstrip()
