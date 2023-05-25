@@ -140,7 +140,7 @@ def handle_my_custom_event(Elo):
 
 
 @socketio.on('actualizeWeb')
-def handle_my_custom_event(bot):
+def handle_my_custom_event():
     chiffre = "12345678"
     lettre = "abcdefgh"
     difference = 0

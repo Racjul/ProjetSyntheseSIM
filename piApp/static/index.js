@@ -24,11 +24,11 @@ setInterval(function(){
     {
         if (computer)
         {
-            socket.send("actualizeWeb",true);
+            socket.emit("actualizeWeb");
 
         }
         else{
-            socket.send("actualizeWeb",false);
+            socket.emit("actualizeWeb");
         }
     }
     
