@@ -9,7 +9,7 @@ from flask_socketio import SocketIO, send, emit
 import math
 from algo import Grille
 import serial
-import RPi.GPIO as GPIO
+
 
 playWithWebSite= True
 capture = False
@@ -31,29 +31,11 @@ ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 # permet de donner la directory de l'engine d'échec
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.OUT)
-GPIO.setup(18, GPIO.OUT)
-GPIO.setup(22, GPIO.OUT)
 
 timeW = 600
 timeB = 600
 
-def flashJaune():
-    for i in range (4):
-        GPIO.output(17, True)
-        time.sleep(0.5)
-        GPIO.output(17, False)
-def flashRouge():
-    for i in range (4):
-        GPIO.output(18, True)
-        time.sleep(0.5)
-        GPIO.output(18, False)
-def flashVert():
-    for i in range (4):
-        GPIO.output(22, True)
-        time.sleep(0.5)
-        GPIO.output(22, False)
+
 
 
 
@@ -193,16 +175,12 @@ def handle_my_custom_event():
             for j in range(8):
                 if lignes[i][j] == "1" and lignes2[i][j] == "0":
                     if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])):
-                        stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])
+                        stockfish.make_moves_from_current_position([lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i]])
     elif difference == 2:
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
-            threadV = th.Thread(target=flashVert, args=())
-            threadV.start()
             print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
-            stockfish.make_moves_from_current_position("d2d4")
+            stockfish.make_moves_from_current_position([lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]]])
         else:
-            threadR = th.Thread(target=flashRouge, args=())
-            threadR.start()
             print("Erreur: Mauvais coup")    
     socketio.emit("actualize", stockfish.get_fen_position())
 
