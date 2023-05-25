@@ -9,6 +9,7 @@ from flask_socketio import SocketIO, send, emit
 import math
 from algo import Grille
 import serial
+import RPi.GPIO as GPIO
 
 playWithWebSite= True
 capture = False
@@ -24,39 +25,58 @@ app.config['SECRET_KEY'] = 'test'
 # permet de définir la librairie à utiliser pour la comunication serveur
 socketio = SocketIO(app, async_mode='eventlet')
 
-
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 
 
 # permet de donner la directory de l'engine d'échec
-lock = th.Lock()
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 
-lockSerial = th.Lock()
-
-def lireSerial():
-    global stockfish
-    ##ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    ##ser.reset_input_buffer()
-    while True:
-        with lock:
-            ##line = ser.readline().decode('utf-8').rstrip()
-            ##print(line)
-            time.sleep(1)
-            
-
-
-
-
-##thread = th.Thread(target=lireSerial, args=())
-##thread.start()
-
-
-
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(22, GPIO.OUT)
 
 timeW = 600
 timeB = 600
 
+def flashJaune():
+    for i in range (4):
+        GPIO.output(17, True)
+        time.sleep(0.5)
+        GPIO.output(17, False)
+def flashRouge():
+    for i in range (4):
+        GPIO.output(18, True)
+        time.sleep(0.5)
+        GPIO.output(18, False)
+def flashVert():
+    for i in range (4):
+        GPIO.output(22, True)
+        time.sleep(0.5)
+        GPIO.output(22, False)
 
+
+
+def fen_to_board(fen):
+    board = []
+    for row in fen.split('/'):
+        brow = []
+        for c in row:
+            if c == ' ':
+                break
+            elif c in '12345678':
+                brow.extend( ['--'] * int(c) )
+            elif c == 'p':
+                brow.append( 'bp' )
+            elif c == 'P':
+                brow.append( 'wp' )
+            elif c > 'Z':
+                brow.append( 'b'+c.upper() )
+            else:
+                brow.append( 'w'+c )
+
+        board.append( brow )
+    return board
 
 
 # permet de print dans la console, les messages reçus provenant du site web
@@ -139,6 +159,48 @@ def handle_my_custom_event(Elo):
 
 @socketio.on('actualizeWeb')
 def handle_my_custom_event():
+    chiffre = "12345678"
+    lettre = "abcdefgh"
+    difference = 0
+    empty= [0,0]
+    full = [0,0]
+    ser.write("s#".encode('utf-8'))
+    line = ser.readline().decode('utf-8').rstrip()
+    ser.reset_input_buffer()
+    lignes = line.split('/')
+    board = fen_to_board(stockfish.get_fen_position())
+    for i in range(8):
+        for j in range(8):
+            if board[i][j] == "--" and lignes[j][i] == '1':
+                difference +=1
+                full[0] = i
+                full[1] = j
+            if board[i][j] != "--" and lignes[j][i] == '0':
+                difference +=1
+                empty[0] = i
+                empty[1] = j
+    if difference == 1:
+        thread = th.Thread(target=flashJaune, args=())
+        thread.start()
+        time.sleep(4)
+        ser.write("s#".encode('utf-8'))
+        line2 = ser.readline().decode('utf-8').rstrip()
+        ser.reset_input_buffer()
+        lignes2 = line2.split('/') 
+        for i in range(8):
+            for j in range(8):
+                if lignes[i][j] == "1" and lignes2[i][j] == "0":
+                    if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])):
+                        stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])
+    elif difference == 2:
+        if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
+            thread = th.Thread(target=flashVert, args=())
+            thread.start()
+            stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
+        else:
+            thread = th.Thread(target=flashRouge, args=())
+            thread.start()
+            print("Erreur: Mauvais coup")    
     socketio.emit("actualize", stockfish.get_fen_position())
 
 
