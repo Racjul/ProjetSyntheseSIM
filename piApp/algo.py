@@ -8,7 +8,7 @@ class Grille:
     
     def __init__(self, widht,colorBot):
         self.colorBot= colorBot
-        self.L = 95
+        self.L = 100
         self.nbRow = 17
         self.nbColumn = 17
         self.listNotation = ['a','b','c','d','e','f','g','h']
@@ -52,22 +52,13 @@ class Grille:
         for x in range(16):
             temp = []
             case = {
-                    "posX" : -176 + 22 * y,
+                    "posX" : -176 + 22 * x,
                     "posY" : 190,
                     "free" : True
                 }
         
         
-        for x in range(8):
-            temp = []
-            for y in range(8):
-                case = {
-                    "posX" : 0 + 20 * y,
-                    "posY" : 190,
-                    "free" : True
-                }
-                temp.append(case)
-            self.grilleCapture.append(temp)
+        
                 
         
        
