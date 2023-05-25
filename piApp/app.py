@@ -154,7 +154,7 @@ def handle_my_custom_event():
     print("test")
     for i in range(8):
         for j in range(8):
-            if board[i][j] == "--" and lignes[j][i] == '1':
+            if board[7-i][j] == "--" and lignes[j][i] == '1':
                 difference +=1
                 full[0] = i
                 full[1] = j
