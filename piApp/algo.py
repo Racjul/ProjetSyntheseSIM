@@ -8,7 +8,7 @@ class Grille:
     
     def __init__(self, widht,colorBot):
         self.colorBot= colorBot
-        self.L = 100
+        self.L = 95
         self.nbRow = 17
         self.nbColumn = 17
         self.listNotation = ['a','b','c','d','e','f','g','h']
