@@ -140,7 +140,7 @@ def handle_my_custom_event(Elo):
 
 
 @socketio.on('actualizeWeb')
-def handle_my_custom_event():
+def handle_my_custom_event(bot):
     chiffre = "12345678"
     lettre = "abcdefgh"
     difference = 0
@@ -176,12 +176,56 @@ def handle_my_custom_event():
                     print("test:" + lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])
                     if(stockfish.is_move_correct(lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])):
                         stockfish.make_moves_from_current_position([lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]]])
+                        if bot:
+                            best = stockfish.get_best_move_time(1000)
+                    
+                            print(stockfish.will_move_be_a_capture(best))
+                            if stockfish.will_move_be_a_capture(best) == stockfish.Capture.DIRECT_CAPTURE:
+                                print("cool")
+                                capture = True
+                            stockfish.make_moves_from_current_position([best])
+                            socketio.emit("coupValideBot", best)
+                            print("Le bot a fait:" + best)
+                            print(f"caseI:  {best[:2]}, caseF: {best[2:]}")
+
+                            print(stockfish.get_board_visual())
+                            grille.move(best[:2],best[2:],capture,False)
+                            # verify checkmate
+                            best = stockfish.get_best_move_time(500)
+                if (best == None or best == "None" or best == 'None'):
+                    socketio.emit("checkmate")
+                    return
     elif difference == 2:
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
             print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
             stockfish.make_moves_from_current_position([lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]]])
+            if bot:
+                best = stockfish.get_best_move_time(1000)
+        
+                print(stockfish.will_move_be_a_capture(best))
+                if stockfish.will_move_be_a_capture(best) == stockfish.Capture.DIRECT_CAPTURE:
+                    print("cool")
+                    capture = True
+                stockfish.make_moves_from_current_position([best])
+                socketio.emit("coupValideBot", best)
+                print("Le bot a fait:" + best)
+                print(f"caseI:  {best[:2]}, caseF: {best[2:]}")
+
+                print(stockfish.get_board_visual())
+                grille.move(best[:2],best[2:],capture,False)
+                # verify checkmate
+                best = stockfish.get_best_move_time(500)
+                if (best == None or best == "None" or best == 'None'):
+                    socketio.emit("checkmate")
+                    return
+                
         else:
-            print("Erreur: Mauvais coup")    
+            print("Erreur: Mauvais coup") 
+            
+    
+    
+    
+           
     socketio.emit("actualize", stockfish.get_fen_position())
 
 
