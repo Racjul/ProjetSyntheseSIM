@@ -7,7 +7,7 @@ import time
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
 import math
-##from algo import Grille
+from algo import Grille
 import serial
 
 
