@@ -182,8 +182,8 @@ def handle_my_custom_event():
                 empty[1] = j
     print(difference)
     if difference == 1:
-        thread = th.Thread(target=flashJaune, args=())
-        thread.start()
+        threadJ = th.Thread(target=flashJaune, args=())
+        threadJ.start()
         time.sleep(4)
         ser.write("s#".encode('utf-8'))
         line2 = ser.readline().decode('utf-8').rstrip()
@@ -196,12 +196,13 @@ def handle_my_custom_event():
                         stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])
     elif difference == 2:
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
-            thread = th.Thread(target=flashVert, args=())
-            thread.start()
+            threadV = th.Thread(target=flashVert, args=())
+            threadV.start()
+            print(lettre[empty[1]]+"/"+chiffre[empty[0]]+"/"+lettre[full[1]]+"/"+chiffre[full[0]])
             stockfish.make_moves_from_current_position(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
         else:
-            thread = th.Thread(target=flashRouge, args=())
-            thread.start()
+            threadR = th.Thread(target=flashRouge, args=())
+            threadR.start()
             print("Erreur: Mauvais coup")    
     socketio.emit("actualize", stockfish.get_fen_position())
 
