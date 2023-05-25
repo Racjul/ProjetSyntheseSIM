@@ -173,9 +173,9 @@ def handle_my_custom_event():
         for i in range(8):
             for j in range(8):
                 if lignes[i][j] == "1" and lignes2[i][j] == "0":
-                    print("test:" + lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])
-                    if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i])):
-                        stockfish.make_moves_from_current_position([lettre[empty[1]]+chiffre[empty[0]]+lettre[j]+chiffre[i]])
+                    print("test:" + lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])
+                    if(stockfish.is_move_correct(lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]])):
+                        stockfish.make_moves_from_current_position([lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]]])
     elif difference == 2:
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
             print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
