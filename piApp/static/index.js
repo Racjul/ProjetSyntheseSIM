@@ -20,17 +20,8 @@ socket.on('connect', function() {
 
 setInterval(function(){
     
-    if(connected && commencer)
-    {
-        if (computer)
-        {
-            socket.emit("actualizeWeb");
-
-        }
-        else{
-            socket.emit("actualizeWeb");
-        }
-    }
+   
+    socket.emit("actualizeWeb");
     
 },3000);
 
