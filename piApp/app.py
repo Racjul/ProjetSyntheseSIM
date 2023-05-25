@@ -54,6 +54,7 @@ def fen_to_board(fen):
 lock = th.Lock()
 stockfish = Stockfish(path="/usr/games/stockfish", depth=18)
 
+lockSerial = th.Lock()
 
 def lireSerial():
     global stockfish
@@ -69,8 +70,8 @@ def lireSerial():
 
 
 
-thread = th.Thread(target=lireSerial, args=())
-thread.start()
+##thread = th.Thread(target=lireSerial, args=())
+##thread.start()
 
 
 
@@ -160,7 +161,7 @@ def handle_my_custom_event(Elo):
 
 
 @socketio.on('actualizeWeb')
-def hangdle_my_custom_event():
+def handle_my_custom_event():
     socketio.emit("actualize", stockfish.get_fen_position())
 
 

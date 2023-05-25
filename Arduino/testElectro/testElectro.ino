@@ -36,14 +36,14 @@ int tableau[8][8] = {
           mux.channel(i);
           int val = analogRead(signal_pin);                       // Read analog value
           Serial.println("Channel "+String(i)+": "+String(val));  // Print value
-          delay(400);
+          delay(200);
       }
       Serial.println("Multiplexer #2:");
       for (byte i = 0; i < 16; i++) {
           mux.channel(i);
           int val = analogRead(signal_pin1);                       // Read analog value
           Serial.println("Channel "+String(i)+": "+String(val));  // Print value
-          delay(400);
+          delay(200);
       }
       
       Serial.println("Multiplexer #3:");
@@ -51,14 +51,14 @@ int tableau[8][8] = {
           mux.channel(i);
           int val = analogRead(signal_pin2);                       // Read analog value
           Serial.println("Channel "+String(i)+": "+String(val));  // Print value
-          delay(400);
+          delay(200);
       }
           Serial.println("Multiplexer #4:");
       for (byte i = 0; i < 16; i++) {
           mux.channel(i);
           int val = analogRead(signal_pin3);                       // Read analog value
           Serial.println("Channel "+String(i)+": "+String(val));  // Print value
-          delay(400);
+          delay(200);
       }
-    delay(500);
+    delay(1000);
   }
