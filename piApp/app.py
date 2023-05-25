@@ -141,6 +141,8 @@ def handle_my_custom_event(Elo):
 
 @socketio.on('actualizeWeb')
 def handle_my_custom_event():
+    
+    best = stockfish.get_best_move_time(1000)
     chiffre = "12345678"
     lettre = "abcdefgh"
     difference = 0
@@ -179,7 +181,6 @@ def handle_my_custom_event():
                         stockfish.make_moves_from_current_position([lettre[j]+chiffre[i]+lettre[empty[1]]+chiffre[empty[0]]])
                         socketio.emit("actualize", stockfish.get_fen_position())
                         if True:
-                            best = stockfish.get_best_move_time(1000)
                     
                             print(stockfish.will_move_be_a_capture(best))
                             if stockfish.will_move_be_a_capture(best) == stockfish.Capture.DIRECT_CAPTURE:
