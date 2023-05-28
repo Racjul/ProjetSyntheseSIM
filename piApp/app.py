@@ -14,6 +14,7 @@ import serial
 playWithWebSite= True
 capture = False
 
+
 grille = Grille(160,"white")
 
 # permet de donner la directory des fichier statics du projet
@@ -38,7 +39,7 @@ timeB = 600
 
 
 
-
+#transforme la notation FEN en une matrice 8x8
 def fen_to_board(fen):
     board = []
     for row in fen.split('/'):
@@ -80,7 +81,7 @@ def handle_my_custom_event(piece, id, caseInitial):
         stockfish.make_moves_from_current_position([caseInitial + id])
         socketio.emit("coupValide", piece + id + caseInitial)
         print(stockfish.get_board_visual())
-        # verify checkmate
+        # vérifie s'il y a eu checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
             socketio.emit("checkmate")
@@ -98,7 +99,7 @@ def handle_my_custom_event(piece, id, caseInitial):
 
         print(stockfish.get_board_visual())
 
-        # verify checkmate
+        # vérifie s'il y eu checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
             socketio.emit("checkmate")
@@ -117,7 +118,7 @@ def handle_my_custom_event(piece, id, caseInitial):
 
         print(stockfish.get_board_visual())
         grille.move(best[:2],best[2:],capture,False)
-        # verify checkmate
+        # vérifie s'il y eu checkmate
         best = stockfish.get_best_move_time(500)
         if (best == None or best == "None" or best == 'None'):
             socketio.emit("checkmate")
@@ -132,13 +133,13 @@ def handle_my_custom_event():
     stockfish.set_fen_position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
 
 
-# change difficulty of the bot
+# change la difficulté de l'engine d'échec
 @socketio.on('changerElo')
 def handle_my_custom_event(Elo):
     print("Nouvelle Elo " + Elo)
     stockfish.set_elo_rating(Elo)
 
-
+#compare les versions du site pour détecter les déplacements 
 @socketio.on('actualizeWeb')
 def handle_my_custom_event():
     
@@ -153,7 +154,9 @@ def handle_my_custom_event():
     ser.reset_input_buffer()
     lignes = line.split('/')
     board = fen_to_board(stockfish.get_fen_position())
-    print("test")
+
+    #compare le tableau réel avec le tableau de stockfish
+    
     for i in range(8):
         for j in range(8):
             if board[7-i][j] == "--" and lignes[j][i] == '1':
@@ -165,6 +168,13 @@ def handle_my_custom_event():
                 empty[0] = i
                 empty[1] = j
     print(difference)
+
+
+
+    # dans le cas où il y a une différence, 
+    # il s'agit obligatoirement d'une capture  
+    # pour savoir quelle pièce est en prise,
+    # il faut lever la pièce en prise avant, puis, dans un  délai de 4 secondes
     if difference == 1:
         print("attendre 4 secondes")
         time.sleep(4)
@@ -183,6 +193,7 @@ def handle_my_custom_event():
                 if (best == None or best == "None" or best == 'None'):
                     socketio.emit("checkmate")
                     return
+    #si il y a eu 
     elif difference == 2:
         if(stockfish.is_move_correct(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])):
             print(lettre[empty[1]]+chiffre[empty[0]]+lettre[full[1]]+chiffre[full[0]])
@@ -190,7 +201,7 @@ def handle_my_custom_event():
         else:
             print("Erreur: Mauvais coup") 
             
-        socketio.emit("actualize", stockfish.get_fen_position())
+    socketio.emit("actualize", stockfish.get_fen_position())
     
     
     

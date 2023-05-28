@@ -38,7 +38,8 @@ socket.on("coupValide",(info)=>
         pieceDeplacement = document.getElementById(caseI).style.backgroundImage.substring(20,22);
     }
 
-    //roque
+    //vérifie si le coup demandé est un roque
+    //pour les 2 couleurs
     if(pieceDeplacement == "wk")
     {
         if(caseI == "e1" && caseF=="g1" )
@@ -68,9 +69,9 @@ socket.on("coupValide",(info)=>
     }
 
 
-    background = document.getElementById(caseF).style.backgroundImage;
-
-
+    background = document.getElementById(caseF).style.backgroundImage;  
+    //vérifie si il s'agit d'une promotion de pion
+    //pour les 2 couleurs
     if(pieceDeplacement=="bp")
     {
         if((document.getElementById(caseF).style.backgroundImage == "") && (caseI.substring(0,1) != caseF.substring(0,1)))
@@ -86,7 +87,8 @@ socket.on("coupValide",(info)=>
         }
     }
 
-
+    // retire les éléments de l'ancienne case d'échec
+    // et retire la possibilité au joueur d'effectuer un coup à partir de cette case 
     ajouterPiece(pieceDeplacement,caseF)
     document.getElementById(caseI).removeEventListener("click",function(e){});
     document.getElementById(caseI).style.border="thick solid transparent";
@@ -108,7 +110,8 @@ socket.on("coupValide",(info)=>
 
 
 
-// meme fonction que coup valide ,mais ce n'est pas l'utilisateur qui rentre le coup
+// même fonction que coup valide, mais ce n'est pas l'utilisateur qui rentre le coup
+//Dans ce cas, c'est le coup qui est demandé au bot d'échec(voir app.py 'coupDemandeBot')
 socket.on("coupValideBot",(info)=>
 {
 caseI = info.substring(0,2);
@@ -173,12 +176,18 @@ socket.on("checkmate",()=>{
     
 })
 
-
+// permet de vérifier si le site internet possède la même version
+// du plateau que Stockfish
+// Ainsi, il n'y a aucune action à entreprendre lorsque les capteurs à effet
+// de Hall identifie un coup
 socket.on("actualize",(data)=>{
+    //data est la notation FEN de l'état du plateau d'échec 
     fen = data.split(' ')[0]
     tour = data.split(' ')[1]
     var rowChars = [];
     var transform = [];
+
+    //permet de transformer la notation classique des échecs en tableau 
     fen.split('/').forEach(function (row) {
         row.split('').forEach(function (char) {
             if (isNaN(parseInt(char))) {
@@ -194,13 +203,14 @@ socket.on("actualize",(data)=>{
         transform.push(rowChars);
         rowChars = [];
     });
+    
 
     ligne = ["a","b","c","d","e","f","g","h"];
     colonne = ["1","2","3","4","5","6","7","8"];
-    tableau = transform.reverse();
-    console.log(transform);  
-    console.log(tour)  
+    tableau = transform.reverse();  
     var different = false;
+
+    //vérifie si l'état du plateau est identique au plateau réel
     for(var i =0;i<8;i++)
     {
         for(var j = 0; j < 8;j++)
@@ -219,7 +229,8 @@ socket.on("actualize",(data)=>{
             }
         }
     }
-  
+  //Si l'état du palteau est différent, il effectue les modifications pour être identique
+  // à l'état du plateau selon l'échiquier réel
     if(different)
     {
         var color = "b";

@@ -1,3 +1,5 @@
+# permet de calibrer les halls effects sensors au début des parties
+# ainsi, il est facile d'identifier quel hall effect sensor ne fonctionne pas
 import threading as th
 import time
 import serial
@@ -26,26 +28,6 @@ def lireSerial():
 thread = th.Thread(target=lireSerial, args=())
 thread.start()
 
-def fen_to_board(fen):
-    board = []
-    for row in fen.split('/'):
-        brow = []
-        for c in row:
-            if c == ' ':
-                break
-            elif c in '12345678':
-                brow.extend( ['--'] * int(c) )
-            elif c == 'p':
-                brow.append( 'bp' )
-            elif c == 'P':
-                brow.append( 'wp' )
-            elif c > 'Z':
-                brow.append( 'b'+c.upper() )
-            else:
-                brow.append( 'w'+c )
-
-        board.append( brow )
-    return board
 
 if __name__ == "__main__":
     while True:
